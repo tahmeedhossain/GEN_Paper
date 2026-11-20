@@ -1,6 +1,6 @@
 # GEN edge kernel: check report
 
-Run 2026-11-20 10:15 UTC · Python 3.13.18 · sympy 1.14.0 · z3 5.4.1 · 62.8 s
+Run 2026-11-20 10:23 UTC · Python 3.13.18 · sympy 1.14.0 · z3 5.4.1 · 64.9 s
 
 Edges: 133 (89 checked by certificate or kernel rule, 18 imported, 8 definitions, 17 written proof steps (grade compose), 1 interpretive, 0 failed). Negative controls: 28/28 planted errors detected.
 
@@ -314,7 +314,7 @@ Phases of the method cycle (read by hand): deficit (two released nodes (GEN_HEP:
 
 ### Findings
 
-- **Generated work** (note). This is not a published paper. Its results, proofs, code and text were produced by an AI system (Claude, Anthropic) in a session directed by T. Hossain on 17 November 2026; nothing has been peer reviewed. The 15 routes graded compose are proofs written in the paper that no program and no independent reviewer has checked.
+- **Generated work** (note). This is not a published paper. Its results, proofs, code and text were produced by an AI system (Claude, Anthropic) in a session directed by T. Hossain on 17 November 2026; nothing has been peer reviewed. The 15 routes graded compose are written proof steps that no program and no independent reviewer has checked; 14 of them are proofs given in the paper, and DV12 is not in the text (below).
 - **Rebuilt from the session record** (note). The project in decay_contextuality/ was rebuilt on 20 November 2026 from the tool calls of the session that wrote it. The rebuilt encoding agrees with the published page of 17 November in all 35 nodes, 63 route statements and 11 claims. All certificates were executed again on 20 November 2026, including the four long linear-programme runs (about 30 minutes): the outputs of all 63 routes agree with the outputs recorded on the page, the 11 verdicts of the paper's own kernel are unchanged, and 16 of 16 negative controls are rejected.
 - **Locations** (premise). The location fields of the original encoding use an earlier lettering of the appendices (for example App. E for the numerical cross-checks, which are App. H of the paper) and give Lemma 2 for the lemma on nonnegative quadratic functions, which is Lemma 3 in the paper. The locations used here are those of the final text; the original ones are kept in the note of each route.
 - **Dependencies added** (premise). The original encoding lists, for each claim, the routes named in it, and no route-to-route dependencies. The dependencies used here were read from the proofs in the paper. With them the closure of claim C8 (top pairs) contains the written necessity proof of Theorem 2 (H3) and Lemma 1 (FW1, imported), and the closure of claim C10 (top polarimeters) contains Lemma 1 through the proof of Theorem 1 (H2).

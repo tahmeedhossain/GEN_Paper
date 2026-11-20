@@ -2,8 +2,9 @@
 
 > **Generated work.** This result, its proofs, its code and its text were produced by an AI system
 > (Claude, Anthropic) in a session directed by T. Hossain on 17 November 2026. It is unpublished and has not
-> been peer reviewed. The 15 routes graded "written" are proofs in the paper that no program and no
-> independent reviewer has checked.
+> been peer reviewed. The 15 routes graded "written" are proof steps that no program and no independent
+> reviewer has checked; 14 are proofs given in the paper, and one (DV12) is listed as written but is not
+> stated in the text.
 
 Code, recorded runs and paper sources for
 
@@ -31,7 +32,8 @@ imports `net/encoding.py` unchanged) and replays it in reading order (`orders.DE
 | Top pairs, hyperon pairs, top polarimeters, vector mesons | Section V | arithmetic on cited numbers |
 
 The verdict of each headline claim is the weakest status among its routes (`out/summary.txt`).
-Fifteen routes are proofs written in the paper; no program has checked them.
+Fifteen routes are graded as written proofs; no program has checked them. One of them, DV12, is not stated in the text
+(finding of the edge kernel, 20 November 2026).
 
 ## Reproduce
 
@@ -99,5 +101,6 @@ its here-documents, its file patches and its `sed` edits, replayed in order; one
   time they are fixed by the certificate outputs and the recorded runs, which agree with those of 17 November.
 
 Changes against the sources of 17 November: the date line of `paper/main.tex` and the header of
-`page/make_page.py` carry the generated-work notice above. Nothing else was changed. The paper was compiled
+`page/make_page.py` carry the generated-work notice above, and this README has the notice, this section and a
+corrected sentence on the written proofs (DV12). Nothing else was changed. The paper was compiled
 with REVTeX 4.2 (TeX Live package `revtex`).

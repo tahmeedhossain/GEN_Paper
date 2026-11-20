@@ -299,8 +299,8 @@ def build() -> Paper:
         {"level": "note", "title": "Generated work",
          "text": "This is not a published paper. Its results, proofs, code and text were produced by an AI system "
                  "(Claude, Anthropic) in a session directed by T. Hossain on 17 November 2026; nothing has been peer "
-                 "reviewed. The 15 routes graded compose are proofs written in the paper that no program and no "
-                 "independent reviewer has checked."},
+                 "reviewed. The 15 routes graded compose are written proof steps that no program and no independent "
+                 "reviewer has checked; 14 of them are proofs given in the paper, and DV12 is not in the text (below)."},
         {"level": "note", "title": "Rebuilt from the session record",
          "text": "The project in decay_contextuality/ was rebuilt on 20 November 2026 from the tool calls of the session "
                  "that wrote it. The rebuilt encoding agrees with the published page of 17 November in all 35 nodes, "
