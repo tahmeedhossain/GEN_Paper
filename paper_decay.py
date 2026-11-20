@@ -332,7 +332,8 @@ def build() -> Paper:
                  "rests on executed certificates alone. The other nine verdicts agree.")},
     ]
     sources = [
-        {"title": "Paper sources and PDF: decay_contextuality/paper (this repository)", "url": "decay_contextuality/paper/"},
+        {"title": "Paper sources and PDF: decay_contextuality/paper (this repository)",
+         "url": "https://github.com/tahmeedhossain/GEN_Paper/tree/main/decay_contextuality/paper"},
         {"title": "Schmid et al., PRX Quantum 2, 010331 (2021)", "url": "https://doi.org/10.1103/prxquantum.2.010331"},
         {"title": "Selby et al., Phys. Rev. Lett. 132, 050202 (2024)", "url": "https://doi.org/10.1103/physrevlett.132.050202"},
         {"title": "Plávala and Gühne, Phys. Rev. Lett. 132, 100201 (2024)", "url": "https://doi.org/10.1103/physrevlett.132.100201"},

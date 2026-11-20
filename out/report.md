@@ -1,6 +1,6 @@
 # GEN edge kernel: check report
 
-Run 2026-11-20 10:23 UTC · Python 3.13.18 · sympy 1.14.0 · z3 5.4.1 · 64.9 s
+Run 2026-11-20 10:31 UTC · Python 3.13.18 · sympy 1.14.0 · z3 5.4.1 · 64.8 s
 
 Edges: 133 (89 checked by certificate or kernel rule, 18 imported, 8 definitions, 17 written proof steps (grade compose), 1 interpretive, 0 failed). Negative controls: 28/28 planted errors detected.
 
