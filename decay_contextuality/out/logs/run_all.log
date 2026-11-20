@@ -1,0 +1,104 @@
+lint issues: none
+layer-pair signature: {'SS': 1, 'SM': 17, 'SO': 18, 'MS': 1, 'MM': 27, 'MO': 24, 'OS': 2, 'OM': 4, 'OO': 29}
+DV1   exact      checked              polynomial identity in 20 real symbols: sum |M|^2 = 8 ((p1-m s).p4)(p2.p3)
+DV2   exact      checked              (p1-ms).p4 = m E (1+s.q); effect 1+q.sigma has determinant 0 on |q|=1
+DV3   exact      checked              tensor coefficients 1/12, 1/6; spectrum x^2[(3-2x)-(2x-1)cos]; integrated analysing power = -1/3; endpoint ana
+DV4   exact      checked              kappa_b = -(xi-2)/(xi+2); equals -1/3 at xi = [4], i.e. m_t = 2 m_W
+DV5   numeric    checked              quadrature reproduces kappa_l=1, kappa_b, kappa_nu closed forms and the published LO values (-0.40622, -0.3181
+DV6   compose    written proof step   
+DV7   exact      checked              Tr(QQ) identity; kernel = 1/3 + (eta1/2) q.S + (eta2/6)(3(q.S)^2-2); symbol 1/3 + (eta1/2) p.q + (eta2/2) q^T 
+DV8   numeric    checked              j = 1/2..4: LP value of max|<J>|/(j+1) over Husimi-nonnegative operators equals the quadrature node (max dev 3
+DV9   exact      checked              sign flip of one analysing power = partial transpose up to a local unitary
+DV10  definition definition           
+DV11  definition definition           
+DV12  compose    written proof step   
+FW1   import     imported             
+FW2   exact      checked              identity for the recorded-outcome model; int (3q_z^2-1)(1, k q) dq = 0, so two outcome functions with differen
+FW3   logic      checked              identity for the recorded-outcome model; int (3q_z^2-1)(1, k q) dq = 0, so two outcome functions with differen
+FW4   logic      checked              identity for the recorded-outcome model; int (3q_z^2-1)(1, k q) dq = 0, so two outcome functions with differen
+FW5   exact      checked              identity for the recorded-outcome model; int (3q_z^2-1)(1, k q) dq = 0, so two outcome functions with differen
+FW6   compose    written proof step   
+FW7   definition definition           
+H1    exact      checked              sum_j mu xi = (1+v.q)/4pi; mu >= 0 iff |v| <= 1/3; four ontic states
+H13   exact      checked              six-state model reproduces (1+v.q)/4pi; weights nonnegative iff alpha_k >= r_k; with sum alpha_k = 1 this requ
+H2    logic      checked              premises entail rho <= 1/3 (unsat); each premise needed: [True, True, True, True]
+H3    compose    written proof step   
+H4    compose    written proof step   
+H12   numeric    checked              200 random singular matrices (rank 3 and 2): projections idempotent (1.8e-15), images inside the cone (min mar
+H5    exact      checked              spectra of rho_raw and its partial transpose are the eight forms (1+-c1+-c2+-c3)/4; all >= 0 iff |c1|+|c2|+|c3
+H6    exact      checked              PSD of rho_raw and of its partial transpose imply -1 <= tr c <= 1
+H7    exact      checked              Choi spectrum {1+3k, 1-k (x3)}/4, partial transpose {1-3k, 1+k (x3)}/4: PPT iff -1/3 <= k <= 1/3
+H8    compose    written proof step   
+H9    compose    written proof step   
+H10   numeric    checked              inner <= exact <= outer in all 6 runs; bracket width at N = 250: 0.0229; hyperon pair: sub-fragment LP infeasi
+V1    compose    written proof step   
+V2    numeric    checked              200 random instances: residual 2.0e-13 (lightlike columns and M reproduced)
+V3    exact      checked              t_B root; ellipse 3x^2+25(y-1/5)^2=1 traced by tau in [1/2,2]; apex (0,-4/5); top (0,2/5); tangent points (+-2
+V4    exact      checked              |I| = 60; R top (0, 2/5):ok; R coherent (1/2, 1/10):ok; R max vector (1/sqrt3, 1/5):ok; R tangent (2sqrt2/5, 4
+V5    compose    written proof step   
+V6    numeric    checked              max |SDP - closed form| over 24 directions x 16 pure states: 8.4e-09 || 12 directions, K = 220 operators, 900 
+V7    exact      checked              symbol (1/3)(1 + (3 eta1/2) p.q); eigenvalues 1/3, 1/3 +- |p|/2; threshold eta1 = 2/9
+P1    exact      checked              AM-GM step (Z3, unsat); stationary value 2a^2/(9(a/3-b/5)); Gamma convex (x'y''-y'x'' = 16/15); tangent at s =
+P2    exact      checked              |I| = 60; R top (0, 2/5):ok; R coherent (1/2, 1/10):ok; R max vector (1/sqrt3, 1/5):ok; R tangent (2sqrt2/5, 4
+P3    compose    written proof step   
+P6    exact      checked              v_c = 5/8 (W W), 2/5 (PP PP), 2/5 (PP with l l or with W); (l l)(l l), W Z and Z Z noncontextual for every v (
+P4    numeric    checked              9 directions, K = 264 operators, 700 grid directions: LP/closed in [0.9879, 1.0086]
+P5    numeric    checked              R at 90 deg: 1.0069 -> 1.0019 (grid 900 -> 3600); R2 at 270 deg: 1.0100 -> 1.0022 (grid 700 -> 2800); R2 at 80
+G1    compose    written proof step   
+G2    exact      checked              xi_1 = 1/3, xi_2 = 1/sqrt3, xi_3 = (1+sqrt6)/5, xi_4 = sqrt(3/5); extremal polynomials attain them; j=1 kernel
+G3    compose    written proof step   
+G5    compose    written proof step   
+G7    numeric    checked              degrees 1..8: largest first moment over random nonnegative polynomials stays below xi_n (closest: 1.000 of the
+G6    numeric    checked              spin 1/2: bound is ||c||_1 <= 1; spin 1: POVM first moment eta1 S/2 (dev 3.8e-06), singlet <S_i S_k> = -(2/3) 
+G4    numeric    checked              j = 1/2..4: LP value of max|<J>|/(j+1) over Husimi-nonnegative operators equals the quadrature node (max dev 3
+A1    import     imported             
+A2    exact      checked              ATLAS: (bound - D)/sigma = 10.2 with the quoted particle-level bound; CMS parton level: (-1/3 - D)/sigma = 5.0
+A3    import     imported             
+A4    numeric    checked              production state PSD with rank <= 2 at all angles (min eigenvalue -3.1e-16); ||c||_1 at 90 deg = 1.1081 (1.109
+A5    import     imported             
+A6    import     checked              kappa = (m_tau^2 - 2 m_rho^2)/(m_tau^2 + 2 m_rho^2) = 0.449 for m_tau = 1776.93 MeV, m_rho = 775.26 MeV
+A7    import     imported             
+A8    numeric    checked              w0(alpha) = (1-alpha)/(3+alpha); window alpha in [-1/2, 1/3]; J/psi -> Lambda Lambdabar: w0 = 0.151, 39 sigma 
+H11   compose    written proof step   
+X3    definition definition           
+X1    import     imported             
+X2    compose    written proof step   
+
+claims
+ C1   verified modulo written proof steps              A decay is one fixed covariant measurement; V-A decays give sharp effects for the antiferm
+ C2   verified                                         With one setting per side Bell and steering tests are empty, and the recorded-outcome mode
+ C3   verified modulo imports                          Spin 1/2, one particle: noncontextual iff P|kappa| <= 1/3.
+ C4   verified modulo imports and written proof steps  Two spin-1/2 particles: the joint decay data are noncontextual iff rho_raw and its partial
+ C5   verified modulo imports and written proof steps  Spin 1, one particle: noncontextual iff (eta1, eta2) in R (eta2 != 0).
+ C6   verified modulo imports and written proof steps  Maximally entangled spin-1 pair with one decay on each side: noncontextual iff the product
+ C7   verified modulo imports and written proof steps  Spin j: the largest vector analysing power of a noncontextual polarimeter is the largest G
+ C8   verified modulo imports                          Top pairs: the measured D certifies contextual lepton-direction data at the significance q
+ C9   verified modulo imports and written proof steps  Hyperon pairs: with the fitted BESIII parameters the proton-antiproton angular data are co
+ C10  verified                                         The b-quark direction is a nonclassical top polarimeter iff m_t > 2 m_W; the neutrino dire
+ C11  verified modulo imports and written proof steps  Vector mesons: the baryon direction of J/psi -> Lambda Lambdabar is a nonclassical polarim
+
+negative controls
+ k01  rejected     spin-1/2 threshold 1/2 instead of 1/3: the tetrahedral weights (1+3 t.v)/4 must stay nonne
+ k02  rejected     direction-only leptonic analysing power 1/2 instead of 1/3.
+ k03  rejected     Dirac trace with (p1 + m s) instead of (p1 - m s).
+ k04  rejected     T-state criterion with the Frobenius norm instead of the trace norm: c = diag(1/2,1/2,1/2)
+ k05  rejected     ellipse centred at (0, 1/4) instead of (0, 1/5).
+ k06  rejected     apex of R at (0, -1) instead of (0, -4/5): support value in direction (0,-1) from the dual
+ k07  rejected     twirl coefficient m2 = (1/2) Tr(AA') instead of (3/5) Tr(AA'): the finite model at the top
+ k08  rejected     top of R2 at 2 instead of 8/5, which would make two ideal W decays on a singlet noncontext
+ k09  rejected     isotropic W-pair threshold 1/2 instead of 5/8: (1/2,1/2) must be strictly inside R2 and (5
+ k10  rejected     largest noncontextual vector analysing power for spin 1 claimed to be 0.6 instead of 1/sqr
+ k11  rejected     b-quark polarimeter nonclassical iff m_t > 3 m_W (instead of 2 m_W).
+ k12  rejected     hyperon-pair state with the wrong sign of C_yy: must not be a density matrix.
+ k13  rejected     |D| <= 1/2 claimed as the noncontextuality bound: the witness values (1 +- tr c)/4 vanish 
+ k14  rejected     recorded-outcome model declared noncontextual: needs int (3 q_z^2 - 1) E(q) dq != 0, which
+ k15  rejected     range lemma with the Euclidean orthogonal projector instead of the boosted one: for a subs
+ k16  rejected     two decays into pseudoscalar pairs on a singlet: threshold visibility 1/2 instead of 2/5; 
+
+63 routes: 38 checked (21 exact, 3 logic, 13 numeric, 1 import with a consistency check), 0 failed; 6 imported, 4 definitions, 15 written proof steps
+35 nodes (17 released, 18 new); layers {'S': 10, 'M': 13, 'O': 12}
+claims: C1: verified modulo written proof steps; C2: verified; C3: verified modulo imports; C4: verified modulo imports and written proof steps; C5: verified modulo imports and written proof steps; C6: verified modulo imports and written proof steps; C7: verified modulo imports and written proof steps; C8: verified modulo imports; C9: verified modulo imports and written proof steps; C10: verified; C11: verified modulo imports and written proof steps
+negative controls rejected: 16 of 16
+scope separation (single setting: no Bell test, yet contextuality testable): True
+lint: no issues
+run time 38 s

@@ -1,0 +1,623 @@
+{
+ "schema": "gen-check-delta/1",
+ "paper": {
+  "citation": "P. Barrios Hita, A. Trushechkin, H. Kampermann, M. Epping, D. Bruß, Quantum Mechanics Based on Real Numbers: A Consistent Description, Phys. Rev. Lett. 136, 240202 (2026)",
+  "year": 2026,
+  "doi": "10.1103/4k13-sdjh",
+  "arxiv": "2503.17307"
+ },
+ "phases": [
+  [
+   "restructure",
+   "the composition postulate is split off the real-QM model node"
+  ],
+  [
+   "reduce",
+   "the new real-number model is identified with complex quantum theory"
+  ],
+  [
+   "falsify",
+   "the no-go route of Renou et al. is kept and given its premises explicitly"
+  ]
+ ],
+ "base": "GPT / nonclassicality branch (GEN_GPT_Level v2.6)",
+ "glued_existing_nodes": [
+  {
+   "id": "m-quantum",
+   "glue": "GEN_GPT_Level v2.6:m-quantum"
+  },
+  {
+   "id": "m-realqm",
+   "glue": "GEN_GPT_Level v2.6:m-realqm"
+  },
+  {
+   "id": "ax-complex",
+   "glue": "GEN_GPT_Level v2.6:ax-complex"
+  },
+  {
+   "id": "ax-loctom",
+   "glue": "GEN_GPT_Level v2.6:ax-loctom"
+  },
+  {
+   "id": "s-C",
+   "glue": "GEN_GPT_Level v2.6:m-quantum (states)"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "ax-tensorR",
+   "layer": "M",
+   "sub": "axiom",
+   "label": "Postulate (iv): Kronecker composition (Renou et al.)",
+   "def": "H_ST = H_S ⊗ H_T (tensor product over the field of the theory); local operators act as A ⊗ 1; independent preparations are tensor products.",
+   "status": "split",
+   "glue": "GEN_GPT_Level v2.6:m-realqm (part of its definition)",
+   "refs": []
+  },
+  {
+   "id": "ax-P4",
+   "layer": "M",
+   "sub": "axiom",
+   "label": "Postulate (P4): local action (Barrios Hita et al.)",
+   "def": "There are embeddings ξ (independent preparation) and η^i (local operation) with η^1(A)ξ(ψ1,ψ2) = ξ(Aψ1,ψ2) and η^2(B)ξ(ψ1,ψ2) = ξ(ψ1,Bψ2)  (Eq. (75)).",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "f-real",
+   "layer": "M",
+   "sub": "frame",
+   "label": "Realification maps S, T, R (real-number QM)",
+   "def": "S(ψ) = Re ψ ⊗|0> + Im ψ ⊗|1>;  T(A) = Re A ⊗ 1 + Im A ⊗ J;  R(Ψ) = Re Ψ ⊗ ψ_even^(N) + Im Ψ ⊗ ψ_odd^(N);  T on N flags uses I^(N), J^(N).",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "m-realflag",
+   "layer": "M",
+   "sub": "model",
+   "label": "Real-number QM with the flag tensor product ⊗_F",
+   "def": "Postulates (P1)–(P3) over R and (P4): states are classes in R^{2dA}⊗R^{2dB} / ker; canonical representatives lie in the range of P = (1 − J_A⊗J_B)/2; observables are T(A) (commute with J).",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "s-Rflag",
+   "layer": "S",
+   "sub": "hilbert",
+   "label": "Real state space R^d ⊗ R²_F (real-number QM)",
+   "def": "Vectors S(ψ) ∈ R^{2d}; the phase orbit {(1⊗R(α))S(ψ)} is one physical state; density operator T(ρ)/2.",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "s-canon",
+   "layer": "S",
+   "sub": "hilbert",
+   "label": "Canonical flag subspace (real-number QM, N parties)",
+   "def": "span{ψ_even^(N), ψ_odd^(N)} ⊂ (R²)^{⊗N}: the subspace on which all local J_k coincide.",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "s-indep",
+   "layer": "S",
+   "sub": "cluster",
+   "label": "States of two independent sources (network scenario)",
+   "def": "Renou et al.: Σ_λ P(λ) σ^λ_{AB1} ⊗ σ^λ_{B2C} with real σ. Flag model: R(Ψ_{AB1} ⊗ Ψ_{B2C}).",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "o-born",
+   "layer": "O",
+   "sub": "direct",
+   "label": "Outcome probabilities P(a,b,c|x,z) (network scenario)",
+   "def": "Born rule (iii)/(P3) for the three-party entanglement-swapping experiment.",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "w-T",
+   "layer": "O",
+   "sub": "witness",
+   "label": "Renou functional T (network Bell functional)",
+   "def": "S^b_xz = Σ_ac ac P(a,b,c|x,z);  T_b = (−1)^{b2}(S_11+S_12) + (−1)^{b1}(S_21−S_22) + (−1)^{b2}(S_13+S_14) − (−1)^{b1+b2}(S_33−S_34) + (−1)^{b1}(S_25+S_26) − (−1)^{b1+b2}(S_35−S_36);  T = Σ_b T_b.",
+   "status": "new",
+   "glue": null,
+   "refs": [
+    "Renou et al., Nature 600, 625 (2021), arXiv:2101.10873"
+   ]
+  },
+  {
+   "id": "e-net",
+   "layer": "O",
+   "sub": "effect",
+   "label": "Network correlations with T > 7.6605 (network scenario)",
+   "def": "Statistics of the entanglement-swapping experiment whose T exceeds the bound for real QM with postulate (iv).",
+   "status": "new",
+   "glue": "GEN_GPT_Level v2.6: target of edge D6 (currently e-bell)",
+   "refs": []
+  },
+  {
+   "id": "t-distinguish",
+   "layer": "O",
+   "sub": "task",
+   "label": "Experimental discrimination of a real-number theory from complex QT",
+   "def": "Existence of an experiment whose statistics differ between the two theories.",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  }
+ ],
+ "edges": [
+  {
+   "id": "RQ1",
+   "inputs": [
+    "ax-complex"
+   ],
+   "target": "f-real",
+   "kind": "defines",
+   "statement": "T: M_d(C) → M_2d(R) is an injective unital real-algebra homomorphism with T(A†) = T(A)^T, and its image is the commutant of Jd = 1⊗J.",
+   "where": "Eqs. (4)–(5); Props. 2, 6, 7",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "block-matrix identities with d x d matrix symbols (d symbolic): all hold",
+   "uses": [],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ2",
+   "inputs": [
+    "s-C",
+    "f-real"
+   ],
+   "target": "s-Rflag",
+   "kind": "represents",
+   "statement": "S is real-linear and bijective C^d → R^2d with T(A)S(ψ) = S(Aψ), S(iψ) = Jd S(ψ), S(φ)^T S(ψ) = Re<φ|ψ>, S(φ)^T Jd S(ψ) = −Im<φ|ψ>, S(ψ)^T T(A) S(ψ) = Re<ψ|A|ψ>.",
+   "where": "Eqs. (1), (2), (6), (67)–(69)",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "instances: d = 2, 3 (each identity is real-bilinear; the expansion is the same for every d)",
+   "check": "symbolic identities with real symbols for all components, d = 2, 3: all hold",
+   "uses": [],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ3",
+   "inputs": [
+    "s-C",
+    "f-real"
+   ],
+   "target": "s-Rflag",
+   "kind": "represents",
+   "statement": "T1(ρ) = T(ρ)/2 has unit trace, tr[T1(ρ)T(A)] = Re tr(ρA), and A ≥ 0 ⇒ T(A) ≥ 0.",
+   "where": "Eqs. (84)–(85)",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "instances: d = 2 (consequences of the d-independent identities of RQ1)",
+   "check": "trace and positivity identities, symbolic 2x2: all hold",
+   "uses": [
+    "RQ1"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ4",
+   "inputs": [
+    "f-real"
+   ],
+   "target": "s-canon",
+   "kind": "defines",
+   "statement": "P = (1 − J⊗J)/2 is the orthogonal projector onto span{ψ_even^(2), ψ_odd^(2)}; its kernel is spanned by |00>+|11>, |01>−|10>; on its range J⊗1 = 1⊗J.",
+   "where": "Eq. (8), Fig. 2",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "exact 4x4 computation on the two flags: all hold",
+   "uses": [],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ5",
+   "inputs": [
+    "s-Rflag",
+    "s-canon"
+   ],
+   "target": "s-indep",
+   "kind": "composes",
+   "statement": "S(ψ)⊗_F S(φ) = R(ψ⊗φ): the class of S(ψ)⊗S(φ) has canonical representative R(ψ⊗φ)/√2, and Eq. (34) is R(ψ⊗φ).",
+   "where": "Prop. 3; Eqs. (34), (38), (51)",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "instances: (dA,dB) = (2,2), (2,3) (bilinear identities)",
+   "check": "symbolic vectors, (dA,dB) = (2,2), (2,3): all hold",
+   "uses": [
+    "RQ4"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ6",
+   "inputs": [
+    "f-real"
+   ],
+   "target": "s-canon",
+   "kind": "defines",
+   "statement": "ψ_even^(N) + iψ_odd^(N) = 2^{−(N−1)/2}(|0>+i|1>)^{⊗N}; J_k ψ_even = ψ_odd and J_k ψ_odd = −ψ_even for every flag k; the subspace on which all J_k agree is two-dimensional.",
+   "where": "Eqs. (44)–(46)",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "instances: N = 1..6 (the product form makes the J_k statement immediate for every N)",
+   "check": "integer arithmetic, N = 1..6 flags (common-subspace dimension for N = 2..5): all hold",
+   "uses": [],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ7",
+   "inputs": [
+    "s-canon"
+   ],
+   "target": "f-real",
+   "kind": "defines",
+   "statement": "I^(N) is a projector, (J^(N))² = −I^(N); I^(N+M) = (I^(N)⊗I^(M) − J^(N)⊗J^(M))/2, J^(N+M) = (I^(N)⊗J^(M) + J^(N)⊗I^(M))/2; partial traces of I^(N), J^(N) are I^(N−M), J^(N−M).",
+   "where": "Eqs. (57), (59), (60), (91)",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "instances: N <= 5",
+   "check": "exact rational matrices, N up to 5: all hold",
+   "uses": [
+    "RQ6"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ8",
+   "inputs": [
+    "f-real",
+    "s-indep"
+   ],
+   "target": "ax-P4",
+   "kind": "satisfies",
+   "statement": "(T(A)⊗1)R(Ψ) = R((A⊗1)Ψ) and (1⊗T(B))R(Ψ) = R((1⊗B)Ψ) for all A, B and all Ψ ∈ C^dA⊗C^dB.",
+   "where": "Eq. (75), Prop. 11",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "instances: (dA,dB) = (2,2), (2,3)",
+   "check": "880 exact checks on real bases of operators and of C^dA (x) C^dB: (T(A) (x) 1) R(Psi) = R((A (x) 1) Psi) and the same on the B side, all hold",
+   "uses": [
+    "RQ5"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ9",
+   "inputs": [
+    "f-real",
+    "s-canon"
+   ],
+   "target": "m-realflag",
+   "kind": "defines",
+   "statement": "T(A)⊗T(B) commutes with P and P(T(A)⊗T(B)) = Re(A⊗B)⊗I^(2) + Im(A⊗B)⊗J^(2) = ½[T(A)⊗T(B) − T(iA)⊗T(iB)].",
+   "where": "Eqs. (55)–(60); Hoffreumon–Woods (B.34)–(B.37)",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "instances: dA = dB = 2 (bilinear in A and B)",
+   "check": "64 operator pairs (real basis of M_2(C) x M_2(C)): [P, T(A)(x)T(B)] = 0, P (T(A)(x)T(B)) = Re(A(x)B)(x)I^(2) + Im(A(x)B)(x)J^(2), and this equals (1/2)[T(A)(x)T(B) - T(iA)(x)T(iB)]: all hold",
+   "uses": [
+    "RQ4",
+    "RQ7"
+   ],
+   "refs": [
+    "Hoffreumon, Woods, arXiv:2504.02808v2"
+   ],
+   "note": ""
+  },
+  {
+   "id": "RQ10",
+   "inputs": [
+    "m-realflag",
+    "s-indep"
+   ],
+   "target": "o-born",
+   "kind": "predicts",
+   "statement": "R(Φ)^T [T(A)⊗T(B)] R(Ψ) = Re<Φ|A⊗B|Ψ>; hence all bipartite Born probabilities coincide with those of complex QT, entangled states included.",
+   "where": "Eqs. (6), (68), (85)",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "instances: dA = dB = 2 (real-multilinear identity)",
+   "check": "16384 exact checks (real bases of A, B, Phi, Psi; d = 2 each): the real bilinear form equals Re<Phi|A(x)B|Psi>",
+   "uses": [
+    "RQ8"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ11",
+   "inputs": [
+    "m-quantum",
+    "s-indep"
+   ],
+   "target": "w-T",
+   "kind": "predicts",
+   "statement": "Complex QT with |φ+>_{AB1}|φ+>_{B2C}, A = (Z, X, Y), C = ((X±Z), (Y±Z), (X±Y))/√2 and Bob's Bell measurement gives P(b) = 1/4 and T = 6√2.",
+   "where": "Eqs. (108)–(112)",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "exact in Q(√2, i): P(b) = 1/4 for all b; T_b = (3/2)√2 = 6√2·P(b) for all b; T = 6*√2 (= 6√2 ≈ 8.4853)",
+   "uses": [],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ12",
+   "inputs": [
+    "m-realflag",
+    "s-indep"
+   ],
+   "target": "w-T",
+   "kind": "predicts",
+   "statement": "The real model with state |φ+>|φ+>|ψ_even^(4)> and operators T(Π^A)⊗T(Π^B)⊗T(Π^C) gives the same probabilities P(a,b,c|x,z) as complex QT for all outcomes and settings, hence T = 6√2.",
+   "where": "Eqs. (114)–(124)",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "112 moments <Π_b>, <A_x Π_b>, <Π_b C_z>, <A_x Π_b C_z> (they fix all 288 probabilities P(a,b,c|x,z)) agree exactly with complex QM; state, operators and values contain no imaginary part; T = 6*√2",
+   "uses": [
+    "RQ6",
+    "RQ7"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ13",
+   "inputs": [
+    "w-T"
+   ],
+   "target": "w-T",
+   "kind": "defines",
+   "statement": "The value 6√2 is obtained with the functional of Renou et al.; the form printed in the arXiv text (Eqs. (104)–(106), as extracted) differs in one sign prefactor and in the weighting.",
+   "where": "Eqs. (104)–(106) vs Renou et al. Supplementary",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "T = 6√2 only with the prefactor (-1)^{b1} on (S_25 + S_26) and with either (joint correlators, plain sum over b) or (conditional correlators, P(b) weights); with (-1)^{b2} the outcomes b = 01, 10 give 4√2·P(b) and T = 5√2; joint correlators with an additional P(b) weight give 5√2/4",
+   "uses": [
+    "RQ11"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ14",
+   "inputs": [
+    "m-realflag",
+    "s-indep"
+   ],
+   "target": "s-canon",
+   "kind": "predicts",
+   "statement": "After Bob's outcome 00 the real Alice–Charlie state is |φ+><φ+|_AC ⊗ ½(|φ−><φ−| + |ψ+><ψ+|)_{A'C'}.",
+   "where": "Eq. (118)",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "exact: P(00) = 1/4 and the normalised Alice-Charlie state equals |φ+><φ+|_AC ⊗ (1/2)(|φ-><φ-| + |ψ+><ψ+|)_{A'C'}; the flag factor is I^(2)/2",
+   "uses": [
+    "RQ7"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ15",
+   "inputs": [
+    "s-canon",
+    "ax-tensorR"
+   ],
+   "target": "s-indep",
+   "kind": "violates",
+   "statement": "The composite space has real dimension 2·dA·dB, not (2dA)(2dB), and the canonical state of two independent sources, ψ_even^(4) on flags (A'B1')(B2'C'), has Schmidt rank 2 across the source cut: the model does not satisfy postulate (iv) with product states for independent sources.",
+   "where": "main text (the tensor extension fails); Remark 5, Eq. (49); Sec. H",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "exact: the composite space of two qubits has real dimension 8 = 2·dA·dB, not 16 = (2dA)(2dB); ψ_even^(4) = (ψ_even^(2)⊗ψ_even^(2) − ψ_odd^(2)⊗ψ_odd^(2))/√2 has Schmidt rank 2 across (A'B1')|(B2'C'); the product ψ_even^(2)⊗ψ_even^(2) projects onto ψ_even^(4)/√2",
+   "uses": [
+    "RQ6"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ16",
+   "inputs": [
+    "m-realflag"
+   ],
+   "target": "ax-loctom",
+   "kind": "satisfies",
+   "statement": "dim SY_n = n² = dim Herm_n and (nm)² = n²m²: the flag composition is locally tomographic; the real tensor product on symmetric matrices is not (excess nm(n−1)(m−1)/4).",
+   "where": "— (count behind edges F5, GN6)",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "symbolic in n, m: the flag composition is locally tomographic on SY (same count as complex QT); the real tensor product on Sym has nm(n−1)(m−1)/4 extra parameters, > 0 for n, m ≥ 2",
+   "uses": [],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ17",
+   "inputs": [
+    "m-realqm",
+    "ax-tensorR",
+    "s-indep"
+   ],
+   "target": "e-net",
+   "kind": "forbids",
+   "statement": "Real QM with postulate (iv) and independent real sources obeys T ≤ 7.6605.",
+   "where": "Ref. [12] (Renou et al.): cited in the introduction; bound 7.6605 quoted in Sec. H",
+   "grade": "import",
+   "status": "imported",
+   "scope": "general",
+   "check": "",
+   "uses": [],
+   "refs": [
+    "Renou et al., Nature 600, 625 (2021)"
+   ],
+   "note": "Bound from a semidefinite relaxation (NPA-type hierarchy); Renou et al. state that its tightness is open. Not re-derived here."
+  },
+  {
+   "id": "RQ18",
+   "inputs": [
+    "f-real",
+    "m-realflag"
+   ],
+   "target": "ax-complex",
+   "kind": "satisfies",
+   "statement": "T(−iH) = −Jd T(H): the generator of the orthogonal group T(e^{−iHt}) is −Jd times the observable T(H).",
+   "where": "Props. 6, 7 (+ edge GN7 of the network)",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "T(−iH) = −Jd T(H) (d symbolic); for Hermitian H the generator −Jd T(H) is antisymmetric and the observable T(H) symmetric (d = 2 explicit)",
+   "uses": [
+    "RQ1"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ19",
+   "inputs": [
+    "m-realflag",
+    "m-quantum"
+   ],
+   "target": "t-distinguish",
+   "kind": "equiv",
+   "statement": "The real model and complex QT are isomorphic as theories (states, effects, composition, probabilities), so no experiment discriminates them.",
+   "where": "abstract; closing paragraph of the main text",
+   "grade": "compose",
+   "status": "composed",
+   "scope": "general",
+   "check": "RQ1–RQ3 (single systems), RQ5–RQ9 (composition and local action) and RQ10 (Born rule on composites) give a bijection of states and observables that preserves every probability",
+   "uses": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ5",
+    "RQ6",
+    "RQ7",
+    "RQ8",
+    "RQ9",
+    "RQ10"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ20",
+   "inputs": [
+    "m-realflag",
+    "m-realqm",
+    "e-net"
+   ],
+   "target": "t-distinguish",
+   "kind": "consistent",
+   "statement": "RQ12 (T = 6√2 in the flag model) does not contradict RQ17 (T ≤ 7.6605): the premise 'postulate (iv)' of RQ17 fails for the flag model (RQ15).",
+   "where": "closing paragraph of the main text; Sec. H, last sentence",
+   "grade": "logic",
+   "status": "checked",
+   "scope": "general",
+   "check": "scope separation: no-go RQ17 needs premise ax-tensorR; possibility RQ12 does not use it; RQ15 certifies its absence",
+   "uses": [
+    "RQ12",
+    "RQ15",
+    "RQ17"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "RQ21",
+   "inputs": [
+    "m-realflag"
+   ],
+   "target": "t-distinguish",
+   "kind": "claims",
+   "statement": "'The use of complex numbers is a matter of convenience.'",
+   "where": "abstract",
+   "grade": "interpretive",
+   "status": "not decidable",
+   "scope": "general",
+   "check": "",
+   "uses": [],
+   "refs": [],
+   "note": "RQ18 shows that the model contains the complex structure as the real operator J and RQ19 that it is complex QT in real coordinates. Whether that makes complex numbers 'a convenience' depends on what one counts as the theory; no edge decides it."
+  }
+ ],
+ "operations": [
+  {
+   "op": "SPLIT",
+   "target": "m-realqm",
+   "into": [
+    "m-realqm (with ax-tensorR)",
+    "ax-tensorR"
+   ],
+   "why": "the composition postulate is the premise that the 2025–26 papers change; it must be a node of its own so that edges D6 and F5 can name it"
+  },
+  {
+   "op": "ADD",
+   "node": "f-real",
+   "layer": "M.frame",
+   "why": "realification is a change of representation, not a model"
+  },
+  {
+   "op": "GLUE",
+   "node": "m-realflag",
+   "with": "m-quantum",
+   "why": "RQ19: same states, effects, composition and probabilities; if model nodes are identified as GPTs up to linear isomorphism (the layer is described as 'concrete GPTs'), this is one node with two representations"
+  },
+  {
+   "op": "ADD",
+   "node": "e-net",
+   "layer": "O.effect",
+   "why": "edge D6 currently targets e-bell; the theorem of Renou et al. concerns the network functional T, not Bell nonlocality"
+  },
+  {
+   "op": "RETARGET",
+   "edge": "D6",
+   "from": "m-realqm → e-bell",
+   "to": "m-realqm ∧ ax-tensorR ∧ s-indep → e-net",
+   "why": "states the premises under which the no-go holds (RQ17) and survives RQ12"
+  },
+  {
+   "op": "SCOPE",
+   "edge": "GN7",
+   "note": "'In real QM the generator is not an observable without superselection' — the flag model is exactly the superselection case: observables commute with J (RQ1, RQ18)"
+  },
+  {
+   "op": "REWRITE",
+   "node": "ax-complex",
+   "note": "definition in terms of a complex structure J rather than of the number field, since RQ18 realises it over R"
+  }
+ ]
+}

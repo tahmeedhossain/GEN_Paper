@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GEN Paper Replay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* layout: header and view tabs; a paper view is a reading-order navigator (chart + slider) above three layer columns
+     joined by wires that change state with the unit, beside a sticky rail that shows the events of the current unit */
+  --paper:#f5f6f8; --panel:#ffffff; --ink:#18202b; --muted:#5b6777; --line:#d8dde5; --accent:#0f5c7a; --accent-soft:#e2eff4;
+  --c-stated:#a86400; --c-supported:#1c7a52; --c-cond:#7646ad; --c-node:#2a5db0; --c-bad:#bf2630;
+  --band-a:#eceff3; --band-b:#f7f8fa;
+  --font-display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI","Cambria Math","STIX Two Math","Noto Sans Math","Segoe UI Symbol","Apple Symbols","DejaVu Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,"DejaVu Sans Mono","Cambria Math","Noto Sans Math",monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#10151c; --panel:#171f29; --ink:#e5eaf1; --muted:#99a6b5; --line:#2b3644; --accent:#6cc3de; --accent-soft:#16313c;
+    --c-stated:#e0a54a; --c-supported:#5fce9e; --c-cond:#b996e8; --c-node:#82b2f6; --c-bad:#f2737a;
+    --band-a:#1b2430; --band-b:#141b24;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#10151c; --panel:#171f29; --ink:#e5eaf1; --muted:#99a6b5; --line:#2b3644; --accent:#6cc3de; --accent-soft:#16313c;
+  --c-stated:#e0a54a; --c-supported:#5fce9e; --c-cond:#b996e8; --c-node:#82b2f6; --c-bad:#f2737a;
+  --band-a:#1b2430; --band-b:#141b24;
+}
+*{box-sizing:border-box}
+html{font-size:15px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.5}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1500px;margin:0 auto;padding:0 20px 56px}
+header.top{padding:22px 0 10px;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline}
+header.top h1{font-family:var(--font-display);font-weight:600;font-size:1.75rem;line-height:1.15;margin:0;text-wrap:balance}
+header.top .meta{color:var(--muted);font-size:.87rem;font-variant-numeric:tabular-nums}
+nav.tabs{display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--line);margin-bottom:20px}
+nav.tabs a{padding:8px 13px;text-decoration:none;color:var(--muted);border:1px solid transparent;border-bottom:none;border-radius:6px 6px 0 0;font-weight:500;margin-bottom:-1px}
+nav.tabs a[aria-current="page"]{color:var(--ink);background:var(--panel);border-color:var(--line)}
+nav.tabs a:hover{color:var(--ink)}
+h2{font-family:var(--font-display);font-weight:600;font-size:1.25rem;margin:0 0 8px;text-wrap:balance}
+h3{font-family:var(--font-display);font-weight:600;font-size:1.02rem;margin:0 0 6px;letter-spacing:.01em;text-wrap:balance}
+p{margin:0 0 10px}
+.lede{max-width:68ch;font-size:1.02rem}
+.prose{max-width:72ch}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+.stack{display:flex;flex-direction:column;gap:18px}
+.muted{color:var(--muted)}
+.mono{font-family:var(--font-mono);font-size:.86em}
+.small{font-size:.87rem}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--line)}
+th{font-weight:600;color:var(--muted);font-size:.82rem;letter-spacing:.01em}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.scroll-x{overflow-x:auto}
+tr.div td{border-bottom:2px solid var(--line)}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;font-size:.78rem;font-weight:500;border:1px solid currentColor;white-space:nowrap;line-height:1.5}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.k-stated{color:var(--c-stated)} .k-supported{color:var(--c-supported)} .k-cond{color:var(--c-cond)} .k-node{color:var(--c-node)} .k-bad{color:var(--c-bad)} .k-muted{color:var(--muted)}
+.op{font-family:var(--font-mono);font-size:.78rem;font-weight:500;color:var(--accent);white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.stat{border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:9px 13px}
+.stat b{display:block;font-family:var(--font-display);font-size:1.5rem;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:.82rem;display:block;line-height:1.35}
+.cols3{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:18px}
+.cols2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px}
+.cols22{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:900px){.cols22{grid-template-columns:minmax(0,1fr)}}
+.gen-badge{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase;border:1px solid currentColor;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:2px;color:var(--muted)}
+.gen-note{border-left:4px solid var(--muted)}
+ul.plain{margin:0;padding-left:18px}
+ul.plain li{margin-bottom:6px;max-width:75ch}
+/* navigator */
+.nav{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center}
+.nav button{border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:5px 12px;cursor:pointer;min-height:34px}
+.nav button:hover{border-color:var(--accent);background:var(--accent-soft)}
+.nav button:disabled{opacity:.4;cursor:default}
+.nav input[type=range]{flex:1 1 220px;min-width:160px;accent-color:var(--accent)}
+.nav .where{font-weight:600;font-variant-numeric:tabular-nums}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+svg.chart text{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
+svg.chart .band-a{fill:var(--band-a)} svg.chart .band-b{fill:var(--band-b)}
+svg.chart .grid{stroke:var(--line);stroke-width:1}
+svg.chart .l-node{fill:none;stroke:var(--c-node);stroke-width:1.6}
+svg.chart .l-stated{fill:none;stroke:var(--c-stated);stroke-width:1.6;stroke-dasharray:5 3}
+svg.chart .l-supported{fill:none;stroke:var(--c-supported);stroke-width:2}
+svg.chart .a-open{fill:var(--c-stated);opacity:.16}
+svg.chart .b-cond{fill:var(--c-cond);opacity:.75}
+svg.chart .cursor{fill:var(--accent);opacity:.14}
+svg.chart .hit{fill:transparent;cursor:pointer}
+svg.chart .hit:hover{fill:var(--accent);opacity:.08}
+svg.chart .end{font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--muted);align-items:center;margin-top:6px}
+.legend i{display:inline-block;width:20px;height:0;border-top:2px solid currentColor;margin-right:5px;vertical-align:3px}
+.legend i.dash{border-top-style:dashed}
+.legend i.box{height:9px;border:none;background:currentColor;opacity:.75;vertical-align:-1px;width:9px}
+/* paper view */
+.paper-grid{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:18px;align-items:start}
+@media (max-width:1100px){.paper-grid{grid-template-columns:minmax(0,1fr)}}
+.rail{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}
+@media (max-width:1100px){.rail{position:static;max-height:none}}
+.cite{font-weight:500;max-width:80ch}
+.graph{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 96px;padding:4px 8px 8px}
+@media (max-width:760px){.graph{gap:0 44px}}
+.col{display:flex;flex-direction:column;gap:9px;position:relative;z-index:2}
+.col h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-family:var(--font-body);font-weight:600;margin-bottom:2px}
+.node{display:block;width:100%;text-align:left;border:1px solid var(--line);border-left:4px solid var(--muted);background:var(--panel);border-radius:5px;padding:6px 8px;cursor:pointer;min-height:44px}
+.node .nid{font-family:var(--font-mono);font-size:.76rem;color:var(--muted);display:block}
+.node .nt{display:block;font-size:.84rem;line-height:1.3;font-weight:500;overflow-wrap:anywhere}
+.node .ns{display:block;font-size:.72rem;color:var(--muted);margin-top:1px}
+.node.st-new,.node.st-out-of-scope{border-left-color:var(--accent)}
+.node.st-split{border-left-color:var(--accent);border-left-style:dashed}
+.node.st-out-of-scope{border-style:dashed}
+.node.ghost{opacity:.55;border-style:dashed;border-left-style:dashed;background:transparent;pointer-events:none;cursor:default}
+.node.ghost span{visibility:hidden}
+.node.now{outline:2px solid var(--c-node);outline-offset:1px}
+.node:hover,.node.sel{border-color:var(--accent);background:var(--accent-soft)}
+svg.wires{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
+svg.wires path.leg{fill:none;stroke:currentColor;stroke-width:1.2;opacity:.45;pointer-events:stroke;cursor:pointer}
+svg.wires path.leg.stated{stroke-dasharray:5 4}
+svg.wires path.leg.cond{stroke-dasharray:9 3 2 3}
+svg.wires path.leg.now{opacity:1;stroke-width:2.6}
+svg.wires path.leg.hl{opacity:1;stroke-width:2.6}
+svg.wires path.leg.lo{opacity:.08}
+svg.wires .mk{fill:currentColor}
+/* rail */
+.rail h2{font-size:1.1rem}
+.kv{display:grid;grid-template-columns:96px minmax(0,1fr);gap:4px 10px;font-size:.87rem;margin:8px 0}
+.kv dt{color:var(--muted)} .kv dd{margin:0;overflow-wrap:anywhere}
+.stmt{border-left:3px solid var(--accent);padding:6px 10px;background:var(--accent-soft);border-radius:0 5px 5px 0;margin:8px 0;font-size:.92rem;overflow-wrap:anywhere}
+.ev{list-style:none;margin:4px 0 12px;padding:0;font-size:.86rem;display:flex;flex-direction:column;gap:7px}
+.ev li{border-left:3px solid var(--line);padding:1px 0 1px 9px}
+.ev li.e-node{border-left-color:var(--c-node)} .ev li.e-stated{border-left-color:var(--c-stated)}
+.ev li.e-supported{border-left-color:var(--c-supported)} .ev li.e-cond{border-left-color:var(--c-cond)} .ev li.e-added{border-left-style:dashed}
+.ev .line1{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
+.ev .line2{color:var(--muted);font-size:.82rem}
+.grp{font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;margin:10px 0 2px}
+.linkbtn{background:none;border:none;padding:0;color:var(--accent);cursor:pointer;font-family:var(--font-mono);font-size:.84rem;text-decoration:underline}
+tr.unit{cursor:pointer}
+tr.unit:hover td,tr.unit.cur td{background:var(--accent-soft)}
+tr.unit td:first-child{font-variant-numeric:tabular-nums;color:var(--muted)}
+tr.unit.off td{color:var(--muted)}
+.err{color:var(--c-bad);padding:20px}
+@media (prefers-reduced-motion:no-preference){.node{transition:background .12s,border-color .12s}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><h1>GEN Paper Replay</h1><span class="meta" id="runmeta"></span></header>
+<nav class="tabs" id="tabs" aria-label="Views"></nav>
+<main id="view"><p class="muted">Loading the replay data.</p></main>
+</div>
+<script>
+"use strict";
+var VIEWS=[["update-rule","Update rule"],["battery","Entanglement battery"],["real-qm","Real-number QM"],["top-quarks","Top-quark entanglement"],["decay-contextuality","Decay contextuality (generated work)"],["method","Method"]];
+var KEY={"battery":"battery","real-qm":"realqm","top-quarks":"top","decay-contextuality":"decay"};
+var HASH={battery:"battery",realqm:"real-qm",top:"top-quarks",decay:"decay-contextuality"};
+var SHORT={battery:"Entanglement battery",realqm:"Real-number QM",top:"Top-quark entanglement",decay:"Decay contextuality (generated)"};
+var GENERATED={decay:true};
+var BLOCK={abstract:"abstract",main:"main text",methods:"methods",supplement:"supplement"};
+var START={battery:5,realqm:9,top:4,decay:7};
+var DATA=null,state={draw:null,unit:{}};
+var SVGNS="http://www.w3.org/2000/svg";
+
+function el(tag,attrs,kids){var e=document.createElement(tag);if(attrs){for(var k in attrs){if(k==="class")e.className=attrs[k];else if(k==="text")e.textContent=attrs[k];else e.setAttribute(k,attrs[k]);}}
+ (kids||[]).forEach(function(c){if(c==null)return;e.appendChild(typeof c==="string"?document.createTextNode(c):c);});return e;}
+function sv(tag,attrs,kids){var e=document.createElementNS(SVGNS,tag);if(attrs){for(var k in attrs){if(k==="text")e.textContent=attrs[k];else e.setAttribute(k,attrs[k]);}}
+ (kids||[]).forEach(function(c){if(c!=null)e.appendChild(c);});return e;}
+function chip(cls,text){return el("span",{class:"chip "+cls,text:text});}
+function f(x,n){if(x===null||x===undefined)return"–";return typeof x==="number"&&x%1!==0?x.toFixed(n===undefined?2:n):String(x);}
+function pct(x){return x===null||x===undefined?"–":Math.round(100*x)+"%";}
+function tile(big,label){return el("div",{class:"stat"},[el("b",{text:String(big)}),el("span",{text:label})]);}
+function table(head,rows,numCols){var th=el("tr",null,head.map(function(h,i){return el("th",{class:(numCols&&numCols.indexOf(i)>=0)?"num":"",text:h});}));
+ var tb=el("tbody",null,rows.map(function(r){var tr=el("tr",r.cls?{class:r.cls}:null,(r.cells||r).map(function(c,i){var td=el("td",{class:(numCols&&numCols.indexOf(i)>=0)?"num":""});if(typeof c==="string"||typeof c==="number")td.textContent=String(c);else if(c)td.appendChild(c);return td;}));return tr;}));
+ return el("div",{class:"scroll-x"},[el("table",null,[el("thead",null,[th]),tb])]);}
+
+function start(d){DATA=d;
+ document.getElementById("runmeta").textContent="Replay of "+d.generated_utc+" · encoding of the edge kernel · reading order from the arXiv texts and, for the generated paper, its source";
+ var nav=document.getElementById("tabs");VIEWS.forEach(function(v){nav.appendChild(el("a",{href:"#"+v[0],text:v[1],"data-v":v[0]}));});
+ window.addEventListener("hashchange",route);window.addEventListener("resize",function(){if(state.draw)state.draw();});
+ document.addEventListener("keydown",function(ev){if(!state.step)return;var t=ev.target&&ev.target.tagName;if(t==="INPUT"||t==="TEXTAREA")return;if(ev.key==="ArrowRight"){state.step(1);ev.preventDefault();}else if(ev.key==="ArrowLeft"){state.step(-1);ev.preventDefault();}});
+ route();}
+function route(){var h=(location.hash||"").replace("#","");if(!VIEWS.some(function(v){return v[0]===h;}))h="update-rule";
+ Array.prototype.forEach.call(document.querySelectorAll("#tabs a"),function(a){if(a.getAttribute("data-v")===h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});
+ var view=document.getElementById("view");view.textContent="";state.draw=null;state.step=null;
+ if(h==="update-rule")renderRule(view);else if(h==="method")renderMethod(view);else renderPaper(view,DATA.papers[KEY[h]],h);
+ window.scrollTo(0,0);}
+
+/* ---------------- chart of one paper: nodes, routes stated, routes supported per unit ---------------- */
+function chart(p,cur,onPick,W,H){W=W||640;H=H||170;var U=p.units,n=U.length,L=30,R=64,T=16,B=30,w=(W-L-R)/n;
+ var ymax=Math.max.apply(null,U.map(function(u){return Math.max(u.counts.V,u.counts.stated);}));ymax=Math.ceil(ymax/10)*10;
+ function X(i){return L+i*w;}function Y(v){return T+(H-T-B)*(1-v/ymax);}
+ var svg=sv("svg",{class:"chart",viewBox:"0 0 "+W+" "+H,role:"img","aria-label":"Nodes, routes stated and routes supported after each unit of the text"});
+ var i0=0;for(var i=1;i<=n;i++){if(i===n||U[i].block!==U[i0].block){var odd=["abstract","methods"].indexOf(U[i0].block)>=0;
+   svg.appendChild(sv("rect",{class:odd?"band-a":"band-b",x:X(i0),y:T,width:X(i)-X(i0),height:H-T-B}));
+   var lab=BLOCK[U[i0].block];if(X(i)-X(i0)>lab.length*5.6)svg.appendChild(sv("text",{x:(X(i0)+X(i))/2,y:H-6,"text-anchor":"middle",text:lab}));i0=i;}}
+ [0,ymax/2,ymax].forEach(function(v){svg.appendChild(sv("line",{class:"grid",x1:L,x2:W-R,y1:Y(v),y2:Y(v)}));svg.appendChild(sv("text",{x:L-5,y:Y(v)+4,"text-anchor":"end",text:String(v)}));});
+ function steps(key){var d="";U.forEach(function(u,i){var y=Y(u.counts[key]);d+=(i?" L":"M")+X(i)+" "+y+" L"+X(i+1)+" "+y;});return d;}
+ var area="M"+X(0)+" "+Y(U[0].counts.stated);U.forEach(function(u,i){area+=" L"+X(i)+" "+Y(u.counts.stated)+" L"+X(i+1)+" "+Y(u.counts.stated);});
+ for(var j=n-1;j>=0;j--){area+=" L"+X(j+1)+" "+Y(U[j].counts.supported)+" L"+X(j)+" "+Y(U[j].counts.supported);}
+ svg.appendChild(sv("path",{class:"a-open",d:area+" Z"}));
+ U.forEach(function(u,i){if(u.counts.conditional)svg.appendChild(sv("rect",{class:"b-cond",x:X(i)+w*0.2,width:w*0.6,y:Y(u.counts.conditional),height:Y(0)-Y(u.counts.conditional)}));});
+ svg.appendChild(sv("path",{class:"l-node",d:steps("V")}));svg.appendChild(sv("path",{class:"l-stated",d:steps("stated")}));svg.appendChild(sv("path",{class:"l-supported",d:steps("supported")}));
+ var last=U[n-1].counts,ends=[["V",last.V,"k-node","nodes"],["supported",last.supported,"k-supported","routes"]].sort(function(a,b){return b[1]-a[1];});
+ if(Math.abs(Y(ends[0][1])-Y(ends[1][1]))<12){svg.appendChild(sv("text",{class:"end",x:W-R+5,y:Y(ends[0][1])-2,text:ends[0][1]+" "+ends[0][3]}));svg.appendChild(sv("text",{class:"end",x:W-R+5,y:Y(ends[0][1])+11,text:ends[1][1]+" "+ends[1][3]}));}
+ else ends.forEach(function(e){svg.appendChild(sv("text",{class:"end",x:W-R+5,y:Y(e[1])+4,text:e[1]+" "+e[3]}));});
+ if(cur!==null&&cur!==undefined)svg.appendChild(sv("rect",{class:"cursor",x:X(cur),y:T,width:w,height:H-T-B}));
+ if(onPick)U.forEach(function(u,i){var r=sv("rect",{class:"hit",x:X(i),y:T,width:w,height:H-T-B});r.appendChild(sv("title",{text:"Unit "+i+": "+u.label}));r.addEventListener("click",function(){onPick(i);});svg.appendChild(r);});
+ return svg;}
+function chartLegend(){return el("div",{class:"legend"},[el("span",{class:"k-node"},[el("i"),"nodes present"]),el("span",{class:"k-stated"},[el("i",{class:"dash"}),"routes stated"]),el("span",{class:"k-supported"},[el("i"),"routes supported"]),el("span",{class:"k-stated"},[el("i",{class:"box"}),"stated, support still to come"]),el("span",{class:"k-cond"},[el("i",{class:"box"}),"supported on a route supported later"])]);}
+
+/* ---------------- update rule: the answer and the tests ---------------- */
+function renderRule(root){var P=DATA.papers,keys=["battery","realqm","top","decay"],B=DATA.branches;
+ var wrap=el("div",{class:"stack"});root.appendChild(wrap);
+ wrap.appendChild(el("section",null,[el("h2",{text:"What a paper does to the graph, unit by unit"}),
+  el("p",{class:"lede",text:"Each of the four encoded papers (three published papers and one generated work) is read from its abstract to its last appendix. A node enters at the unit that first names it. A route has two dates: the unit that states it and the unit that supplies its proof, reference, data or executed certificate. The two published theory papers state more than half of their routes before supporting them, mostly in the main text with the support in the Methods or the appendices, and they draw conclusions before the routes those conclusions use are supported. The experimental paper supports 10 of its 14 routes in the unit that states them, and 6 of the 14 rest on a reference. The generated paper states "+P.decay.order_tests.deferred.length+" of its "+P.decay.coverage.routes+" routes before supporting them: its abstract and introduction state every theorem, and the proofs follow in the body and the appendices. For two routes (the spin-1 kernel and the raw coefficients of a pair) the only support the text points to is the catalogue of certificates in its last appendix, so every theorem that uses them waits until the last unit."})]));
+ var cards=el("div",{class:"cols22"});wrap.appendChild(cards);
+ keys.forEach(function(k){var p=P[k],ot=p.order_tests,c=p.coverage;
+  cards.appendChild(el("section",{class:"panel"},[el("h3",null,[el("a",{href:"#"+HASH[k],text:SHORT[k]}),GENERATED[k]?el("span",{class:"gen-badge",text:"generated work"}):null]),el("p",{class:"small muted",text:c.units+" units · "+c.nodes+" nodes, "+c.nodes_carried+" carried in · "+c.routes+" routes · "+p.text_version}),
+   chart(p,null,null,430,160),
+   el("div",{class:"stats",style:"margin-top:10px"},[tile(ot.deferred.length+" of "+c.routes,"routes stated before they are supported"),tile(Object.keys(ot.conditional).length,"routes supported on a route that is supported later"),
+    tile(ot.forward_links_nodes_supported.length+" / "+ot.forward_links_nodes_stated.length,"routes that precede one of their nodes: by support date / by statement date"),tile(ot.unsupported_in_paper.length,"routes with no proof and no reference in the paper")])]));});
+ wrap.appendChild(el("div",{class:"panel"},[chartLegend()]));
+
+ function cell(k,fn){return fn(P[k]);}
+ var rows=[
+  ["R11, reading-order growth","No route precedes its inputs or its target (the readers: 0 of 122 and 0 of 516 routes).",function(p){return p.order_tests.forward_links_nodes_supported.length+" of "+p.coverage.routes+" by support date; "+p.order_tests.forward_links_nodes_stated.length+" route–node pairs by statement date";},"Holds, with one exception in the battery paper, when a route is dated by the unit that supports it; this is the readers' convention. Fails when a route is dated by the unit that first states it: a first statement names fewer nodes than the supported route has."],
+  ["Dependency order","A route is supported after every route it uses (the order a proof checker requires).",function(p){return p.order_tests.dependency_forward.length+" of "+p.order_tests.dependency_pairs+" pairs out of order; "+p.order_tests.dependency_same_unit+" inside one unit";},"No counterpart in the dated branches, where a route has one date. The theory papers, the generated one included, conclude first and prove later."],
+  ["R13 and R14, open cell and closure","A cell with no route is recorded as open; it is closed by composition, proof, counterexample or literature.",function(p){var c=p.counts.closing_routes,s=Object.keys(c).map(function(x){return c[x]+" "+x;}).join(", ");return "open at most "+p.order_tests.max_debt+", "+p.order_tests.final_debt+" at the end; closures: "+s;},"A stated route waits like an open cell and is closed later. Papers end a route in ways that R14 does not list: a definition, a measured or simulated value, an executed certificate (the generated paper), and no support at all."],
+  ["R2, unexplained observable","An observable with no route from the model layer drives a model route.",function(p){var g=p.guards.R2.filter(function(x){return !x.primitive;}),lag=g.filter(function(x){return x.lag!==null;}).map(function(x){return x.lag;});var never=g.filter(function(x){return x.lag===null;}).map(function(x){return x.node;});return g.length+" observables; units until explained: "+lag.join(", ")+(never.length?"; never: "+never.join(", "):"");},"In the published papers an observable waits up to 12 units for its first route from the model layer; in the generated paper up to 28 (the linear-programme witness, named in the introduction and defined in the numerical appendix). Every one is reached, except effects that a paper keeps as forbidden: one in the real-number paper, Bell violation and steering in the generated paper."],
+  ["R12, failed route and its resolution","A no-go route into a target is followed by a route that reaches the target.",function(p){var g=p.guards.R12;if(!g.length)return"no no-go route in the text";return g.map(function(x){return x.no_go+" at unit "+x.unit+"; "+(x.other_route_into_target.length?"reached by "+x.other_route_into_target[0].route+" at unit "+x.other_route_into_target[0].unit:"no other route into "+x.target)+(x.reconciled_by.length?"; reconciled by "+x.reconciled_by.map(function(y){return y.route+" at unit "+y.unit;}).join(", "):"; not reconciled")+".";}).join(" ");},"The two published theory papers carry in a no-go result and reconcile it by naming the premise that their construction drops (R21). The generated paper keeps its no-go routes (single-setting data violate no Bell inequality and show no steering) and reaches another effect node, contextuality; no route reaches the forbidden targets."],
+  ["R6 and R16, merge and reduce","Two model nodes that reach the same observable are identified.",function(p){var g=p.guards.R6;if(!g.length)return"guard never true";return g.map(function(x){return x.models.join(" and ")+" both give "+x.target+" (guard true at unit "+x.signal_unit+"); identified by "+x.merge_route.join(", ")+" at unit "+x.merge_unit.join(", ");}).join(" ");},"In the real-number paper the identification is stated at unit 9. The routes it uses in the encoding are supported in units 10 to 15, and the guard of R6 in its literal form, both models giving the same value of one observable, becomes true at unit 18."],
+  ["R4, R15, back-edges","Constructions: an AND route into a model node, a composed sector, a model acting on the state layer.",function(p){var r=p.counts.rules;return (r["R4 form"]||0)+" R4, "+(r["R15"]||0)+" R15, "+(r["back-edge"]||0)+" back-edges";},"Present where the paper builds a model (real-number QM), almost absent where it proves relations (battery, generated paper). The route that the generated paper calls a back-edge (the steered ensemble) is filed by the lookup under R17, because its target is a set of states."],
+  ["R9, calibration","A parameter or a detector response is fixed by data.",function(p){return (p.counts.rules["R9"]||0)+" routes";},"Only the experimental paper."],
+  ["R17 to R21, clusters, tests, descent, refinement","Part III rules: a criterion separates states, a functional tests membership, a generic statement descends to a member, an inclusion is restricted to a frame.",function(p){var r=p.counts.rules;return (r["R17"]||0)+" R17, "+((r["R18 aggregate"]||0)+(r["R18 effect"]||0))+" R18, "+(r["R20"]||0)+" R20, "+(r["R21"]||0)+" R21";},"The battery paper applies its theorems quantifier by quantifier (R20). No effect node of the four encodings has all three legs that Part III requires."],
+  ["Branch type","Type D: AND routes with model and state legs. Type H: states enter models, models reach observables. Type E: single edges.",function(p){var t=p.counts.type_tests;return p.counts.and_routes+" of "+p.coverage.routes+" routes are AND routes; D support "+(t["D: support contains (M,S), (M,O), (S,O)"]?"yes":"no")+", H discipline "+(t["H: support inside {(S,M),(M,O),(M,S),(M,M),(O,O)}"]?"yes":"no")+", E single edges "+(t["E: all routes are single edges"]?"yes":"no");},"All four paper graphs meet the conditions of type D, although they are glued to branches of type E and H. In these encodings the derivation behind one edge of a branch is a subgraph of AND routes."]
+ ];
+ wrap.appendChild(el("section",{class:"panel"},[el("h2",{text:"Rules of the grand network, tested on the four replays"}),
+  table(["Rule","Statement in the grand network"].concat(keys.map(function(k){return SHORT[k];})).concat(["Reading"]),rows.map(function(r){return [el("b",{text:r[0]}),r[1]].concat(keys.map(function(k){return cell(k,r[2]);})).concat([r[3]]);})),
+  el("p",{class:"small muted",style:"margin-top:8px",text:"No event of the four replays is attributed to R1 (symmetry partition), R3 (Fock extension), R5 (effective status), R7 (absorption), R8 (sector refinement), R10 (clustering by term) or R19 (lift). The attribution is a lookup on the kind of the route and the layers of its ends; the table is on the Method page."})]));
+
+ var conv=["stated","supported","supported, nodes dated by first route"],lab={"stated":"by statement","supported":"by support","supported, nodes dated by first route":"by support, node dated by its first route"};
+ var grow=[];Object.keys(B).forEach(function(b){var v=B[b];grow.push(["Branch "+b+" (type "+v.type+")","calendar year",v.V,v.E,v.sum_arrival_degree+" − "+v.excess+" + "+v.closures,v.closure_pct+"%",v.mean_degree_at_arrival.toFixed(2),v.alpha.toFixed(2)+" ("+v.alpha_r2.toFixed(2)+")",v.pa_ratio.toFixed(2)+" ("+v.pa_n+")"]);});
+ keys.forEach(function(k,ki){conv.forEach(function(c,ci){var s=P[k].growth[c];grow.push({cls:(ci===conv.length-1?"div":""),cells:[ci===0?SHORT[k]:"",lab[c],s.V,s.E,s.sum_arrival_degree+" − "+s.excess+" + "+s.closures,pct(s.closure_fraction),f(s.mean_degree_at_arrival),f(s.alpha)+" ("+f(s.alpha_r2)+", "+s.alpha_n+" pts)",f(s.pa_ratio)+" ("+s.pa_n+")"]});});});
+ grow[3]={cls:"div",cells:grow[3]};
+ wrap.appendChild(el("section",{class:"panel"},[el("h2",{text:"Arrival and closure: the counting identity and the growth quantities"}),
+  el("p",{class:"prose",text:"E = Σ d_arr − Σ (a − 1)⁺ + C holds in every row, as it must. Whether a paper counts as arrival-driven or closure-driven depends on how its routes and nodes are dated, so three datings are shown. With the dating of the effect networks (last row of each paper) the theory papers, the generated one included, have a closure share between those of their branches, and the experimental paper is the most arrival-driven. With 6 to 24 points the exponent α is not a test."}),
+  table(["Graph","Route and node dating","V","E","Σ d_arr − Σ(a−1)⁺ + C","Closures","Mean d_arr","α (R²)","Preferential closure (n)"],grow,[2,3,5,6])]));
+
+ var PH=DATA.phases,prow=[];Object.keys(B).forEach(function(b){var v=B[b].phases,t=PH.reduce(function(a,x){return a+v[x];},0);prow.push(["Branch "+b].concat(PH.map(function(x){return v[x]+" ("+Math.round(100*v[x]/t)+"%)";})).concat([""]));});
+ prow[3]={cls:"div",cells:prow[3]};
+ keys.forEach(function(k){var v=P[k].phases.profile,t=PH.reduce(function(a,x){return a+v[x];},0);prow.push([SHORT[k]].concat(PH.map(function(x){return v[x]+" ("+Math.round(100*v[x]/t)+"%)";})).concat([f(P[k].phases.tau_unit_vs_loop_rank.tau_b)]));});
+ wrap.appendChild(el("section",{class:"panel"},[el("h2",{text:"Phases of the loop"}),
+  el("p",{class:"prose",text:"Events are assigned to phases by the lookup table of Part II: a new node by its layer, a supported route by its kind. Total-variation distance between the profile of a paper and of the branches: "+keys.map(function(k){var d=P[k].phases.tv_to_branch;return SHORT[k]+" "+Object.keys(d).map(function(b){return b+" "+d[b].toFixed(2);}).join(", ");}).join("; ")+". Only the battery paper is nearest to its own branch (QRT); the generated paper is nearest to EM. The last column is Kendall's τ_b between the unit of an event and the rank of its phase in the loop; it is positive in all four papers because nodes (observe, hypothesize, restructure) are named before routes (predict, falsify, calibrate, reduce) are supported."}),
+  table(["Graph"].concat(PH).concat(["τ_b unit vs loop rank"]),prow,[1,2,3,4,5,6,7,8,9])]));
+
+ var net=el("div",{class:"cols22"});keys.forEach(function(k){var ul=el("ul",{class:"plain small"});DATA.net_update[k].forEach(function(o){var what=o.node||o.edge||o.target||o.gap||"";ul.appendChild(el("li",null,[el("span",{class:"op",text:o.op}),"  "+what+" ",el("span",{class:"muted",text:"· "+o.rule})]));});net.appendChild(el("div",null,[el("h3",{text:SHORT[k]}),ul]));});
+ wrap.appendChild(el("section",{class:"panel"},[el("h2",{text:"Net update of the released network by each paper"}),el("p",{class:"prose",text:"The operations proposed on 17 November for the released graphs, with the rule each is an instance of. This is the paper seen from the large-scale network: a few operations between existing nodes. The replays above are the same papers seen from inside."}),net]));
+}
+
+/* ---------------- one paper ---------------- */
+function renderPaper(root,p,hash){var key=p.key,U=p.units,N=U.length;
+ var nodes={},routes={};p.nodes.forEach(function(n){nodes[n.id]=n;});p.routes.forEach(function(r){routes[r.id]=r;});
+ if(state.unit[key]===undefined)state.unit[key]=START[key];
+ var sel=null,legs=[];
+ var main=el("div",{class:"stack"}),rail=el("aside",{class:"panel rail","aria-live":"polite"});
+ root.appendChild(el("div",{class:"paper-grid"},[main,rail]));
+ var ot=p.order_tests,c=p.coverage;
+ if(GENERATED[key])main.appendChild(el("section",{class:"panel gen-note"},[el("b",{text:"Generated work. "}),"This paper is not published and has not been peer reviewed. Its derivations, code and text, and its encoding as nodes and routes, were produced by an AI system (Claude, Anthropic) in a session directed by T. Hossain on 17 November 2026. Its reading order was assigned on 20 November 2026 from the LaTeX source; sources, code and PDF are in decay_contextuality/ of this repository."]));
+ main.appendChild(el("section",{class:"panel"},[el("p",{class:"cite",text:p.citation}),el("p",{class:"small muted",text:"Reading order from "+p.text_version+". "+c.units+" units, "+c.units_not_encoded.length+" without encoded content. "+(c.routes_added_by_encoding===1?"1 route of the encoding has no counterpart in the text and is":c.routes_added_by_encoding+" routes of the encoding have no counterpart in the text and are")+" left out of the counts."}),
+  el("div",{class:"stats"},[tile(ot.deferred.length+" of "+c.routes,"routes stated before they are supported"),tile(f(ot.deferred_latency.median),"median units between statement and support"),tile(Object.keys(ot.conditional).length,"routes supported on a route that is supported later"),tile(ot.dependency_forward.length+" of "+ot.dependency_pairs,"dependency pairs out of order"),tile(ot.unsupported_in_paper.length,"routes with no proof and no reference in the paper")])]));
+
+ var navBox=el("section",{class:"panel"});main.appendChild(navBox);
+ var prev=el("button",{type:"button",text:"← Previous unit"}),next=el("button",{type:"button",text:"Next unit →"}),range=el("input",{type:"range",min:"0",max:String(N-1),step:"1",id:"unit-"+hash,"aria-label":"Unit of the text"}),where=el("span",{class:"where"});
+ var chartBox=el("div");
+ navBox.appendChild(el("div",{class:"nav"},[prev,range,next,where]));navBox.appendChild(chartBox);navBox.appendChild(chartLegend());
+ prev.addEventListener("click",function(){go(state.unit[key]-1);});next.addEventListener("click",function(){go(state.unit[key]+1);});range.addEventListener("input",function(){go(parseInt(range.value,10));});
+ state.step=function(d){go(state.unit[key]+d);};
+
+ var g=el("div",{class:"graph"}),svg=sv("svg",{class:"wires","aria-hidden":"true"});g.appendChild(svg);
+ [["S","State"],["M","Model"],["O","Observable"]].forEach(function(L){var col=el("div",{class:"col"},[el("h3",{text:L[1]})]);
+  p.nodes.filter(function(n){return n.layer===L[0];}).sort(function(a,b){return a.t-b.t||a.id.localeCompare(b.id);}).forEach(function(n){
+   var st=n.status==="existing"?"carried in":(n.status==="split"?"split off an existing node":(n.status==="out-of-scope"?"new, outside the released scope":"new"));
+   var b=el("button",{class:"node st-"+n.status,type:"button","data-node":n.id},[el("span",{class:"nid",text:n.id}),el("span",{class:"nt",text:n.title}),el("span",{class:"ns",text:n.sub+" · "+st+" · unit "+n.t})]);
+   b.addEventListener("click",function(){pick({type:"node",id:n.id});});col.appendChild(b);});g.appendChild(col);});
+ main.appendChild(el("section",{class:"panel"},[el("h2",{text:"The graph after the current unit"}),g,
+  el("div",{class:"legend"},[el("span",{class:"k-stated"},[el("i",{class:"dash"}),"stated, not yet supported"]),el("span",{class:"k-supported"},[el("i"),"supported"]),el("span",{class:"k-cond"},[el("i",{class:"dash"}),"supported, waits for a later route"]),el("span",null,["thick line or blue outline: changed in this unit"]),el("span",null,["empty dashed box: node named in a later unit"])])]));
+
+ var tb=el("tbody");U.forEach(function(u){var ns=u.nodes.map(function(n){return n.id+(n.op==="CARRY"?"°":(n.op==="SPLIT"?"†":""));}).join(", ")||"–";
+  var es=u.establish.map(function(e){return e.id+" ["+e.op+", "+e.rule+", "+e.support+(e.conditional_on.length?", waits":"")+"]";}).join("; ")||(u.encoded?"–":"not encoded");
+  var tr=el("tr",{class:"unit"+(u.encoded?"":" off"),"data-unit":String(u.index)},[el("td",{text:String(u.index)}),el("td",null,[el("b",{text:u.label}),el("div",{class:"small muted",text:u.loc})]),el("td",{class:"mono",text:ns}),el("td",{class:"mono",text:u.announce.join(", ")||"–"}),el("td",{class:"mono",text:es}),el("td",{class:"num",text:u.counts.V}),el("td",{class:"num",text:u.counts.stated}),el("td",{class:"num",text:u.counts.supported}),el("td",{class:"num",text:u.counts.debt}),el("td",{class:"num",text:u.counts.conditional})]);
+  tr.addEventListener("click",function(){go(u.index);});tb.appendChild(tr);});
+ main.appendChild(el("section",{class:"panel"},[el("h2",{text:"All units"}),el("div",{class:"scroll-x"},[el("table",null,[el("thead",null,[el("tr",null,["#","Unit","Nodes entering","Stated here, supported later","Supported here: route [operation, rule, support]","Nodes","Stated","Supported","Open","Waiting"].map(function(h,i){return el("th",{class:i>=5?"num":"",text:h});}))]),tb])]),
+  el("p",{class:"small muted",style:"margin-top:8px",text:"° carried in from the released network. † split off an existing node. Open: stated and not yet supported. Waiting: supported, while a route it uses is supported later."})]));
+ var notes=el("ul",{class:"plain small"});p.notes.forEach(function(t){notes.appendChild(el("li",{text:t}));});
+ p.added_routes.forEach(function(a){notes.appendChild(el("li",{text:"Left out of the counts: "+a.id+" ("+a.why+")."}));});
+ main.appendChild(el("section",{class:"panel"},[el("h2",{text:"Notes on this reading order"}),notes]));
+
+ function rstate(r,u){if(u<r.t_a)return null;if(u<r.t_e)return"stated";if(u<r.discharged)return"cond";return"supported";}
+ function draw(){while(svg.firstChild)svg.removeChild(svg.firstChild);legs=[];var u=state.unit[key];
+  var gr=g.getBoundingClientRect();svg.setAttribute("viewBox","0 0 "+gr.width+" "+gr.height);
+  var defs=sv("defs");svg.appendChild(defs);["stated","supported","cond"].forEach(function(k){defs.appendChild(sv("marker",{id:"mk-"+hash+"-"+k,viewBox:"0 0 8 8",refX:"7",refY:"4",markerUnits:"userSpaceOnUse",markerWidth:"9",markerHeight:"9",orient:"auto"},[sv("path",{d:"M0 0 L8 4 L0 8 Z",class:"mk k-"+k})]));});
+  var box={},colOf={S:0,M:1,O:2},slots={};
+  Array.prototype.forEach.call(g.querySelectorAll(".node"),function(b){var r=b.getBoundingClientRect();box[b.getAttribute("data-node")]={l:r.left-gr.left,r:r.right-gr.left,m:(r.top+r.bottom)/2-gr.top,h:r.height};});
+  var raw=[];p.routes.forEach(function(e){var s=rstate(e,u);if(!s)return;e.inputs.forEach(function(i){if(nodes[i].t>u||nodes[e.target].t>u)return;var cs=colOf[nodes[i].layer],ct=colOf[nodes[e.target].layer],ss,ts;
+    if(cs<ct){ss="r";ts="l";}else if(cs>ct){ss="l";ts="r";}else{ss=ts=(cs===2?"l":"r");}
+    raw.push({e:e,s:s,from:i,to:e.target,ss:ss,ts:ts,same:cs===ct});});});
+  raw.forEach(function(x){[[x.from,x.ss,x.to],[x.to,x.ts,x.from]].forEach(function(a,k){var id=a[0]+"|"+a[1];(slots[id]=slots[id]||[]).push({leg:x,end:k,other:box[a[2]].m});});});
+  Object.keys(slots).forEach(function(id){var arr=slots[id].sort(function(a,b){return a.other-b.other;}),bx=box[id.split("|")[0]],span=Math.max(0,bx.h-14);
+   arr.forEach(function(s,i){var y=bx.m+(arr.length===1?0:(i/(arr.length-1)-.5)*span);if(s.end===0)s.leg.y1=y;else s.leg.y2=y;});});
+  raw.forEach(function(x){var a=box[x.from],b=box[x.to],x1=x.ss==="r"?a.r:a.l,x2=x.ts==="r"?b.r:b.l,d;
+   if(x.from===x.to){var sgn=x.ss==="r"?1:-1,y=a.m;d="M"+x1+" "+(y-9)+" C"+(x1+sgn*40)+" "+(y-26)+","+(x1+sgn*40)+" "+(y+26)+","+x2+" "+(y+9);}
+   else if(x.same){var s2=x.ss==="r"?1:-1,off=26+Math.min(52,Math.abs(x.y2-x.y1)*0.16);d="M"+x1+" "+x.y1+" C"+(x1+s2*off)+" "+x.y1+","+(x2+s2*off)+" "+x.y2+","+x2+" "+x.y2;}
+   else{var dx=Math.max(34,Math.abs(x2-x1)*0.5),s3=x2>x1?1:-1;d="M"+x1+" "+x.y1+" C"+(x1+s3*dx)+" "+x.y1+","+(x2-s3*dx)+" "+x.y2+","+x2+" "+x.y2;}
+   var now=(x.e.t_a===u||x.e.t_e===u||x.e.discharged===u);
+   var pth=sv("path",{d:d,class:"leg k-"+x.s+" "+x.s+(now?" now":""),"marker-end":"url(#mk-"+hash+"-"+x.s+")","data-edge":x.e.id});
+   pth.addEventListener("click",function(){pick({type:"route",id:x.e.id});});pth.appendChild(sv("title",{text:x.e.id+": "+x.e.statement}));svg.appendChild(pth);legs.push(pth);});
+  paint();}
+ state.draw=draw;
+ function paint(){var u=state.unit[key],E=null,Nn=null;
+  if(sel){E={};Nn={};if(sel.type==="route")E[sel.id]=1;else{p.routes.forEach(function(e){if(e.target===sel.id||e.inputs.indexOf(sel.id)>=0)E[e.id]=1;});Nn[sel.id]=1;}
+   Object.keys(E).forEach(function(id){var e=routes[id];Nn[e.target]=1;e.inputs.forEach(function(i){Nn[i]=1;});});}
+  legs.forEach(function(pth){var id=pth.getAttribute("data-edge");pth.classList.toggle("hl",!!(E&&E[id]));pth.classList.toggle("lo",!!(E&&!E[id]));});
+  Array.prototype.forEach.call(g.querySelectorAll(".node"),function(b){var n=nodes[b.getAttribute("data-node")];b.classList.toggle("ghost",n.t>u);b.classList.toggle("now",n.t===u);b.classList.toggle("sel",!!(sel&&sel.type==="node"&&sel.id===n.id));b.tabIndex=n.t>u?-1:0;});
+  Array.prototype.forEach.call(tb.querySelectorAll("tr.unit"),function(tr){tr.classList.toggle("cur",parseInt(tr.getAttribute("data-unit"),10)===u);});}
+ function pick(s){sel=(sel&&s&&sel.type===s.type&&sel.id===s.id)?null:s;paint();renderRail();}
+ function routeLink(id){var b=el("button",{class:"linkbtn",type:"button",text:id});b.addEventListener("click",function(){sel=null;pick({type:"route",id:id});});return b;}
+ function nodeLink(id){var b=el("button",{class:"linkbtn",type:"button",text:id});b.addEventListener("click",function(){sel=null;pick({type:"node",id:id});});return b;}
+ function links(ids,fn){var sp=el("span");ids.forEach(function(id,i){if(i)sp.appendChild(document.createTextNode(", "));sp.appendChild(fn(id));});if(!ids.length)sp.textContent="none";return sp;}
+ function go(i){i=Math.max(0,Math.min(N-1,i));state.unit[key]=i;sel=null;range.value=String(i);prev.disabled=i===0;next.disabled=i===N-1;
+  where.textContent="Unit "+i+" of "+(N-1)+" · "+BLOCK[U[i].block];chartBox.textContent="";chartBox.appendChild(chart(p,i,go));draw();renderRail();}
+ function renderRail(){rail.textContent="";var u=U[state.unit[key]];
+  if(sel&&sel.type==="route"){var r=routes[sel.id];rail.appendChild(el("h2",null,[el("span",{class:"mono",text:r.id+"  "}),r.inputs.join(" ∧ ")+" → "+r.target]));
+   rail.appendChild(el("div",{class:"stmt",text:r.statement}));
+   rail.appendChild(el("dl",{class:"kv"},[el("dt",{text:"In the paper"}),el("dd",{text:r.where}),el("dt",{text:"Stated"}),el("dd",{text:"unit "+r.t_a+" ("+U[r.t_a].label+")"+(r.restated.length?"; restated in unit "+r.restated.join(", "):"")}),el("dt",{text:"Supported"}),el("dd",{text:"unit "+r.t_e+" ("+U[r.t_e].label+") by "+r.support}),
+    el("dt",{text:"Waits for"}),el("dd",null,[r.waits_for.length?links(r.waits_for,routeLink):"nothing",r.waits_for.length?" until unit "+r.discharged:""]),el("dt",{text:"Uses"}),el("dd",null,[links(r.uses,routeLink)]),
+    el("dt",{text:"Operation"}),el("dd",null,[el("span",{class:"op",text:r.op})," · "+r.rule+(r.phase?" · phase "+r.phase:"")]),el("dt",{text:"Kind, grade"}),el("dd",{text:r.kind+"; "+r.grade+" in the kernel"}),el("dt",{text:"Arrival or closure"}),el("dd",{text:r.closure?"closure: all its nodes appeared in earlier units ("+r.closing_route+")":"arrives with a node of the same unit"})]));
+   var back=el("button",{class:"linkbtn",type:"button",text:"Back to unit "+u.index});back.addEventListener("click",function(){pick(null);});rail.appendChild(back);return;}
+  if(sel&&sel.type==="node"){var n=nodes[sel.id];rail.appendChild(el("h2",null,[el("span",{class:"mono",text:n.id+"  "}),n.title]));rail.appendChild(el("div",{class:"stmt",text:n.definition}));
+   var inc=p.routes.filter(function(e){return e.target===n.id||e.inputs.indexOf(n.id)>=0;}).map(function(e){return e.id;});
+   rail.appendChild(el("dl",{class:"kv"},[el("dt",{text:"Layer"}),el("dd",{text:n.layer+" · "+n.sub}),el("dt",{text:"Status"}),el("dd",{text:n.status+(n.glue?" · "+n.glue:"")}),el("dt",{text:"First named"}),el("dd",{text:"unit "+n.t+" ("+U[n.t].label+")"}),el("dt",{text:"Routes"}),el("dd",null,[links(inc,routeLink)])]));
+   var back2=el("button",{class:"linkbtn",type:"button",text:"Back to unit "+u.index});back2.addEventListener("click",function(){pick(null);});rail.appendChild(back2);return;}
+  rail.appendChild(el("h2",{text:"Unit "+u.index+": "+u.label}));rail.appendChild(el("p",{class:"small muted",text:BLOCK[u.block]+" · "+u.loc}));rail.appendChild(el("p",{text:u.text}));
+  var cn=u.counts;rail.appendChild(el("p",{class:"small"},[chip("k-node",cn.V+" nodes")," ",chip("k-stated",cn.debt+" open")," ",chip("k-supported",cn.supported+" supported")," ",chip("k-cond",cn.conditional+" waiting")]));
+  if(u.nodes.length){rail.appendChild(el("div",{class:"grp",text:"Nodes entering"}));var ul=el("ul",{class:"ev"});u.nodes.forEach(function(n){ul.appendChild(el("li",{class:"e-node"},[el("div",{class:"line1"},[nodeLink(n.id),el("span",{class:"op",text:n.op}),el("span",{class:"muted small",text:n.layer+"."+n.sub+(n.phase?" · "+n.phase:"")})]),el("div",{class:"line2",text:nodes[n.id].title})]));});rail.appendChild(ul);}
+  if(u.announce.length||u.restate.length){rail.appendChild(el("div",{class:"grp",text:"Stated here, supported later"}));var ul2=el("ul",{class:"ev"});u.announce.concat(u.restate).forEach(function(id){var r=routes[id];ul2.appendChild(el("li",{class:"e-stated"},[el("div",{class:"line1"},[routeLink(id),el("span",{class:"muted small",text:(u.restate.indexOf(id)>=0?"restated · ":"")+"support in unit "+r.t_e})]),el("div",{class:"line2",text:r.statement})]));});rail.appendChild(ul2);}
+  if(u.establish.length){rail.appendChild(el("div",{class:"grp",text:"Supported here"}));var ul3=el("ul",{class:"ev"});u.establish.forEach(function(e){var r=routes[e.id];ul3.appendChild(el("li",{class:e.conditional_on.length?"e-cond":"e-supported"},[el("div",{class:"line1"},[routeLink(e.id),el("span",{class:"op",text:e.op}),el("span",{class:"muted small",text:e.rule+" · "+e.support+(e.phase?" · "+e.phase:"")})]),el("div",{class:"line2",text:r.statement}),e.conditional_on.length?el("div",{class:"line2"},["waits until unit "+e.discharged+" for ",links(e.conditional_on,routeLink)]):null]));});rail.appendChild(ul3);}
+  if(u.partial.length){rail.appendChild(el("div",{class:"grp",text:"Part of the support of"}));var ul4=el("ul",{class:"ev"});u.partial.forEach(function(x){ul4.appendChild(el("li",null,[el("div",{class:"line1"},[routeLink(x.route),el("span",{class:"muted small",text:x.what})])]));});rail.appendChild(ul4);}
+  if(u.added.length){rail.appendChild(el("div",{class:"grp",text:"Added by the encoding, not in the text"}));var ul5=el("ul",{class:"ev"});u.added.forEach(function(x){ul5.appendChild(el("li",{class:"e-added"},[el("div",{class:"line1"},[el("span",{class:"mono",text:x.id}),el("span",{class:"muted small",text:x.kind+" · "+x.grade})]),el("div",{class:"line2",text:x.why})]));});rail.appendChild(ul5);}
+  if(u.pointers.length)rail.appendChild(el("p",{class:"small muted",text:"Forward pointers in the text: "+u.pointers.join("; ")+"."}));
+  if(!u.nodes.length&&!u.announce.length&&!u.restate.length&&!u.establish.length&&!u.partial.length)rail.appendChild(el("p",{class:"small muted",text:u.encoded?"No node enters and no route changes in this unit.":"The encoding has no route for this part of the text."}));
+  if(cn.unexplained_O.length)rail.appendChild(el("p",{class:"small muted",text:"Observables without a route from the model layer after this unit: "+cn.unexplained_O.join(", ")+"."}));}
+ go(state.unit[key]);
+ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){if(state.draw===draw)draw();});
+}
+
+/* ---------------- method ---------------- */
+function renderMethod(root){var wrap=el("div",{class:"stack"});root.appendChild(wrap);
+ function sec(title,kids){var s=el("section",{class:"panel"},[el("h2",{text:title})].concat(kids));wrap.appendChild(s);return s;}
+ function ul(items){var u=el("ul",{class:"plain"});items.forEach(function(t){u.appendChild(el("li",{text:t}));});return u;}
+ sec("What is replayed",[el("p",{class:"prose",text:"The four papers checked with the edge kernel: three published papers, encoded on 17 November, and one generated work, written and encoded on 17 November and checked again on 20 November. For each: nodes with layer and sub-layer, routes with inputs, target, kind and grade, and for each route the routes it uses. The replay adds one thing to that encoding: the place of every node and route in the text."}),
+  ul(["A unit is a section, a group of paragraphs or a block of numbered equations, in the order of the text. The abstract is unit 0.","A node is dated by the unit that first names it.","A route is dated twice: by the unit that first states it and by the unit that supplies its support. The support is one of: definition, proof, citation, measurement, simulation, certificate (an executed program to which the text points, with no derivation at that place; used for the generated paper), asserted (at most a verbal reason), implicit (used without being stated).","A route is supported on a later route when a route it uses, directly or through other routes, gets its support in a later unit. It stops waiting at the unit where the last of them is supported.","Routes that the encoding added and the text does not contain are shown in their unit and are left out of every count."])]);
+ sec("Definitions and two propositions",[
+  ul(["Replay. G = (V, R) is the encoded graph and u₀, …, u_{T−1} are the units of the text. τ_n(v) is the unit that first names node v. τ_a(r) ≤ τ_e(r) are the unit that first states route r and the unit that supports it. D is the relation “r uses r′”; it is acyclic.",
+   "Open routes after unit t: L_t = { r : τ_a(r) ≤ t < τ_e(r) }.",
+   "Waiting routes after unit t: K_t = { r : τ_e(r) ≤ t < δ(r) }, where δ(r) is the largest τ_e over r and every route reachable from r through D.",
+   "Arrival and closure, for a chosen route date τ: r is an arrival route if some end v of r has τ_n(v) = τ(r), and a closure route if no end has. d_arr(v) counts the routes at v dated τ_n(v); a(r) counts the ends of r dated τ(r)."]),
+  el("p",{class:"prose",style:"margin-top:10px",text:"Proposition 1. At the last unit L and K are empty, whatever the order of the text. K_t is empty for every t exactly when τ_e(r′) ≤ τ_e(r) for every pair in D, that is, when the supports come in an order a proof checker accepts. Proof: δ(r) ≤ T − 1 for every r, which gives the first claim. K_t = ∅ for all t means δ(r) = τ_e(r) for all r, which by transitivity of reachability is the stated inequality on the pairs of D."}),
+  el("p",{class:"prose",text:"Proposition 2. A route with τ_a(r) < τ_e(r), all of whose ends are named before τ_e(r), is a closure route for the support date. So deferring support produces closures: 15 of the 24 closures of the battery replay, 12 of 17 in the real-number replay, 4 of 9 in the top-quark replay and 31 of 56 in the replay of the generated paper are deferred routes."}),
+  el("p",{class:"prose",text:"The counting identity E = Σ d_arr − Σ (a − 1)⁺ + C of Part II holds for either route date, since its proof uses only the definitions of a(r) and C."})]);
+ sec("Lookups",[el("p",{class:"prose",text:"Operation and rule of a supported route, tested in this order."}),
+  table(["Route","Operation","Rule"],[["kind calibrates","CALIBRATE","R9"],["kind flags","FLAG","R2 guard"],["kind witness","TEST","R18 effect"],["kind consistent","REFINE","R21"],["kind composes","COMPOSE","R15"],["kind satisfies or violates, with an axiom node at one end","MEMBER or EXCLUDE","R20"],["kind equiv with two model nodes as inputs","REDUCE","R6/R16"],["kind equiv from a witness to a free, resource or cluster set","TEST","R17"],
+   ["kind defines, represents or predicts into a model node, with two or more inputs or from a state","ROUTE","R4 form"],["kind defines from a model into a free, resource, cluster or distinguished state set","CLUSTER","R17"],["the same kinds, model into state","BACK","back-edge"],["the same kinds, among observables","AGGREGATE","R18 aggregate"],["the same kinds, model into observable","PREDICT","R2 route"],["the same kinds, model and state into observable","DERIVE","R11; lifts to R4 + R2 in a type-H graph"],
+   ["any other route whose nodes all appeared in earlier units","CLOSE","R14"],["any other route","DERIVE","R11"]]),
+  el("p",{class:"prose",style:"margin-top:10px",text:"Phase of a route: the table of Part II by kind. Kinds of the paper checks that the table lacks are assigned here: defines and import take the phase of the layer of their target; represents, composes and consistent are restructure; trivialises is predict; flags is deficit; interpretive claims have no phase. A node that is carried in has no phase."})]);
+ var ctl=el("ul",{class:"plain"});DATA.controls.forEach(function(c){ctl.appendChild(el("li",null,[chip(c.detected?"k-supported":"k-bad",c.detected?"detected":"missed")," "+c.control]));});
+ var val=DATA.validation?Object.keys(DATA.validation).map(function(b){return b+": "+(DATA.validation[b].ok?"reproduced":"mismatch");}).join(" · "):"not run in this build";
+ sec("Checks of the replay itself",[el("p",{class:"prose",text:"The growth code is a port of the engine of the grand network. On the released four-branch data it reproduces the published identity terms, closure shares, latencies, arrival degrees, exponents and preferential-closure ratios: "+val+"."}),el("p",{class:"prose",text:"Planted defects and property tests:"}),ctl]);
+ sec("Limits",[ul(["The reading order was assigned by hand. Headings, equation numbers, theorem labels and reference numbers come from the arXiv texts, read through an automatic page reader; paragraph labels are that reader's segmentation and are approximate. For the generated paper they come from its LaTeX source and the numbers of its compiled text.","The generated paper and its encoding were written together by the same AI system; its replay records the order of that text, not an independent reading. A route supported by an executed certificate is dated where the text first names the check, or at the catalogue of the last appendix when the text names none.","The encodings cover part of each paper. Units without encoded content are marked; the uniqueness propositions of the real-number paper and three sections of the supplement of the battery paper are among them.","A proof outline in the main text is counted as a statement, not as support. If the outlines of Theorems 1 and 2 of the battery paper were counted as support of the four routes they sketch (GB1, GB2, GB6, GB9), 12 routes instead of 16 would be stated before they are supported.","A node enters at the first unit that names it in a form that identifies it; whether a generic mention in an abstract counts is a judgment. Merging the abstract into the introduction removes that choice and moves the closure shares by at most 5 points.","Dependency pairs whose two routes are supported in the same unit are not ordered.","Three published papers, one per branch, and one generated paper across two branches. The growth quantities are descriptions of these four graphs, not estimates for papers in general.","Operations, rules and phases are lookups on the encoding. They inherit every choice of kind and layer made when the papers were encoded."])]);
+ sec("Sources",[ul(["R. Ganardi, T. V. Kondra, N. H. Y. Ng, A. Streltsov, Phys. Rev. Lett. 135, 010202 (2025); arXiv:2405.10599v2.","P. Barrios Hita, A. Trushechkin, H. Kampermann, M. Epping, D. Bruß, Phys. Rev. Lett. 136, 240202 (2026); arXiv:2503.17307.","ATLAS Collaboration, Nature 633, 542 (2024); arXiv:2311.07288v3.","T. Hossain with Claude (Anthropic), Particle decays as fixed measurements: exact noncontextuality thresholds for decay-angle correlations, generated work, 17 November 2026 (unpublished, not peer reviewed); source in decay_contextuality/paper of this repository.","Rules R1 to R16, the temporal rules, the counting identity and the phase table: thesis of the grand network, Parts I and II (repository GEN_Grand_Evoluton). Rules R17 to R21: project note on the two-tier network (Part III).","Encoding and certificates: edge-kernel paper checks of 17 November 2026 (published papers) and 20 November 2026 (generated paper)."]),el("p",{class:"small",style:"margin-top:8px"},["The certificates of every route are in the explorer of the edge kernel: ",el("a",{href:"../page/index.html",text:"page/ of this repository"}),"."])]);
+}
+
+(function(){var inline=document.getElementById("replay-data");
+ if(inline){try{start(JSON.parse(inline.textContent));}catch(e){document.getElementById("view").appendChild(el("p",{class:"err",text:"The embedded data could not be read: "+e.message}));}return;}
+ fetch("replay.json").then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json();}).then(start).catch(function(e){var v=document.getElementById("view");v.textContent="";v.appendChild(el("p",{class:"err",text:"The file replay.json could not be loaded ("+e.message+"). Open the standalone file instead, or serve this folder over HTTP."}));});})();
+</script>
+</body>
+</html>

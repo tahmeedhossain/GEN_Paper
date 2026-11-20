@@ -1,0 +1,37 @@
+\begin{ruledtabular}
+\begin{tabular}{lllllll}
+Route & Inputs & Target & Layers & Relation & Grade / status & Certificate \\
+\hline
+V2 & \texttt{p-one} & \texttt{w-region1} & M$\to$O & derives & numeric / checked & \texttt{rank\_one\_lemma} \\
+V3 & \texttt{p-one}, \texttt{s-spin} & \texttt{w-region1} & MS$\to$O & derives & exact / checked & \texttt{region\_R\_formulas} \\
+V4 & \texttt{p-one}, \texttt{s-spin} & \texttt{m-ncom} & MS$\to$M & implies & exact / checked & \texttt{finite\_models} \\
+V5 & \texttt{p-one}, \texttt{s-spin}, \texttt{w-region1} & \texttt{e-ctx} & MOS$\to$O & equiv & written / proof in text & -- \\
+V6 & \texttt{w-region1}, \texttt{w-ncineq} & \texttt{e-ctx} & O$\to$O & witness & numeric / checked & \texttt{support\_sdp}, \texttt{lp\_region} \\
+V7 & \texttt{p-one}, \texttt{s-spin} & \texttt{m-ncom} & MS$\to$M & equiv & exact / checked & \texttt{degenerate\_line} \\
+P1 & \texttt{p-one}, \texttt{s-iso1} & \texttt{w-region1} & MS$\to$O & derives & exact / checked & \texttt{region\_R2\_formulas} \\
+P2 & \texttt{p-one}, \texttt{s-iso1} & \texttt{m-ncom} & MS$\to$M & implies & exact / checked & \texttt{finite\_models} \\
+P3 & \texttt{p-one}, \texttt{s-iso1}, \texttt{w-region1} & \texttt{e-ctx} & MOS$\to$O & equiv & written / proof in text & -- \\
+P6 & \texttt{p-one}, \texttt{s-iso1}, \texttt{w-region1} & \texttt{e-ctx} & MOS$\to$O & derives & exact / checked & \texttt{pair\_thresholds} \\
+P4 & \texttt{w-region1}, \texttt{w-ncineq} & \texttt{e-ctx} & O$\to$O & witness & numeric / checked & \texttt{lp\_region} \\
+P5 & \texttt{w-region1}, \texttt{w-ncineq} & \texttt{e-ctx} & O$\to$O & witness & numeric / checked & \texttt{lp\_refine} \\
+G1 & \texttt{p-decay}, \texttt{s-spin}, \texttt{w-kappa} & \texttt{e-ctx} & MOS$\to$O & implies & written / proof in text & -- \\
+G2 & \texttt{w-kappa} & \texttt{w-kappa} & O$\to$O & derives & exact / checked & \texttt{gauss\_nodes} \\
+G3 & \texttt{p-decay}, \texttt{s-spin} & \texttt{m-ncom} & MS$\to$M & implies & written / proof in text & -- \\
+G5 & \texttt{m-ncom}, \texttt{o-ang2} & \texttt{w-kappa} & MO$\to$O & implies & written / proof in text & -- \\
+G7 & \texttt{p-decay} & \texttt{w-kappa} & M$\to$O & derives & numeric / checked & \texttt{first\_moment\_bound} \\
+G6 & \texttt{w-kappa}, \texttt{w-rawppt}, \texttt{w-region1} & \texttt{w-kappa} & O$\to$O & derives & numeric / checked & \texttt{pair\_dipole\_bound} \\
+G4 & \texttt{w-kappa}, \texttt{w-ncineq} & \texttt{e-ctx} & O$\to$O & witness & numeric / checked & \texttt{general\_j} \\
+A1 & \texttt{s-ttbar}, \texttt{p-half} & \texttt{o-D} & MS$\to$O & import & import / cited & -- \\
+A2 & \texttt{o-D}, \texttt{s-ttbar} & \texttt{e-ctx} & OS$\to$O & implies & exact / checked & \texttt{top\_pair\_numbers} \\
+A3 & \texttt{s-LLbar}, \texttt{p-half} & \texttt{o-ang2} & MS$\to$O & import & import / cited & -- \\
+A4 & \texttt{s-LLbar}, \texttt{w-rawppt} & \texttt{e-ctx} & OS$\to$O & implies & numeric / checked & \texttt{lambda\_pairs} \\
+A5 & \texttt{m\_cc}, \texttt{p-half} & \texttt{p-half} & M$\to$M & import & import / cited & -- \\
+A6 & \texttt{m\_va}, \texttt{u\_mh} & \texttt{p-half} & MS$\to$M & import & import / checked & \texttt{tau\_rho} \\
+A7 & \texttt{m\_nc}, \texttt{u\_m1} & \texttt{p-one} & MS$\to$M & import & import / cited & -- \\
+A8 & \texttt{u\_m1}, \texttt{p-one}, \texttt{w-region1} & \texttt{e-ctx} & MOS$\to$O & implies & numeric / checked & \texttt{vector\_pair\_kernels} \\
+H11 & \texttt{s-sep}, \texttt{p-half} & \texttt{m-ncom} & MS$\to$M & implies & written / proof in text & -- \\
+X3 & \texttt{m-quantum}, \texttt{m\_A} & \texttt{p-decay} & M$\to$M & defines & definition & -- \\
+X1 & \texttt{e-ctx} & \texttt{m-classical} & O$\to$M & forbids & import / cited & -- \\
+X2 & \texttt{s-ent}, \texttt{p-decay} & \texttt{e-ctx} & MS$\to$O & necessary & written / proof in text & -- \\
+\end{tabular}
+\end{ruledtabular}

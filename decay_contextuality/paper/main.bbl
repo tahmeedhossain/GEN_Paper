@@ -1,0 +1,767 @@
+%apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (0) allowed
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{67}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{https://doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {{ATLAS Collaboration}}(2024)}]{atlas2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{ATLAS
+  Collaboration}}},\ }\bibfield  {title} {\bibinfo {title} {{Observation of
+  quantum entanglement with top quarks at the ATLAS detector}},\ }\href
+  {https://doi.org/10.1038/s41586-024-07824-z} {\bibfield  {journal} {\bibinfo
+  {journal} {Nature}\ }\textbf {\bibinfo {volume} {633}},\ \bibinfo {pages}
+  {542} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{CMS Collaboration}}(2024{\natexlab{a}})}]{cms2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{CMS Collaboration}}},\
+  }\bibfield  {title} {\bibinfo {title} {{Observation of quantum entanglement
+  in top quark pair production in proton-proton collisions at $\sqrt{s}=13$
+  {TeV}}},\ }\href {https://doi.org/10.1088/1361-6633/ad7e4d} {\bibfield
+  {journal} {\bibinfo  {journal} {Rep. Prog. Phys.}\ }\textbf {\bibinfo
+  {volume} {87}},\ \bibinfo {pages} {117801} (\bibinfo {year}
+  {2024}{\natexlab{a}})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{CMS
+  Collaboration}}(2024{\natexlab{b}})}]{cms2024ljets}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{CMS Collaboration}}},\
+  }\bibfield  {title} {\bibinfo {title} {{Measurements of polarization and spin
+  correlation and observation of entanglement in top quark pairs using
+  lepton+jets events from proton-proton collisions at $\sqrt{s}=13$ {TeV}}},\
+  }\href {https://doi.org/10.1103/physrevd.110.112016} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {110}},\
+  \bibinfo {pages} {112016} (\bibinfo {year} {2024}{\natexlab{b}})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Afik}\ and\ \citenamefont
+  {de~Nova}(2021)}]{afik2021}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Afik}}\ and\ \bibinfo {author} {\bibfnamefont {J.~R.~M.}\ \bibnamefont
+  {de~Nova}},\ }\bibfield  {title} {\bibinfo {title} {{Entanglement and quantum
+  tomography with top quarks at the LHC}},\ }\href
+  {https://doi.org/10.1140/epjp/s13360-021-01902-1} {\bibfield  {journal}
+  {\bibinfo  {journal} {Eur. Phys. J. Plus}\ }\textbf {\bibinfo {volume}
+  {136}},\ \bibinfo {pages} {907} (\bibinfo {year} {2021})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Barr}\ \emph {et~al.}(2024)\citenamefont {Barr},
+  \citenamefont {Fabbrichesi}, \citenamefont {Floreanini}, \citenamefont
+  {Gabrielli},\ and\ \citenamefont {Marzola}}]{barr2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont
+  {Barr}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Fabbrichesi}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Floreanini}}, \bibinfo
+  {author} {\bibfnamefont {E.}~\bibnamefont {Gabrielli}},\ and\ \bibinfo
+  {author} {\bibfnamefont {L.}~\bibnamefont {Marzola}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Quantum entanglement and Bell inequality violation at
+  colliders}},\ }\href {https://doi.org/10.1016/j.ppnp.2024.104134} {\bibfield
+  {journal} {\bibinfo  {journal} {Prog. Part. Nucl. Phys.}\ }\textbf {\bibinfo
+  {volume} {139}},\ \bibinfo {pages} {104134} (\bibinfo {year}
+  {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ashby-Pickering}\ \emph {et~al.}(2023)\citenamefont
+  {Ashby-Pickering}, \citenamefont {Barr},\ and\ \citenamefont
+  {Wierzchucka}}]{ashby2023}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Ashby-Pickering}}, \bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont
+  {Barr}},\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Wierzchucka}},\ }\bibfield  {title} {\bibinfo {title} {{Quantum state
+  tomography, entanglement detection and Bell violation prospects in weak
+  decays of massive particles}},\ }\href
+  {https://doi.org/10.1007/jhep05(2023)020} {\bibfield  {journal} {\bibinfo
+  {journal} {J. High Energy Phys.}\ }\textbf {\bibinfo {volume} {05}},\
+  \bibinfo {pages} {020}}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {T{\"o}rnqvist}(1981)}]{tornqvist1981}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~A.}\ \bibnamefont
+  {T{\"o}rnqvist}},\ }\bibfield  {title} {\bibinfo {title} {{Suggestion for
+  {E}instein-{P}odolsky-{R}osen experiments using reactions like
+  $e^+e^-\to\Lambda\bar\Lambda\to\pi^-p\pi^+\bar p$}},\ }\href
+  {https://doi.org/10.1007/bf00715204} {\bibfield  {journal} {\bibinfo
+  {journal} {Found. Phys.}\ }\textbf {\bibinfo {volume} {11}},\ \bibinfo
+  {pages} {171} (\bibinfo {year} {1981})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{BESIII Collaboration}}(2025)}]{besiii2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{BESIII
+  Collaboration}}},\ }\bibfield  {title} {\bibinfo {title} {{Test of local
+  realism via entangled $\Lambda\bar\Lambda$ system}},\ }\href
+  {https://doi.org/10.1038/s41467-025-59498-4} {\bibfield  {journal} {\bibinfo
+  {journal} {Nat. Commun.}\ }\textbf {\bibinfo {volume} {16}},\ \bibinfo
+  {pages} {4948} (\bibinfo {year} {2025})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Abel}\ \emph {et~al.}(1992)\citenamefont {Abel},
+  \citenamefont {Dittmar},\ and\ \citenamefont {Dreiner}}]{abel1992}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Abel}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Dittmar}},\ and\
+  \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Dreiner}},\ }\bibfield
+  {title} {\bibinfo {title} {{Testing locality at colliders via Bell's
+  inequality?}},\ }\href {https://doi.org/10.1016/0370-2693(92)90071-b}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Lett. B}\ }\textbf
+  {\bibinfo {volume} {280}},\ \bibinfo {pages} {304} (\bibinfo {year}
+  {1992})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Abel}\ \emph {et~al.}(2026)\citenamefont {Abel},
+  \citenamefont {Dreiner}, \citenamefont {Sengupta},\ and\ \citenamefont
+  {Ubaldi}}]{abel2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~A.}\ \bibnamefont
+  {Abel}}, \bibinfo {author} {\bibfnamefont {H.~K.}\ \bibnamefont {Dreiner}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Sengupta}},\ and\
+  \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Ubaldi}},\ }\bibfield
+  {title} {\bibinfo {title} {{Colliders are not testing locality via Bell's
+  inequality nor providing an unconditional proof of entanglement}},\ }\href
+  {https://doi.org/10.1007/jhep08(2026)067} {\bibfield  {journal} {\bibinfo
+  {journal} {J. High Energy Phys.}\ }\textbf {\bibinfo {volume} {08}},\
+  \bibinfo {pages} {067}}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bechtle}\ \emph {et~al.}(2025)\citenamefont
+  {Bechtle}, \citenamefont {Breuning}, \citenamefont {Dreiner},\ and\
+  \citenamefont {Duhr}}]{bechtle2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Bechtle}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Breuning}},
+  \bibinfo {author} {\bibfnamefont {H.~K.}\ \bibnamefont {Dreiner}},\ and\
+  \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Duhr}},\ }\href@noop {}
+  {\bibinfo {title} {{A critical appraisal of tests of locality and of
+  entanglement versus non-entanglement at colliders}}} (\bibinfo {year}
+  {2025}),\ \Eprint {https://arxiv.org/abs/2507.15947} {arXiv:2507.15947}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Low}(2025)}]{low2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Low}},\ }\href@noop {} {\bibinfo {title} {{Addressing Local Realism through
+  {B}ell Tests at Colliders}}} (\bibinfo {year} {2025}),\ \Eprint
+  {https://arxiv.org/abs/2508.10979} {arXiv:2508.10979} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Li}\ \emph {et~al.}(2024)\citenamefont {Li},
+  \citenamefont {Shen},\ and\ \citenamefont {Yang}}]{li2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Li}}, \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Shen}},\ and\
+  \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Yang}},\ }\bibfield
+  {title} {\bibinfo {title} {{Can Bell inequalities be tested via scattering
+  cross-section at colliders?}},\ }\href
+  {https://doi.org/10.1140/epjc/s10052-024-13584-x} {\bibfield  {journal}
+  {\bibinfo  {journal} {Eur. Phys. J. C}\ }\textbf {\bibinfo {volume} {84}},\
+  \bibinfo {pages} {1195} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fabbrichesi}\ \emph
+  {et~al.}(2025{\natexlab{a}})\citenamefont {Fabbrichesi}, \citenamefont
+  {Floreanini},\ and\ \citenamefont {Marzola}}]{fabbrichesi2025bell}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Fabbrichesi}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Floreanini}},\ and\ \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Marzola}},\ }\bibfield  {title} {\bibinfo {title} {{About Witnessing Bell
+  Non-locality at Colliders}},\ }\href
+  {https://doi.org/10.1007/s10701-025-00894-7} {\bibfield  {journal} {\bibinfo
+  {journal} {Found. Phys.}\ }\textbf {\bibinfo {volume} {55}},\ \bibinfo
+  {pages} {83} (\bibinfo {year} {2025}{\natexlab{a}})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Spekkens}(2005)}]{spekkens2005}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~W.}\ \bibnamefont
+  {Spekkens}},\ }\bibfield  {title} {\bibinfo {title} {{Contextuality for
+  preparations, transformations, and unsharp measurements}},\ }\href
+  {https://doi.org/10.1103/physreva.71.052108} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {71}},\ \bibinfo
+  {pages} {052108} (\bibinfo {year} {2005})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Schmid}\ \emph {et~al.}(2021)\citenamefont {Schmid},
+  \citenamefont {Selby}, \citenamefont {Wolfe}, \citenamefont {Kunjwal},\ and\
+  \citenamefont {Spekkens}}]{schmid2021}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Schmid}}, \bibinfo {author} {\bibfnamefont {J.~H.}\ \bibnamefont {Selby}},
+  \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Wolfe}}, \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Kunjwal}},\ and\ \bibinfo {author}
+  {\bibfnamefont {R.~W.}\ \bibnamefont {Spekkens}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Characterization of Noncontextuality in the Framework of
+  Generalized Probabilistic Theories}},\ }\href
+  {https://doi.org/10.1103/prxquantum.2.010331} {\bibfield  {journal} {\bibinfo
+   {journal} {PRX Quantum}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages}
+  {010331} (\bibinfo {year} {2021})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gitton}\ and\ \citenamefont
+  {Woods}(2022)}]{gitton2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Gitton}}\ and\ \bibinfo {author} {\bibfnamefont {M.~P.}\ \bibnamefont
+  {Woods}},\ }\bibfield  {title} {\bibinfo {title} {{Solvable Criterion for the
+  Contextuality of any Prepare-and-Measure Scenario}},\ }\href
+  {https://doi.org/10.22331/q-2022-06-07-732} {\bibfield  {journal} {\bibinfo
+  {journal} {Quantum}\ }\textbf {\bibinfo {volume} {6}},\ \bibinfo {pages}
+  {732} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Selby}\ \emph
+  {et~al.}(2023{\natexlab{a}})\citenamefont {Selby}, \citenamefont {Schmid},
+  \citenamefont {Wolfe}, \citenamefont {Sainz}, \citenamefont {Kunjwal},\ and\
+  \citenamefont {Spekkens}}]{selby2023frag}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~H.}\ \bibnamefont
+  {Selby}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Schmid}},
+  \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Wolfe}}, \bibinfo
+  {author} {\bibfnamefont {A.~B.}\ \bibnamefont {Sainz}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Kunjwal}},\ and\ \bibinfo {author}
+  {\bibfnamefont {R.~W.}\ \bibnamefont {Spekkens}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Accessible fragments of generalized probabilistic
+  theories, cone equivalence, and applications to witnessing
+  nonclassicality}},\ }\href {https://doi.org/10.1103/physreva.107.062203}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo
+  {volume} {107}},\ \bibinfo {pages} {062203} (\bibinfo {year}
+  {2023}{\natexlab{a}})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Selby}\ \emph {et~al.}(2024)\citenamefont {Selby},
+  \citenamefont {Wolfe}, \citenamefont {Schmid}, \citenamefont {Sainz},\ and\
+  \citenamefont {Rossi}}]{selby2024lp}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~H.}\ \bibnamefont
+  {Selby}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Wolfe}},
+  \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Schmid}}, \bibinfo
+  {author} {\bibfnamefont {A.~B.}\ \bibnamefont {Sainz}},\ and\ \bibinfo
+  {author} {\bibfnamefont {V.~P.}\ \bibnamefont {Rossi}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Linear Program for Testing Nonclassicality and an
+  Open-Source Implementation}},\ }\href
+  {https://doi.org/10.1103/physrevlett.132.050202} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {132}},\
+  \bibinfo {pages} {050202} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Spekkens}(2008)}]{spekkens2008}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~W.}\ \bibnamefont
+  {Spekkens}},\ }\bibfield  {title} {\bibinfo {title} {{Negativity and
+  Contextuality are Equivalent Notions of Nonclassicality}},\ }\href
+  {https://doi.org/10.1103/physrevlett.101.020401} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {101}},\
+  \bibinfo {pages} {020401} (\bibinfo {year} {2008})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Selby}\ \emph
+  {et~al.}(2023{\natexlab{b}})\citenamefont {Selby}, \citenamefont {Schmid},
+  \citenamefont {Wolfe}, \citenamefont {Sainz}, \citenamefont {Kunjwal},\ and\
+  \citenamefont {Spekkens}}]{selby2023incomp}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~H.}\ \bibnamefont
+  {Selby}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Schmid}},
+  \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Wolfe}}, \bibinfo
+  {author} {\bibfnamefont {A.~B.}\ \bibnamefont {Sainz}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Kunjwal}},\ and\ \bibinfo {author}
+  {\bibfnamefont {R.~W.}\ \bibnamefont {Spekkens}},\ }\bibfield  {title}
+  {\bibinfo {title} {{Contextuality without Incompatibility}},\ }\href
+  {https://doi.org/10.1103/physrevlett.130.230201} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {130}},\
+  \bibinfo {pages} {230201} (\bibinfo {year} {2023}{\natexlab{b}})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Pl{\'a}vala}\ and\ \citenamefont
+  {G{\"u}hne}(2024)}]{plavala2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Pl{\'a}vala}}\ and\ \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont
+  {G{\"u}hne}},\ }\bibfield  {title} {\bibinfo {title} {{Contextuality as a
+  Precondition for Quantum Entanglement}},\ }\href
+  {https://doi.org/10.1103/physrevlett.132.100201} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {132}},\
+  \bibinfo {pages} {100201} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fucci}\ \emph {et~al.}(2026)\citenamefont {Fucci},
+  \citenamefont {Orthey}, \citenamefont {Barr},\ and\ \citenamefont
+  {Timpson}}]{fucci2026}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~M.}\ \bibnamefont
+  {Fucci}}, \bibinfo {author} {\bibfnamefont {A.~C.}\ \bibnamefont {Orthey}},
+  \bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont {Barr}},\ and\
+  \bibinfo {author} {\bibfnamefont {C.~G.}\ \bibnamefont {Timpson}},\
+  }\href@noop {} {\bibinfo {title} {{Bell tests for collider decay processes}}}
+  (\bibinfo {year} {2026}),\ \Eprint {https://arxiv.org/abs/2609.09294}
+  {arXiv:2609.09294} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fabbrichesi}\ \emph
+  {et~al.}(2025{\natexlab{b}})\citenamefont {Fabbrichesi}, \citenamefont
+  {Floreanini}, \citenamefont {Gabrielli},\ and\ \citenamefont
+  {Marzola}}]{fabbrichesi2025pra}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Fabbrichesi}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Floreanini}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Gabrielli}},\ and\ \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Marzola}},\ }\bibfield  {title} {\bibinfo {title} {{Quantum contextuality of
+  spin-1 massive particles}},\ }\href {https://doi.org/10.1103/9bvc-2w4m}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo
+  {volume} {112}},\ \bibinfo {pages} {L020402} (\bibinfo {year}
+  {2025}{\natexlab{b}})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fabbrichesi}\ \emph
+  {et~al.}(2025{\natexlab{c}})\citenamefont {Fabbrichesi}, \citenamefont
+  {Floreanini}, \citenamefont {Gabrielli},\ and\ \citenamefont
+  {Marzola}}]{fabbrichesi2025prd}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Fabbrichesi}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Floreanini}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Gabrielli}},\ and\ \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Marzola}},\ }\bibfield  {title} {\bibinfo {title} {{Tests of quantum
+  contextuality in particle physics}},\ }\href
+  {https://doi.org/10.1103/22zl-ltxm} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {112}},\ \bibinfo
+  {pages} {033005} (\bibinfo {year} {2025}{\natexlab{c}})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Horodecki}\ \emph {et~al.}(2003)\citenamefont
+  {Horodecki}, \citenamefont {Shor},\ and\ \citenamefont
+  {Ruskai}}]{horodeckiEB2003}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Horodecki}}, \bibinfo {author} {\bibfnamefont {P.~W.}\ \bibnamefont
+  {Shor}},\ and\ \bibinfo {author} {\bibfnamefont {M.~B.}\ \bibnamefont
+  {Ruskai}},\ }\bibfield  {title} {\bibinfo {title} {{Entanglement Breaking
+  Channels}},\ }\href {https://doi.org/10.1142/s0129055x03001709} {\bibfield
+  {journal} {\bibinfo  {journal} {Rev. Math. Phys.}\ }\textbf {\bibinfo
+  {volume} {15}},\ \bibinfo {pages} {629} (\bibinfo {year} {2003})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Ruskai}(2003)}]{ruskai2003}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~B.}\ \bibnamefont
+  {Ruskai}},\ }\bibfield  {title} {\bibinfo {title} {{Qubit Entanglement
+  Breaking Channels}},\ }\href {https://doi.org/10.1142/s0129055x03001710}
+  {\bibfield  {journal} {\bibinfo  {journal} {Rev. Math. Phys.}\ }\textbf
+  {\bibinfo {volume} {15}},\ \bibinfo {pages} {643} (\bibinfo {year}
+  {2003})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Marvian}(2020)}]{marvian2020}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {Marvian}},\ }\href@noop {} {\bibinfo {title} {{Inaccessible information in
+  probabilistic models of quantum systems, non-contextuality inequalities and
+  noise thresholds for contextuality}}} (\bibinfo {year} {2020}),\ \Eprint
+  {https://arxiv.org/abs/2003.05984} {arXiv:2003.05984 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Zhang}\ \emph {et~al.}(2026)\citenamefont {Zhang},
+  \citenamefont {Schmid}, \citenamefont {Y{\=\i}ng},\ and\ \citenamefont
+  {Spekkens}}]{zhang2025prx}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Zhang}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Schmid}},
+  \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Y{\=\i}ng}},\ and\
+  \bibinfo {author} {\bibfnamefont {R.~W.}\ \bibnamefont {Spekkens}},\
+  }\bibfield  {title} {\bibinfo {title} {{Reassessing the Boundary between
+  Classical and Nonclassical for Individual Quantum Processes}},\ }\href
+  {https://doi.org/10.1103/vqfz-wzjg} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. X}\ }\textbf {\bibinfo {volume} {16}},\ \bibinfo
+  {pages} {021050} (\bibinfo {year} {2026})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Jokinen}\ \emph {et~al.}(2024)\citenamefont
+  {Jokinen}, \citenamefont {Weilenmann}, \citenamefont {Pl{\'a}vala},
+  \citenamefont {Pellonp{\"a}{\"a}}, \citenamefont {Kiukas},\ and\
+  \citenamefont {Uola}}]{jokinen2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Jokinen}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Weilenmann}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Pl{\'a}vala}}, \bibinfo
+  {author} {\bibfnamefont {J.-P.}\ \bibnamefont {Pellonp{\"a}{\"a}}}, \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Kiukas}},\ and\ \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Uola}},\ }\bibfield  {title} {\bibinfo
+  {title} {{No-Broadcasting Characterizes Operational Contextuality}},\ }\href
+  {https://doi.org/10.1103/physrevlett.133.240201} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {133}},\
+  \bibinfo {pages} {240201} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Jokinen}\ \emph {et~al.}(2026)\citenamefont
+  {Jokinen}, \citenamefont {Weilenmann}, \citenamefont {Pl{\'a}vala},
+  \citenamefont {Pellonp{\"a}{\"a}}, \citenamefont {Kiukas},\ and\
+  \citenamefont {Uola}}]{jokinen2026}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Jokinen}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Weilenmann}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Pl{\'a}vala}}, \bibinfo
+  {author} {\bibfnamefont {J.-P.}\ \bibnamefont {Pellonp{\"a}{\"a}}}, \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Kiukas}},\ and\ \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Uola}},\ }\href@noop {} {\bibinfo {title}
+  {{Generalised contextuality of continuous variable quantum theory can be
+  revealed with a single projective measurement}}} (\bibinfo {year} {2026}),\
+  \Eprint {https://arxiv.org/abs/2601.14067} {arXiv:2601.14067} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Hossain}(2026{\natexlab{a}})}]{genhep}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Hossain}},\ }\href@noop {} {\bibinfo {title} {{A growing concept graph of
+  particle physics: states, models and observables from one-particle quantum
+  mechanics to the electroweak Standard Model}}},\ \bibinfo {howpublished}
+  {\url{https://github.com/tahmeedhossain/GEN_HEP}} (\bibinfo {year}
+  {2026}{\natexlab{a}}),\ \bibinfo {note} {version 1.2, commit
+  4258f6e}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hossain}(2026{\natexlab{b}})}]{gengpt}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Hossain}},\ }\href@noop {} {\bibinfo {title} {{Nonclassicality Network: a
+  signed theorem graph for quantum foundations}}},\ \bibinfo {howpublished}
+  {\url{https://github.com/tahmeedhossain/GEN_GPT_Level}} (\bibinfo {year}
+  {2026}{\natexlab{b}}),\ \bibinfo {note} {version 2.6, commit
+  e18fa8c}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Jacob}\ and\ \citenamefont {Wick}(1959)}]{jacob1959}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Jacob}}\ and\ \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Wick}},\
+  }\bibfield  {title} {\bibinfo {title} {{On the general theory of collisions
+  for particles with spin}},\ }\href
+  {https://doi.org/10.1016/0003-4916(59)90051-x} {\bibfield  {journal}
+  {\bibinfo  {journal} {Ann. Phys. (N.Y.)}\ }\textbf {\bibinfo {volume} {7}},\
+  \bibinfo {pages} {404} (\bibinfo {year} {1959})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Radcliffe}(1971)}]{radcliffe1971}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont
+  {Radcliffe}},\ }\bibfield  {title} {\bibinfo {title} {{Some properties of
+  coherent spin states}},\ }\href {https://doi.org/10.1088/0305-4470/4/3/009}
+  {\bibfield  {journal} {\bibinfo  {journal} {J. Phys. A}\ }\textbf {\bibinfo
+  {volume} {4}},\ \bibinfo {pages} {313} (\bibinfo {year} {1971})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Lee}\ and\ \citenamefont {Yang}(1957)}]{leeyang1957}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.~D.}\ \bibnamefont
+  {Lee}}\ and\ \bibinfo {author} {\bibfnamefont {C.~N.}\ \bibnamefont {Yang}},\
+  }\bibfield  {title} {\bibinfo {title} {{General Partial Wave Analysis of the
+  Decay of a Hyperon of Spin 1/2}},\ }\href
+  {https://doi.org/10.1103/physrev.108.1645} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume} {108}},\ \bibinfo {pages}
+  {1645} (\bibinfo {year} {1957})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Michel}(1950)}]{michel1950}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Michel}},\ }\bibfield  {title} {\bibinfo {title} {{Interaction between Four
+  Half-Spin Particles and the Decay of the $\mu$-Meson}},\ }\href
+  {https://doi.org/10.1088/0370-1298/63/5/311} {\bibfield  {journal} {\bibinfo
+  {journal} {Proc. Phys. Soc. A}\ }\textbf {\bibinfo {volume} {63}},\ \bibinfo
+  {pages} {514} (\bibinfo {year} {1950})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kinoshita}\ and\ \citenamefont
+  {Sirlin}(1957)}]{kinoshita1957}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Kinoshita}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Sirlin}},\ }\bibfield  {title} {\bibinfo {title} {{Muon Decay with Parity
+  Nonconserving Interactions and Radiative Corrections in the Two-Component
+  Theory}},\ }\href {https://doi.org/10.1103/physrev.107.593} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev.}\ }\textbf {\bibinfo {volume}
+  {107}},\ \bibinfo {pages} {593} (\bibinfo {year} {1957})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Brandenburg}\ \emph {et~al.}(2002)\citenamefont
+  {Brandenburg}, \citenamefont {Si},\ and\ \citenamefont
+  {Uwer}}]{brandenburg2002}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Brandenburg}}, \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Si}},\
+  and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Uwer}},\ }\bibfield
+  {title} {\bibinfo {title} {{QCD-corrected spin analysing power of jets in
+  decays of polarized top quarks}},\ }\href
+  {https://doi.org/10.1016/s0370-2693(02)02098-1} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {539}},\
+  \bibinfo {pages} {235} (\bibinfo {year} {2002})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Brunner}\ \emph {et~al.}(2014)\citenamefont
+  {Brunner}, \citenamefont {Cavalcanti}, \citenamefont {Pironio}, \citenamefont
+  {Scarani},\ and\ \citenamefont {Wehner}}]{brunner2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Brunner}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Cavalcanti}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Pironio}}, \bibinfo
+  {author} {\bibfnamefont {V.}~\bibnamefont {Scarani}},\ and\ \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Wehner}},\ }\bibfield  {title} {\bibinfo
+  {title} {{Bell nonlocality}},\ }\href
+  {https://doi.org/10.1103/revmodphys.86.419} {\bibfield  {journal} {\bibinfo
+  {journal} {Rev. Mod. Phys.}\ }\textbf {\bibinfo {volume} {86}},\ \bibinfo
+  {pages} {419} (\bibinfo {year} {2014})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wiseman}\ \emph {et~al.}(2007)\citenamefont
+  {Wiseman}, \citenamefont {Jones},\ and\ \citenamefont
+  {Doherty}}]{wiseman2007}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.~M.}\ \bibnamefont
+  {Wiseman}}, \bibinfo {author} {\bibfnamefont {S.~J.}\ \bibnamefont {Jones}},\
+  and\ \bibinfo {author} {\bibfnamefont {A.~C.}\ \bibnamefont {Doherty}},\
+  }\bibfield  {title} {\bibinfo {title} {{Steering, Entanglement, Nonlocality,
+  and the Einstein-Podolsky-Rosen Paradox}},\ }\href
+  {https://doi.org/10.1103/physrevlett.98.140402} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {98}},\
+  \bibinfo {pages} {140402} (\bibinfo {year} {2007})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Peres}(1996)}]{peres1996}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Peres}},\ }\bibfield  {title} {\bibinfo {title} {{Separability Criterion for
+  Density Matrices}},\ }\href {https://doi.org/10.1103/physrevlett.77.1413}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf
+  {\bibinfo {volume} {77}},\ \bibinfo {pages} {1413} (\bibinfo {year}
+  {1996})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Horodecki}\ \emph {et~al.}(1996)\citenamefont
+  {Horodecki}, \citenamefont {Horodecki},\ and\ \citenamefont
+  {Horodecki}}]{horodecki1996ppt}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Horodecki}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Horodecki}},\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Horodecki}},\ }\bibfield  {title} {\bibinfo {title} {{Separability of mixed
+  states: necessary and sufficient conditions}},\ }\href
+  {https://doi.org/10.1016/s0375-9601(96)00706-2} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Lett. A}\ }\textbf {\bibinfo {volume} {223}},\
+  \bibinfo {pages} {1} (\bibinfo {year} {1996})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Horodecki}\ and\ \citenamefont
+  {Horodecki}(1996)}]{horodecki1996t}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Horodecki}}\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Horodecki}},\ }\bibfield  {title} {\bibinfo {title} {{Information-theoretic
+  aspects of inseparability of mixed states}},\ }\href
+  {https://doi.org/10.1103/physreva.54.1838} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {54}},\ \bibinfo
+  {pages} {1838} (\bibinfo {year} {1996})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Giraud}\ \emph {et~al.}(2008)\citenamefont {Giraud},
+  \citenamefont {Braun},\ and\ \citenamefont {Braun}}]{giraud2008}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {O.}~\bibnamefont
+  {Giraud}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Braun}},\ and\
+  \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Braun}},\ }\bibfield
+  {title} {\bibinfo {title} {{Classicality of spin states}},\ }\href
+  {https://doi.org/10.1103/physreva.78.042112} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {78}},\ \bibinfo
+  {pages} {042112} (\bibinfo {year} {2008})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mazurek}\ \emph {et~al.}(2016)\citenamefont
+  {Mazurek}, \citenamefont {Pusey}, \citenamefont {Kunjwal}, \citenamefont
+  {Resch},\ and\ \citenamefont {Spekkens}}]{mazurek2016}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~D.}\ \bibnamefont
+  {Mazurek}}, \bibinfo {author} {\bibfnamefont {M.~F.}\ \bibnamefont {Pusey}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Kunjwal}}, \bibinfo
+  {author} {\bibfnamefont {K.~J.}\ \bibnamefont {Resch}},\ and\ \bibinfo
+  {author} {\bibfnamefont {R.~W.}\ \bibnamefont {Spekkens}},\ }\bibfield
+  {title} {\bibinfo {title} {{An experimental test of noncontextuality without
+  unphysical idealizations}},\ }\href {https://doi.org/10.1038/ncomms11780}
+  {\bibfield  {journal} {\bibinfo  {journal} {Nat. Commun.}\ }\textbf {\bibinfo
+  {volume} {7}},\ \bibinfo {pages} {11780} (\bibinfo {year}
+  {2016})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pusey}(2018)}]{pusey2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~F.}\ \bibnamefont
+  {Pusey}},\ }\bibfield  {title} {\bibinfo {title} {{Robust preparation
+  noncontextuality inequalities in the simplest scenario}},\ }\href
+  {https://doi.org/10.1103/physreva.98.022112} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {98}},\ \bibinfo
+  {pages} {022112} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Horodecki}\ and\ \citenamefont
+  {Horodecki}(1999)}]{horodecki1999}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Horodecki}}\ and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Horodecki}},\ }\bibfield  {title} {\bibinfo {title} {{Reduction criterion of
+  separability and limits for a class of distillation protocols}},\ }\href
+  {https://doi.org/10.1103/physreva.59.4206} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {59}},\ \bibinfo
+  {pages} {4206} (\bibinfo {year} {1999})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Takahashi}\ \emph {et~al.}(2026)\citenamefont
+  {Takahashi} \emph {et~al.}}]{pdg2026}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Takahashi}} \emph {et~al.} (\bibinfo {collaboration} {Particle Data
+  Group}),\ }\bibfield  {title} {\bibinfo {title} {{Review of Particle
+  Physics}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Int.
+  J. Mod. Phys. A}\ }\textbf {\bibinfo {volume} {41}},\ \bibinfo {pages}
+  {2630011} (\bibinfo {year} {2026})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gautschi}(2004)}]{gautschi2004}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
+  {Gautschi}},\ }\href@noop {} {\emph {\bibinfo {title} {{Orthogonal
+  Polynomials: Computation and Approximation}}}}\ (\bibinfo  {publisher}
+  {Oxford University Press},\ \bibinfo {address} {Oxford},\ \bibinfo {year}
+  {2004})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tweedie}(2014)}]{tweedie2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Tweedie}},\ }\bibfield  {title} {\bibinfo {title} {{Better hadronic top
+  quark polarimetry}},\ }\href {https://doi.org/10.1103/physrevd.90.094010}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
+  {volume} {90}},\ \bibinfo {pages} {094010} (\bibinfo {year}
+  {2014})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{BESIII Collaboration}}(2022)}]{besiii2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{BESIII
+  Collaboration}}},\ }\bibfield  {title} {\bibinfo {title} {{Precise
+  Measurements of Decay Parameters and $CP$ Asymmetry with Entangled
+  $\Lambda$-$\bar\Lambda$ Pairs}},\ }\href
+  {https://doi.org/10.1103/physrevlett.129.131801} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {129}},\
+  \bibinfo {pages} {131801} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {F{\"a}ldt}\ and\ \citenamefont
+  {Kupsc}(2017)}]{faldt2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {F{\"a}ldt}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Kupsc}},\ }\bibfield  {title} {\bibinfo {title} {{Hadronic structure
+  functions in the $e^+e^-\to\bar\Lambda\Lambda$ reaction}},\ }\href
+  {https://doi.org/10.1016/j.physletb.2017.06.011} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {772}},\
+  \bibinfo {pages} {16} (\bibinfo {year} {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{BESIII Collaboration}}(2020)}]{besiii2020sigma}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{BESIII
+  Collaboration}}},\ }\bibfield  {title} {\bibinfo {title} {{$\Sigma^+$ and
+  $\bar\Sigma^-$ polarization in the $J/\psi$ and $\psi(3686)$ decays}},\
+  }\href {https://doi.org/10.1103/physrevlett.125.052004} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {125}},\
+  \bibinfo {pages} {052004} (\bibinfo {year} {2020})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Navas}\ \emph {et~al.}(2024)\citenamefont {Navas}
+  \emph {et~al.}}]{pdg2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Navas}} \emph {et~al.} (\bibinfo {collaboration} {Particle Data Group}),\
+  }\bibfield  {title} {\bibinfo {title} {{Review of Particle Physics}},\ }\href
+  {https://doi.org/10.1103/physrevd.110.030001} {\bibfield  {journal} {\bibinfo
+   {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {110}},\ \bibinfo
+  {pages} {030001} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hossain}(2026{\natexlab{c}})}]{genqrt}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Hossain}},\ }\href@noop {} {\bibinfo {title} {{Quantum Resource Network: a
+  role-resolved typed graph of thirteen quantum resource theories}}},\ \bibinfo
+  {howpublished} {\url{https://github.com/tahmeedhossain/GEN_QRT_Level}}
+  (\bibinfo {year} {2026}{\natexlab{c}}),\ \bibinfo {note} {version 1.2, commit
+  198ca02}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Meurer}\ \emph {et~al.}(2017)\citenamefont {Meurer},
+  \citenamefont {Smith}, \citenamefont {Paprocki}, \citenamefont {{\v
+  C}ert{\'\i}k}, \citenamefont {Kirpichev}, \citenamefont {Rocklin},
+  \citenamefont {Kumar}, \citenamefont {Ivanov} \emph {et~al.}}]{sympy2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Meurer}}, \bibinfo {author} {\bibfnamefont {C.~P.}\ \bibnamefont {Smith}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Paprocki}}, \bibinfo
+  {author} {\bibfnamefont {O.}~\bibnamefont {{\v C}ert{\'\i}k}}, \bibinfo
+  {author} {\bibfnamefont {S.~B.}\ \bibnamefont {Kirpichev}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Rocklin}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Kumar}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Ivanov}}, \emph {et~al.},\ }\bibfield  {title} {\bibinfo
+  {title} {{SymPy: symbolic computing in Python}},\ }\href
+  {https://doi.org/10.7717/peerj-cs.103} {\bibfield  {journal} {\bibinfo
+  {journal} {PeerJ Comput. Sci.}\ }\textbf {\bibinfo {volume} {3}},\ \bibinfo
+  {pages} {e103} (\bibinfo {year} {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {de~Moura}\ and\ \citenamefont
+  {Bj{\o}rner}(2008)}]{z3}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {de~Moura}}\ and\ \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Bj{\o}rner}},\ }\bibfield  {title} {\bibinfo {title} {{Z3: An Efficient SMT
+  Solver}},\ }\href {https://doi.org/10.1007/978-3-540-78800-3_24} {\bibfield
+  {journal} {\bibinfo  {journal} {Lect. Notes Comput. Sci.}\ }\textbf {\bibinfo
+  {volume} {4963}},\ \bibinfo {pages} {337} (\bibinfo {year}
+  {2008})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Virtanen}\ \emph {et~al.}(2020)\citenamefont
+  {Virtanen}, \citenamefont {Gommers}, \citenamefont {Oliphant}, \citenamefont
+  {Haberland}, \citenamefont {Reddy}, \citenamefont {Cournapeau}, \citenamefont
+  {Burovski}, \citenamefont {Peterson} \emph {et~al.}}]{scipy}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Virtanen}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Gommers}},
+  \bibinfo {author} {\bibfnamefont {T.~E.}\ \bibnamefont {Oliphant}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Haberland}}, \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Reddy}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Cournapeau}}, \bibinfo {author} {\bibfnamefont
+  {E.}~\bibnamefont {Burovski}}, \bibinfo {author} {\bibfnamefont
+  {P.}~\bibnamefont {Peterson}}, \emph {et~al.},\ }\bibfield  {title} {\bibinfo
+  {title} {{SciPy 1.0: fundamental algorithms for scientific computing in
+  Python}},\ }\href {https://doi.org/10.1038/s41592-019-0686-2} {\bibfield
+  {journal} {\bibinfo  {journal} {Nat. Methods}\ }\textbf {\bibinfo {volume}
+  {17}},\ \bibinfo {pages} {261} (\bibinfo {year} {2020})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Huangfu}\ and\ \citenamefont {Hall}(2018)}]{highs}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Q.}~\bibnamefont
+  {Huangfu}}\ and\ \bibinfo {author} {\bibfnamefont {J.~A.~J.}\ \bibnamefont
+  {Hall}},\ }\bibfield  {title} {\bibinfo {title} {{Parallelizing the dual
+  revised simplex method}},\ }\href {https://doi.org/10.1007/s12532-017-0130-5}
+  {\bibfield  {journal} {\bibinfo  {journal} {Math. Prog. Comp.}\ }\textbf
+  {\bibinfo {volume} {10}},\ \bibinfo {pages} {119} (\bibinfo {year}
+  {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Diamond}\ and\ \citenamefont {Boyd}(2016)}]{cvxpy}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Diamond}}\ and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Boyd}},\
+  }\bibfield  {title} {\bibinfo {title} {{{CVXPY}: A {P}ython-embedded modeling
+  language for convex optimization}},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {J. Mach. Learn. Res.}\ }\textbf {\bibinfo {volume}
+  {17}},\ \bibinfo {pages} {1} (\bibinfo {year} {2016})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Goulart}\ and\ \citenamefont
+  {Chen}(2026)}]{clarabel}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.~J.}\ \bibnamefont
+  {Goulart}}\ and\ \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Chen}},\
+  }\bibfield  {title} {\bibinfo {title} {{Clarabel: An interior-point solver
+  for conic programs with quadratic objectives}},\ }\href
+  {https://doi.org/10.1007/s12532-026-00320-7} {\bibfield  {journal} {\bibinfo
+  {journal} {Math. Prog. Comp.}\ }\textbf {\bibinfo {volume} {18}},\ \bibinfo
+  {pages} {1279} (\bibinfo {year} {2026})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kunjwal}\ \emph {et~al.}(2019)\citenamefont
+  {Kunjwal}, \citenamefont {Lostaglio},\ and\ \citenamefont
+  {Pusey}}]{kunjwal2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Kunjwal}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Lostaglio}},\
+  and\ \bibinfo {author} {\bibfnamefont {M.~F.}\ \bibnamefont {Pusey}},\
+  }\bibfield  {title} {\bibinfo {title} {{Anomalous weak values and
+  contextuality: Robustness, tightness, and imaginary parts}},\ }\href
+  {https://doi.org/10.1103/physreva.100.042116} {\bibfield  {journal} {\bibinfo
+   {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {100}},\ \bibinfo
+  {pages} {042116} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tsai}(1971)}]{tsai1971}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.-S.}\ \bibnamefont
+  {Tsai}},\ }\bibfield  {title} {\bibinfo {title} {{Decay Correlations of Heavy
+  Leptons in $e^+ + e^- \to l^+ + l^-$}},\ }\href
+  {https://doi.org/10.1103/physrevd.4.2821} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {4}},\ \bibinfo {pages}
+  {2821} (\bibinfo {year} {1971})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Klein}(1956)}]{klein1956}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Klein}},\ }\href@noop {} {\emph {\bibinfo {title} {{Lectures on the
+  Icosahedron and the Solution of Equations of the Fifth Degree}}}}\ (\bibinfo
+  {publisher} {Dover},\ \bibinfo {address} {New York},\ \bibinfo {year}
+  {1956})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sturm}\ and\ \citenamefont
+  {Zhang}(2003)}]{sturm2003}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~F.}\ \bibnamefont
+  {Sturm}}\ and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Zhang}},\
+  }\bibfield  {title} {\bibinfo {title} {{On Cones of Nonnegative Quadratic
+  Functions}},\ }\href {https://doi.org/10.1287/moor.28.2.246.14485} {\bibfield
+   {journal} {\bibinfo  {journal} {Math. Oper. Res.}\ }\textbf {\bibinfo
+  {volume} {28}},\ \bibinfo {pages} {246} (\bibinfo {year} {2003})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {P{\'o}lik}\ and\ \citenamefont
+  {Terlaky}(2007)}]{polik2007}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {P{\'o}lik}}\ and\ \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Terlaky}},\ }\bibfield  {title} {\bibinfo {title} {{A Survey of the
+  S-Lemma}},\ }\href {https://doi.org/10.1137/s003614450444614x} {\bibfield
+  {journal} {\bibinfo  {journal} {SIAM Rev.}\ }\textbf {\bibinfo {volume}
+  {49}},\ \bibinfo {pages} {371} (\bibinfo {year} {2007})}\BibitemShut
+  {NoStop}%
+\end{thebibliography}%

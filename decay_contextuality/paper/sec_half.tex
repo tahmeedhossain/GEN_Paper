@@ -1,0 +1,112 @@
+\section{Spin $1/2$}
+\label{sec:half}
+
+\subsection{One particle}
+
+Let the accessible states be all polarisation directions with degree of polarisation $P$ (and their mixtures), and let the measurement be the polarimeter \eqref{eq:half}. A state enters the data only through $\bv=\kappa\bP$, $|\bv|\le r\equiv P|\kappa|$: in the notation of Lemma~\ref{lem:simplex}, $V=\mathbb{R}^4$, states are vectors $(1,\bv)$ and effects are $(1,\bq)/4\pi$ with $|\bq|=1$.
+
+\begin{theorem}
+\label{thm:half}
+The fragment has a noncontextual model if and only if $P|\kappa|\le1/3$. For $P|\kappa|\le1/3$ a model with four ontic states is
+\begin{equation}
+\mu(\lambda|\bv)=\tfrac14\,(1+3\,\bt_\lambda\!\cdot\!\bv),\qquad r(\bq|\lambda)=\frac{1}{4\pi}\,(1+\bt_\lambda\!\cdot\!\bq),
+\label{eq:tetra}
+\end{equation}
+with $\bt_1,\dots,\bt_4$ the unit vectors to the vertices of a regular tetrahedron.
+\end{theorem}
+
+\begin{proof}
+Write $Z_\lambda=(1,\bt_\lambda)$ and $g_\lambda(1,\bv)=a_\lambda+\bb_\lambda\!\cdot\!\bv$. The conditions \eqref{eq:simplex} read $|\bt_\lambda|\le1$, $a_\lambda\ge r|\bb_\lambda|$, $\sum_\lambda a_\lambda=1$, $\sum_\lambda\bb_\lambda=\sum_\lambda a_\lambda\bt_\lambda=0$ and $\sum_\lambda\bt_\lambda\bb_\lambda^{\T}=\openone_3$. Taking the trace of the last equation, $3=\sum_\lambda\bt_\lambda\!\cdot\!\bb_\lambda\le\sum_\lambda|\bb_\lambda|\le\sum_\lambda a_\lambda/r=1/r$. Conversely, the tetrahedron satisfies $\sum_\lambda\bt_\lambda=0$ and $\sum_\lambda\bt_\lambda\bt_\lambda^{\T}=\tfrac43\openone_3$, so $a_\lambda=\tfrac14$, $\bb_\lambda=\tfrac34\bt_\lambda$ fulfil all conditions when $\tfrac14\ge\tfrac34r$.
+\end{proof}
+
+A spin-$1/2$ polarimeter is therefore classical if and only if $|\kappa|\le1/3$. The proof shows what the threshold measures: the response functions of a noncontextual model are linear in $\bq$, hence at most as sharp as $1+\bt\!\cdot\!\bq$, and four (or more) of them cannot resolve a Bloch vector longer than $1/3$. The value $1/3$ is the visibility at which the qubit depolarising map becomes entanglement breaking \cite{horodeckiEB2003,ruskai2003}. If only preparation noncontextuality is demanded, the recorded-outcome model of Remark~\ref{rem:lhv} works for every $P|\kappa|\le1$; for comparison, Marvian's bound on the average gate fidelity of a preparation-noncontextual qubit channel, $3/4$ \cite{marvian2020}, corresponds to visibility $1/2$ for depolarising noise with all projective measurements.
+
+If the accessible polarisation vectors fill an ellipsoid with semi-axes $P_1,P_2,P_3$ instead of a ball, the same argument with the six ontic states $\pm$ along the principal axes gives the criterion $|\kappa|(P_1+P_2+P_3)\le1$; for directions confined to a plane this is $P|\kappa|\le1/2$.
+
+\subsection{Two particles}
+\label{sec:pair}
+
+Let two spin-$1/2$ particles $A$, $B$ be in the state $\rho=\tfrac14(\openone+\bm{B}_A\!\cdot\!\bsig\otimes\openone+\openone\otimes\bm{B}_B\!\cdot\!\bsig+\sum_{ik}C_{ik}\sigma_i\otimes\sigma_k)$ and decay through polarimeters with analysing powers $\kappa_A$, $\kappa_B$. The joint density of the recorded directions is
+\begin{equation}
+(4\pi)^2p(\bq_A,\bq_B)=1+\ba\!\cdot\!\bq_A+\bb\!\cdot\!\bq_B+\bq_A^{\T}c\,\bq_B ,
+\label{eq:pairdata}
+\end{equation}
+with $\ba=\kappa_A\bm{B}_A$, $\bb=\kappa_B\bm{B}_B$, $c=\kappa_A\kappa_BC$. The \emph{raw coefficients} $(\ba,\bb,c)$ are moments of the data, $a_i=3\langle q_{A,i}\rangle$, $b_k=3\langle q_{B,k}\rangle$, $c_{ik}=9\langle q_{A,i}q_{B,k}\rangle$, and require no knowledge of the analysing powers. Collect them in the matrix and the operator
+\begin{equation}
+\Rraw=\begin{pmatrix}1&\bb^{\T}\\ \ba&c\end{pmatrix},\qquad
+\rhoraw=\frac14\sum_{\mu,\nu=0}^{3}\Rraw_{\mu\nu}\,\sigma_\mu\otimes\sigma_\nu ,
+\label{eq:rhoraw}
+\end{equation}
+with $\sigma_0=\openone$; then $(4\pi)^2p=(1,\bq_A)\,\Rraw\,(1,\bq_B)^{\T}$, and $\rhoraw=(\mathcal{D}_{\kappa_A}\otimes\mathcal{D}_{\kappa_B})[\rho]$ with $\mathcal{D}_\kappa$ the map that multiplies the Bloch vector by $\kappa$. Let $\cK=\{(t,\bx)\in\mathbb{R}^4:|\bx|\le t\}$ be the Bloch cone; it is self-dual and corresponds to the positive $2\times2$ matrices under $(t,\bx)\mapsto\tfrac12(t\openone+\bx\!\cdot\!\bsig)$.
+
+The decay of $B$ acts as a remote preparation of $A$. A set of outcomes of $B$, or more generally a post-processing with weight $h(\bq_B)\ge0$, is an element $f=\int d\bq_B\,h(\bq_B)(1,\bq_B)/4\pi$ of $\cK$, and it prepares $A$ in the unnormalised state with data vector $\Rraw f$; the density of $\bq_A$ is $(1,\bq_A)\!\cdot\!\Rraw f/4\pi$. The fragment $\cF_{B\to A}$ has the states $\Rraw f$, $f\in\cK$, and the effects of $A$; $\cF_{A\to B}$ is defined with $\Rraw^{\T}$. For $f=(1,\bq_B)$ the normalised state is $\bv(\bq_B)=(\ba+c\,\bq_B)/(1+\bb\!\cdot\!\bq_B)$.
+
+\begin{theorem}
+\label{thm:pair}
+The following are equivalent, under either reading of operational equivalence.\\
+(a) $\cF_{B\to A}$ has a noncontextual model.\\
+(a$'$) $\cF_{A\to B}$ has a noncontextual model.\\
+(b) $\Rraw=\sum_\lambda z_\lambda h_\lambda^{\T}$ with finitely many $z_\lambda,h_\lambda\in\cK$; that is,
+\begin{equation}
+p(\bq_A,\bq_B)=\sum_\lambda\frac{(1,\bq_A)\!\cdot\!z_\lambda}{4\pi}\,\frac{(1,\bq_B)\!\cdot\!h_\lambda}{4\pi},
+\label{eq:localnc}
+\end{equation}
+a local hidden-variable model whose response functions are linear in the effects on both sides.\\
+(c) $\rhoraw\ge0$ and $\rhoraw^{T_A}\ge0$.
+\end{theorem}
+
+\begin{proof}
+(b)$\Leftrightarrow$(c): under $(t,\bx)\mapsto\tfrac12(t\openone+\bx\!\cdot\!\bsig)$ the decomposition in (b) becomes $\rhoraw=\sum_\lambda Z_\lambda\otimes H_\lambda$ with positive factors, i.e.\ $\rhoraw$ is separable, and for two qubits this is equivalent to (c) \cite{peres1996,horodecki1996ppt}.
+
+(a)$\Leftrightarrow$(b): in $\cF_{B\to A}$, $V$ is the range of $\Rraw$ and the effects $(1,\bq)$ separate its points. By Lemma~\ref{lem:simplex} a model exists if and only if there are $z_\lambda\in V$ with $\varepsilon\!\cdot\!z_\lambda\ge0$ for all $\varepsilon\in\cK$, i.e.\ $z_\lambda\in\cK$, and functionals $g_\lambda$ on $V$ with $g_\lambda(\Rraw f)\ge0$ for $f\in\cK$ and $\sum_\lambda z_\lambda g_\lambda(\Rraw f)=\Rraw f$. Setting $g_\lambda(\Rraw f)=h_\lambda\!\cdot\!f$ defines $h_\lambda$ in the range of $\Rraw^{\T}$, and the conditions become $h_\lambda\in\cK$ and $\Rraw=\sum_\lambda z_\lambda h_\lambda^{\T}$. Thus (a) is (b) with the additional requirement
+\begin{equation}
+z_\lambda\in\operatorname{range}\Rraw,\qquad h_\lambda\in\operatorname{range}\Rraw^{\T},
+\label{eq:rangecond}
+\end{equation}
+which is symmetric under transposition, so (a)$\Leftrightarrow$(a$'$). If $\Rraw$ is invertible \eqref{eq:rangecond} is empty. In general, Lemma~\ref{lem:range} of Appendix~\ref{app:range} provides, when $(1,\ba)$ and $(1,\bb)$ are interior points of $\cK$, projections $P_A$ onto $\operatorname{range}\Rraw$ and $P_B$ onto $\operatorname{range}\Rraw^{\T}$ that map $\cK$ into itself; then $\Rraw=P_A\Rraw P_B^{\T}=\sum_\lambda(P_Az_\lambda)(P_Bh_\lambda)^{\T}$ satisfies \eqref{eq:rangecond}. If $|\ba|=1$ or $|\bb|=1$, positivity of $\rhoraw$ forces a product operator, $\Rraw=(1,\ba)(1,\bb)^{\T}$, which satisfies \eqref{eq:rangecond} with one term. Under reading II only $h_\lambda\in\operatorname{range}\Rraw^{\T}$ is required, a condition between \eqref{eq:rangecond} and (b).
+\end{proof}
+
+\begin{corollary}[Unpolarised pairs]
+\label{cor:tstate}
+If $\ba=\bb=0$ the data are noncontextual if and only if $\|c\|_1\le1$, where $\|c\|_1$ is the sum of the singular values $s_k$ of $c$. With the singular value decomposition $c=\sum_ks_k\bu_k\bm{w}_k^{\T}$, a model with at most seven ontic states is
+\begin{equation}
+\begin{aligned}
+(4\pi)^2p={}&1-\sum_ks_k\\
+&+\sum_k\frac{s_k}{2}\sum_{\pm}(1\pm\bu_k\!\cdot\!\bq_A)(1\pm\bm{w}_k\!\cdot\!\bq_B).
+\end{aligned}
+\label{eq:svdmodel}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Local rotations bring $c$ to diagonal form; the eigenvalues of $\rhoraw$ and of $\rhoraw^{T_A}$ are then the eight numbers $\tfrac14(1\pm c_1\pm c_2\pm c_3)$, all nonnegative if and only if $\sum|c_k|\le1$ \cite{horodecki1996t}. Equation \eqref{eq:svdmodel} is the identity $1+xy=\tfrac12(1+x)(1+y)+\tfrac12(1-x)(1-y)$; its terms have the form \eqref{eq:localnc} and satisfy \eqref{eq:rangecond} for $c$ of any rank.
+\end{proof}
+
+\begin{corollary}[Opening angle]
+\label{cor:D}
+Let $D=-3\langle\bq_A\!\cdot\!\bq_B\rangle=-\tfrac13\tr c$. Noncontextual data satisfy $|D|\le1/3$.
+\end{corollary}
+
+\begin{proof}
+$\langle\Psi^-|\rhoraw|\Psi^-\rangle=\tfrac14(1-\tr c)$ and $\langle\Phi^+|\rhoraw^{T_B}|\Phi^+\rangle=\tfrac14(1+\tr c)$ must be nonnegative.
+\end{proof}
+
+\begin{corollary}[Weak polarimeters]
+\label{cor:weak}
+If $|\kappa_A|\le1/3$ or $|\kappa_B|\le1/3$ the data are noncontextual for every state $\rho$.
+\end{corollary}
+
+\begin{proof}
+By the proof of Theorem~\ref{thm:half}, $\operatorname{diag}(1,\kappa_A\openone_3)=\sum_\lambda(1,\bt_\lambda)(\tfrac14,\tfrac34\kappa_A\bt_\lambda)^{\T}$ with both factors in $\cK$. Since $\Rraw=\operatorname{diag}(1,\kappa_A\openone_3)\,R_\rho\operatorname{diag}(1,\kappa_B\openone_3)$, where $R_\rho$ is the coefficient matrix of $\rho$, and $R_\rho^{\T}$ and $\operatorname{diag}(1,\kappa_B\openone_3)$ map $\cK$ into $\cK$, (b) holds.
+\end{proof}
+
+\begin{corollary}[Relation to entanglement]
+\label{cor:ent}
+(i) If $\rho$ is separable the data are noncontextual for all analysing powers; contextual data therefore certify entanglement. (ii) If $|\kappa_A|=|\kappa_B|=1$ the data are contextual if and only if $\rho$ is entangled. (iii) If $|\kappa_A\kappa_B|<1$ there are entangled states with noncontextual data: for the Werner state of visibility $\mathcal{V}$ the data are contextual if and only if $\mathcal{V}|\kappa_A\kappa_B|>1/3$, whereas the state is entangled if and only if $\mathcal{V}>1/3$.
+\end{corollary}
+
+\begin{proof}
+(i) $R_\rho=\sum_\lambda s_\lambda r_\lambda^{\T}$ with $s_\lambda,r_\lambda\in\cK$ gives (b) for $\Rraw$, because $\operatorname{diag}(1,\kappa\openone_3)$ maps $\cK$ into $\cK$ for $|\kappa|\le1$. (ii) For $|\kappa|=1$ these maps are invertible on $\cK$. (iii) $c=-\mathcal{V}\kappa_A\kappa_B\openone_3$ and Corollary~\ref{cor:tstate}.
+\end{proof}
+
+Three further properties follow from (b) and (c). The criterion depends on $|\kappa_A|$ and $|\kappa_B|$ only: changing the sign of one analysing power is a partial transposition of $\rhoraw$ followed by a local unitary. The set of noncontextual coefficient matrices is convex: if data averaged over a kinematic region are contextual, the data of some subregion are. And the criterion is stricter than the entanglement criterion applied to the same data, which tests $(\mathcal{D}_{\kappa_A}^{-1}\otimes\mathcal{D}_{\kappa_B}^{-1})[\rhoraw]=\rho$ and so requires the analysing powers as input.

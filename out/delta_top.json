@@ -1,0 +1,580 @@
+{
+ "schema": "gen-check-delta/1",
+ "paper": {
+  "citation": "ATLAS Collaboration, Observation of quantum entanglement with top quarks at the ATLAS detector, Nature 633, 542–547 (2024)",
+  "year": 2024,
+  "doi": "10.1038/s41586-024-07824-z",
+  "arxiv": "2311.07288"
+ },
+ "phases": [
+  [
+   "predict",
+   "the vertex and the Born rule give the lepton distributions and the expected D"
+  ],
+  [
+   "observe",
+   "D is measured in the threshold window"
+  ],
+  [
+   "calibrate",
+   "the separability bound and the measurement are folded through simulation"
+  ],
+  [
+   "deficit",
+   "the observed D lies below the expected one"
+  ]
+ ],
+ "base": "Particle-physics branch (GEN_HEP v1.2) glued to the quantum-information branches",
+ "glued_existing_nodes": [
+  {
+   "id": "s_W",
+   "glue": "GEN_HEP v1.2:s_W"
+  },
+  {
+   "id": "s_lep",
+   "glue": "GEN_HEP v1.2:s_e, s_mu, s_nue, s_num"
+  },
+  {
+   "id": "s-sep",
+   "glue": "GEN_GPT_Level v2.6:s-sep; GEN_QRT_Level v1.2:sF-ent"
+  },
+  {
+   "id": "s-ent",
+   "glue": "GEN_GPT_Level v2.6:s-ent; GEN_QRT_Level v1.2:sR-ent"
+  },
+  {
+   "id": "d-singlet",
+   "glue": "GEN_QRT_Level v1.2:d-bell"
+  },
+  {
+   "id": "m_cc",
+   "glue": "GEN_HEP v1.2:m_cc"
+  },
+  {
+   "id": "m_A",
+   "glue": "GEN_HEP v1.2:m_A"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "s_t",
+   "layer": "S",
+   "sub": "sector",
+   "label": "Top quark t (Standard-Model graph, outside its released scope)",
+   "def": "Massive spin-½ sector; decays before hadronisation, so its spin is passed to the decay products.",
+   "status": "out-of-scope",
+   "glue": "GEN_HEP v1.2: third generation not in the released graph",
+   "refs": []
+  },
+  {
+   "id": "s_b",
+   "layer": "S",
+   "sub": "sector",
+   "label": "Bottom quark b (Standard-Model graph, outside its released scope)",
+   "def": "Massive spin-½ sector; enters only through the charged current t̄_L γ^μ b_L.",
+   "status": "out-of-scope",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "s-ttspin",
+   "layer": "S",
+   "sub": "hilbert",
+   "label": "Spin state ρ(k) of the t t̄ pair (two-qubit state)",
+   "def": "ρ = ¼[1 + Σ B+_i σ_i⊗1 + Σ B−_i 1⊗σ_i + Σ C_ij σ_i⊗σ_j] at fixed production kinematics k.",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "s-ttavg",
+   "layer": "S",
+   "sub": "cluster",
+   "label": "Phase-space ensemble of t t̄ spin states (mass window)",
+   "def": "{ρ(k), dμ(k)} for 340 < m_tt̄ < 380 GeV, spins referred to event-dependent axes common to t and t̄.",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "m-qcd",
+   "layer": "M",
+   "sub": "fund",
+   "label": "QCD production of t t̄ (strong sector, outside the released scope)",
+   "def": "gg, q q̄ → t t̄; near threshold the gg channel produces a spin-singlet pair.",
+   "status": "out-of-scope",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "m-mc",
+   "layer": "M",
+   "sub": "frame",
+   "label": "Monte Carlo model used for folding and calibration",
+   "def": "Event generators, parton shower and detector simulation relating parton-level to particle-level quantities.",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "o-lepdir",
+   "layer": "O",
+   "sub": "direct",
+   "label": "Charged-lepton direction in the parent rest frame",
+   "def": "dΓ/dΩ for t → b ℓ+ ν and t̄ → b̄ ℓ− ν̄ with polarised parent.",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "o-joint",
+   "layer": "O",
+   "sub": "direct",
+   "label": "Joint lepton distribution (1/σ) dσ/dΩ+ dΩ−",
+   "def": "Density of the two charged-lepton directions q̂+, q̂−, each in its parent's rest frame.",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "o-cosphi",
+   "layer": "O",
+   "sub": "direct",
+   "label": "cos φ distribution",
+   "def": "φ = angle between q̂+ and q̂−; (1/σ) dσ/dcos φ.",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "w-D",
+   "layer": "O",
+   "sub": "witness",
+   "label": "Entanglement marker D (entanglement witness)",
+   "def": "D = tr C/3 = −3<cos φ>; threshold: separable states have D ≥ −1/3.",
+   "status": "new",
+   "glue": "GEN_GPT_Level v2.6:w-entw; GEN_QRT_Level v1.2:wD-ent",
+   "refs": []
+  },
+  {
+   "id": "e-ttent",
+   "layer": "O",
+   "sub": "effect",
+   "label": "Spin entanglement of top-quark pairs",
+   "def": "The spin state of the pair is not separable (on a set of kinematic points of positive weight).",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "o-limit",
+   "layer": "O",
+   "sub": "direct",
+   "label": "Folded separability bound at particle level",
+   "def": "Image of D = −1/3 in the fiducial particle-level phase space: −0.322 ± 0.009 (Powheg+Pythia), −0.27 (Powheg+Herwig).",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  },
+  {
+   "id": "o-Dobs",
+   "layer": "O",
+   "sub": "direct",
+   "label": "Measured D at particle level",
+   "def": "D = −0.537 ± 0.002 (stat.) ± 0.019 (syst.) for 340 < m_tt̄ < 380 GeV; expected −0.470 ± 0.002 ± 0.017.",
+   "status": "new",
+   "glue": null,
+   "refs": []
+  }
+ ],
+ "edges": [
+  {
+   "id": "TQ1",
+   "inputs": [
+    "m_A"
+   ],
+   "target": "s-ttspin",
+   "kind": "defines",
+   "statement": "Every two-qubit state is fixed by the 15 Pauli expectation values B+, B−, C.",
+   "where": "Main, first displayed equation (spin density matrix)",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "exact: the 15 real coefficients (B+, B−, C) are the Pauli expectation values and determine ρ",
+   "uses": [],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "TQ2",
+   "inputs": [
+    "m_cc",
+    "s_t",
+    "s_b",
+    "s_W",
+    "s_lep"
+   ],
+   "target": "o-lepdir",
+   "kind": "predicts",
+   "statement": "For t(p_t, s) → b ℓ+ ν through the V−A current: Σ|M|² ∝ (p_b·p_ν)((p_t − m s)·p_ℓ), so dΓ/dΩ ∝ 1 + ŝ·q̂+ in the top rest frame.",
+   "where": "Main, decay paragraph: the leptons carry the spin information; no derivation and no reference in the paper",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general (tree level, massless lepton and neutrino; no on-shell condition is used)",
+   "check": "exact polynomial identity in all 20 momentum and spin components, m and m_b: Σ|M|² = 8·(p_b·p_ν)·((p_t − m s)·p_ℓ), independent of m_b; in the top rest frame (p_t − m s)·p_ℓ = m E_ℓ (1 + ŝ·q̂): analysing power κ = +1",
+   "uses": [],
+   "refs": [],
+   "note": "Library facts used and not regenerated: the Feynman rules that turn the vertex into a tree amplitude, and the spin sums Σ u ū = p̸ + m, Σ v v̄ = p̸ − m. The W propagator is a spin-independent factor and is left out. Radiative corrections are not included."
+  },
+  {
+   "id": "TQ3",
+   "inputs": [
+    "m_cc",
+    "s_t",
+    "s_b",
+    "s_W",
+    "s_lep"
+   ],
+   "target": "o-lepdir",
+   "kind": "predicts",
+   "statement": "For t̄ → b̄ ℓ− ν̄: Σ|M|² ∝ (p_b̄·p_ν̄)((p_t̄ + m s)·p_ℓ), so dΓ/dΩ ∝ 1 − ŝ·q̂−.",
+   "where": "same",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general (tree level, massless lepton and neutrino)",
+   "check": "exact polynomial identity: Σ|M|² = 8·(p_b̄·p_ν̄)·((p_t̄ + m s)·p_ℓ); in the antitop rest frame (p_t̄ + m s)·p_ℓ = m E_ℓ (1 − ŝ·q̂): analysing power κ = −1",
+   "uses": [],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "TQ4",
+   "inputs": [
+    "o-lepdir",
+    "m_A"
+   ],
+   "target": "o-joint",
+   "kind": "defines",
+   "statement": "The decays act on the spins as measurements with effects (1 + q̂+·σ)/4π and (1 − q̂−·σ)/4π.",
+   "where": "not stated in the paper; step of the regeneration of the lepton distribution",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "exact: the unique Hermitian operators with expectation (1 ± ŝ·q̂)/4π on every pure spin state are (1 ± q̂·σ)/4π; they integrate to the identity over the sphere",
+   "uses": [
+    "TQ2",
+    "TQ3"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "TQ5",
+   "inputs": [
+    "s-ttspin",
+    "m_cc",
+    "m_A"
+   ],
+   "target": "o-joint",
+   "kind": "predicts",
+   "statement": "(1/σ) dσ/dΩ+dΩ− = [1 + B+·q̂+ − B−·q̂− − q̂+·C·q̂−]/(4π)².",
+   "where": "Main, second displayed equation; cited to Ref. [27]",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "exact: tr[ρ (1 + q̂+·σ)⊗(1 − q̂−·σ)] = 1 + B+·q̂+ − B−·q̂− − q̂+·C·q̂− (divide by (4π)² for the density)",
+   "uses": [
+    "TQ1",
+    "TQ4"
+   ],
+   "refs": [],
+   "note": "Uses that the two decays act on different tensor factors, so their effects multiply."
+  },
+  {
+   "id": "TQ6",
+   "inputs": [
+    "o-joint"
+   ],
+   "target": "o-cosphi",
+   "kind": "predicts",
+   "statement": "(1/σ) dσ/dcos φ = ½(1 − D cos φ) with D = tr C/3, and <cos φ> = −D/3.",
+   "where": "Main: D = −3<cos φ>; Methods A.3: linear form; not derived in the paper",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "exact integration: the density of cos φ is (1 − D cos φ)/2 with D = tr C/3 (B+ and B− drop out), it is normalised, and <cos φ> = −D/3",
+   "uses": [
+    "TQ5"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "TQ6b",
+   "inputs": [
+    "o-cosphi"
+   ],
+   "target": "w-D",
+   "kind": "defines",
+   "statement": "D = −3<cos φ>.",
+   "where": "Main, third displayed equation",
+   "grade": "definition",
+   "status": "definition",
+   "scope": "general",
+   "check": "",
+   "uses": [
+    "TQ6"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "TQ7",
+   "inputs": [
+    "s-sep"
+   ],
+   "target": "w-D",
+   "kind": "bounds",
+   "statement": "Separable states satisfy tr C ≥ −1, i.e. D ≥ −1/3.",
+   "where": "Main: tr[C] + 1 < 0 as sufficient condition, Ref. [18]",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general (finite mixtures; limits of mixtures by continuity of the linear functional)",
+   "check": "exact: for Bloch vectors with |a|, |b| ≤ 1 the identity writes 2(1 + a·b) as a sum of non-negative terms, so tr C = a·b ≥ −1 on product states; tr C is linear in ρ, so the bound holds on the convex hull (separable states). Hence D ≥ −1/3",
+   "uses": [],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "TQ8",
+   "inputs": [
+    "s-sep"
+   ],
+   "target": "w-D",
+   "kind": "bounds",
+   "statement": "tr C + 1 < 0 iff <Φ+|ρ^{T_B}|Φ+> < 0, which contradicts positivity of the partial transpose.",
+   "where": "Main: the criterion is attributed to Peres and Horodecki, Refs. [35, 36]",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "exact: tr C + 1 < 0 is the statement <Φ+|ρ^{T_B}|Φ+> < 0, so ρ^{T_B} is not positive and ρ is not separable (partial transposes of separable states are states). Equivalent form: D < −1/3 iff the singlet fraction exceeds 1/2",
+   "uses": [],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "TQ9",
+   "inputs": [
+    "s-ttavg"
+   ],
+   "target": "w-D",
+   "kind": "bounds",
+   "statement": "The bound holds for the phase-space average with event-dependent common spin axes, and a violation implies entanglement of ρ(k) on a set of positive weight.",
+   "where": "Main, threshold paragraph: statement on averaging over the top-quark directions, Ref. [18]; no proof in the paper",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general (two-component mixtures; finite mixtures by induction)",
+   "check": "exact + SMT: tr C = 2 tr[ρ SWAP] − 1 is unchanged when both spins are referred to rotated common axes, and an average below −1 forces a component below −1",
+   "uses": [
+    "TQ7"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "TQ10",
+   "inputs": [
+    "d-singlet"
+   ],
+   "target": "w-D",
+   "kind": "predicts",
+   "statement": "−1 ≤ D ≤ 1/3 for every state; D = −1 for the spin singlet.",
+   "where": "not stated in the paper",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "exact: −3 ≤ tr C ≤ 1, i.e. −1 ≤ D ≤ 1/3 for every state; the value D = −1 is attained only by the singlet (the eigenvalue −3 is non-degenerate)",
+   "uses": [],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "TQ11",
+   "inputs": [
+    "w-D",
+    "s-ttspin"
+   ],
+   "target": "e-ttent",
+   "kind": "witness",
+   "statement": "D < −1/3 implies that the state is entangled.",
+   "where": "Main: criterion D < −1/3, Refs. [35, 36]",
+   "grade": "logic",
+   "status": "checked",
+   "scope": "general",
+   "check": "SMT: contraposition",
+   "uses": [
+    "TQ7",
+    "TQ8"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "TQ12",
+   "inputs": [
+    "m-qcd"
+   ],
+   "target": "s-ttspin",
+   "kind": "predicts",
+   "statement": "Near threshold about 80% of t t̄ production comes from a spin-singlet state.",
+   "where": "Main, threshold paragraph; Refs. [28–30]",
+   "grade": "import",
+   "status": "imported",
+   "scope": "general",
+   "check": "",
+   "uses": [],
+   "refs": [],
+   "note": "Strong-sector dynamics; outside the released graph and not re-derived."
+  },
+  {
+   "id": "TQ13",
+   "inputs": [
+    "m-mc",
+    "w-D"
+   ],
+   "target": "o-limit",
+   "kind": "calibrates",
+   "statement": "The parton-level bound D = −1/3 corresponds to −0.322 ± 0.009 (Powheg+Pythia) or −0.27 (Powheg+Herwig) at particle level.",
+   "where": "1.2 Analysis procedure (second calibration curve); values in 1.3 Results",
+   "grade": "import",
+   "status": "imported",
+   "scope": "general",
+   "check": "",
+   "uses": [],
+   "refs": [],
+   "note": "Obtained by reweighting simulated events; depends on the shower model (the two generators differ)."
+  },
+  {
+   "id": "TQ14",
+   "inputs": [
+    "m-mc"
+   ],
+   "target": "o-Dobs",
+   "kind": "calibrates",
+   "statement": "D = −0.537 ± 0.002 ± 0.019 observed; −0.470 ± 0.002 ± 0.017 expected.",
+   "where": "abstract (observed value); 1.3 Results",
+   "grade": "import",
+   "status": "imported",
+   "scope": "general",
+   "check": "",
+   "uses": [],
+   "refs": [],
+   "note": "Data, detector calibration and systematic uncertainties; not checkable here."
+  },
+  {
+   "id": "TQ15",
+   "inputs": [
+    "o-Dobs",
+    "o-limit",
+    "w-D"
+   ],
+   "target": "e-ttent",
+   "kind": "witness",
+   "statement": "The observed D lies more than five standard deviations below the folded separability bound.",
+   "where": "abstract; 1.4 Discussion",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general",
+   "check": "exact arithmetic on the quoted numbers: distance to the folded bound −0.322 is 0.215 = 10.2σ (uncertainties added in quadrature, bound uncertainty 0.009 included); to the alternative bound −0.27 it is 0.267 = 14.0σ; the separation stays above 5σ unless the total uncertainty exceeds 0.043",
+   "uses": [
+    "TQ13",
+    "TQ14"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "TQ16",
+   "inputs": [
+    "o-Dobs",
+    "m-mc"
+   ],
+   "target": "o-Dobs",
+   "kind": "flags",
+   "statement": "Observed − expected = −0.067 in the signal region.",
+   "where": "1.3 Results gives both values; the difference is not stated in the paper",
+   "grade": "exact",
+   "status": "checked",
+   "scope": "general (arithmetic only; not a statistical statement of the paper)",
+   "check": "exact arithmetic: observed − expected = -0.067; this is 2.6σ if the two uncertainties are treated as independent (their correlation is not given in the text used)",
+   "uses": [
+    "TQ14"
+   ],
+   "refs": [],
+   "note": ""
+  },
+  {
+   "id": "TQ17",
+   "inputs": [
+    "m_cc",
+    "m_A",
+    "w-D"
+   ],
+   "target": "e-ttent",
+   "kind": "scope",
+   "statement": "The witness presupposes the quantum description of the decay (TQ2–TQ4); it is not a Bell test.",
+   "where": "the paper does not describe the measurement as a Bell test",
+   "grade": "definition",
+   "status": "definition",
+   "scope": "general",
+   "check": "",
+   "uses": [],
+   "refs": [],
+   "note": ""
+  }
+ ],
+ "operations": [
+  {
+   "op": "EXTEND",
+   "node": "m_cc",
+   "note": "J_CC gains the term t̄_L γ^μ b_L; by Rule 4 (route composition) this is one more route t(1) ∧ b(1) ∧ W(1) into the same vertex"
+  },
+  {
+   "op": "ADD",
+   "node": "s_t, s_b",
+   "layer": "S.sector",
+   "why": "Rule 8 (sector refinement); the released graph omits the third generation and the strong sector"
+  },
+  {
+   "op": "PREDICT",
+   "edge": "m_cc ∧ m_A → o-lepdir, o-joint, o-cosphi",
+   "why": "model → observable edges of status 'pred'; TQ2–TQ6 regenerate them from the vertex"
+  },
+  {
+   "op": "GLUE",
+   "node": "w-D",
+   "with": "w-entw (GEN_GPT_Level), wD-ent (GEN_QRT_Level)",
+   "why": "D is an entanglement witness in the sense of those nodes: linear in ρ, bounded on the separable set (TQ7)"
+  },
+  {
+   "op": "GLUE",
+   "node": "e-ttent",
+   "with": "s-ent / sR-ent",
+   "why": "first shared concept between the particle-physics branch and the two quantum-information branches that is an observable on one side and a state property on the other"
+  },
+  {
+   "op": "CALIBRATE",
+   "edge": "m-mc → o-limit, o-Dobs",
+   "why": "Rule 9: these edges carry the fitted and simulated inputs; the conclusion depends on them and they are imports for the kernel"
+  },
+  {
+   "op": "FLAG",
+   "node": "o-Dobs",
+   "note": "observed more negative than expected (TQ16); the paper states that bound-state effects near threshold are not in the generators. A pseudoscalar excess at the t t̄ threshold was later reported by CMS (Rep. Prog. Phys. 88, 087801 (2025))"
+  },
+  {
+   "op": "FIBRE",
+   "note": "over the fixed model node (m_cc ∧ m_A) the observables o-cosphi in bins of m_tt̄ form one effect with one witness: an instance of the contraction lemma of the grand network (effect networks are fibres of the historical graph over a model node)"
+  }
+ ]
+}

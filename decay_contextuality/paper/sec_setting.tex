@@ -1,0 +1,112 @@
+\section{Decays as measurements, and their classical models}
+\label{sec:setting}
+
+\subsection{The decay polarimeter}
+\label{sec:polarimeter}
+
+Let $\rho$ be the spin density operator of a particle of spin $j$ in its rest frame, on $\mathbb{C}^d$ with $d=2j+1$. Fix a decay channel and a final-state momentum whose direction $\bq$ (a unit vector in the rest frame of the parent) is recorded. By the Born rule the probability density of $\bq$ is
+\begin{equation}
+p(\bq)=\Tr[\rho\,E(\bq)],\qquad E(\bq)\ge0,\qquad \int\! d\bq\,E(\bq)=\openone ,
+\label{eq:born}
+\end{equation}
+with $d\bq$ the area element of the unit sphere. If the decay interaction is rotation invariant and nothing else is recorded, $E(R\bq)=U_RE(\bq)U_R^\dagger$ for every rotation $R$, so that
+\begin{equation}
+E_w(\bq)=\frac{d}{4\pi}\,U_{\bq}D_wU_{\bq}^\dagger,\qquad D_w=\sum_{m=-j}^{j}w_m\,|j,m\rangle\langle j,m| ,
+\label{eq:povm}
+\end{equation}
+where $U_{\bq}$ is any rotation taking the $z$ axis to $\bq$, $w_m\ge0$ and $\sum_mw_m=1$. The weight $w_m$ is the probability that the recorded direction carries projection $m$ of the parent spin; for a two-body decay with helicity amplitudes $A_{\lambda_1\lambda_2}$ \cite{jacob1959}, $w_m=\sum_{\lambda_1-\lambda_2=m}|A_{\lambda_1\lambda_2}|^2/\sum|A_{\lambda_1\lambda_2}|^2$ with $\bq$ the direction of particle~1. We call $w$ the \emph{kernel} and the POVM \eqref{eq:povm} the \emph{decay polarimeter}. If rotation-invariant variables $x$ are recorded in addition (energies, invariant masses), there is one kernel $w(x)$ for each value, and the direction-only kernel is their average.
+
+Decompose operators on $\mathbb{C}^d$ into irreducible tensor components of rank $l=0,\dots,2j$ and let $\Pi_l$ be the projector onto rank $l$. The coherent projector $|j,j\rangle\langle j,j|$ has a nonzero diagonal component of every rank. The \emph{multipole ratios} of a kernel are the numbers $\eta_l(w)$ defined by $\Pi_l[D_w]=\eta_l(w)\,\Pi_l[\,|j,j\rangle\langle j,j|\,]$; $\eta_0=1$. With $\Lambda_\eta=\sum_l\eta_l\Pi_l$ and the coherent states $|\bq\rangle=U_{\bq}|j,j\rangle$,
+\begin{equation}
+\begin{aligned}
+E_w(\bq)&=\Lambda_\eta\Big[\frac{d}{4\pi}|\bq\rangle\langle\bq|\Big],\\
+\Tr[XE_w(\bq)]&=\frac{d}{4\pi}\,\langle\bq|\Lambda_\eta X|\bq\rangle .
+\end{aligned}
+\label{eq:lambda}
+\end{equation}
+The function $Q_X(\bq)=\langle\bq|X|\bq\rangle$ is the Husimi function of $X$ \cite{radcliffe1971}; it is a polynomial of degree at most $2j$ in the components of $\bq$. The first ratio is the \emph{vector analysing power}
+\begin{equation}
+\kappa_1\equiv\eta_1=\frac1j\sum_mm\,w_m,\qquad \int\! d\bq\;\bq\,E_w(\bq)=\frac{\kappa_1}{j+1}\,\bJ ,
+\label{eq:firstmoment}
+\end{equation}
+so that $p(\bq)=\frac{1}{4\pi}\big[1+\frac{3j}{j+1}\kappa_1\,\bP\!\cdot\!\bq+\dots\big]$ with $\bP=\langle\bJ\rangle/j$ and the dots standing for harmonics of degree $2,\dots,2j$.
+
+\emph{Spin $1/2$.} $D_w=\tfrac12(\openone+\kappa\sigma_z)$ with $\kappa=w_+-w_-$, and
+\begin{equation}
+E(\bq)=\frac{1}{4\pi}\,(\openone+\kappa\,\bq\!\cdot\!\bsig),\qquad p(\bq)=\frac{1}{4\pi}\,(1+\kappa\,\bP\!\cdot\!\bq).
+\label{eq:half}
+\end{equation}
+This is the standard definition of the spin analysing power (the decay parameter $\alpha$ of hyperons \cite{leeyang1957}).
+
+\emph{Spin $1$.} With $\eta_1=w_+-w_-$ and $\eta_2=1-3w_0$,
+\begin{equation}
+U_{\bq}D_wU_{\bq}^\dagger=\frac13+\frac{\eta_1}{2}\,\bq\!\cdot\!\bS+\frac{\eta_2}{6}\big[3(\bq\!\cdot\!\bS)^2-2\big].
+\label{eq:spin1kernel}
+\end{equation}
+A unit-trace Hermitian operator $X$ is specified by $\bp=\Tr[X\bS]$ and the symmetric traceless matrix $A_{ik}=\Tr[X(\tfrac12\{S_i,S_k\}-\tfrac23\delta_{ik})]$, and
+\begin{equation}
+\Tr[X\,U_{\bq}D_wU_{\bq}^\dagger]=\frac13+\frac{\eta_1}{2}\,\bp\!\cdot\!\bq+\frac{\eta_2}{2}\,\bq^{\T}A\,\bq .
+\label{eq:symbol}
+\end{equation}
+
+\subsection{Kernels from the charged-current vertex}
+\label{sec:va}
+
+Consider the amplitude
+\begin{equation}
+\mathcal{M}=[\bar u(p_2)\gamma^\mu P_Lu(p_1,s)]\,[\bar u(p_3)\gamma_\mu P_Lv(p_4)],
+\label{eq:amp}
+\end{equation}
+with $P_L=\tfrac12(1-\gamma^5)$, massless fermions 2, 3, 4, and a parent of mass $m$ with spin four-vector $s$. Summed over the spins of the decay products,
+\begin{equation}
+\sum|\mathcal{M}|^2=8\,[(p_1-ms)\!\cdot\!p_4]\,(p_2\!\cdot\!p_3).
+\label{eq:trace}
+\end{equation}
+In the rest frame of the parent $(p_1-ms)\!\cdot\!p_4=mE_4\,(1+\hat{\bm s}\!\cdot\!\bq_4)$. Hence, at every value of the other kinematic variables and for any propagator depending on invariants only, the direction of the antifermion of the second current is recorded by the rank-one effect $(\openone+\bq\!\cdot\!\bsig)/4\pi$: $\kappa=1$. This is the charged lepton or the down-type quark of a top-quark decay. For the fermion of the second current (the electron of $\mu^-\to e^-\bar\nu_e\nu_\mu$) the contact interaction gives, with $x=2E_3/m$,
+\begin{equation}
+\frac{d\Gamma}{dx\,d\bq}\propto x^2\big[(3-2x)-(2x-1)\,\hat{\bm s}\!\cdot\!\bq\big],
+\label{eq:michel}
+\end{equation}
+the $V\!-\!A$ spectrum with its decay asymmetry \cite{michel1950,kinoshita1957}. Integrated over the energy, $\kappa=-\tfrac13$; with a threshold $x>x_0$,
+\begin{equation}
+|\kappa|(x_0)=\frac{1+x_0+x_0^2+3x_0^3}{3\,(1+x_0+x_0^2-x_0^3)} ,
+\label{eq:kappacut}
+\end{equation}
+which increases from $1/3$ at $x_0=0$ to $1$ at $x_0=1$; if the energy is recorded, the effects at the end point $x=1$ are rank one. For $t\to bW^+\to b\,\ell^+\nu$ with a narrow $W$ and $m_b=0$, with $\xi=m_t^2/m_W^2$,
+\begin{align}
+\kappa_b&=-\frac{\xi-2}{\xi+2},\label{eq:kappab}\\
+\kappa_\nu&=\frac{(\xi-1)(\xi^2-11\xi-2)+12\,\xi\ln\xi}{(\xi+2)(\xi-1)^2},\label{eq:kappanu}
+\end{align}
+for the direction of the $b$ quark and of the neutrino (or up-type quark). Equations \eqref{eq:trace}--\eqref{eq:kappab} are checked symbolically and Eq.~\eqref{eq:kappanu} by quadrature of Eq.~\eqref{eq:trace} (routes DV1--DV5 of Appendix~\ref{app:catalogue}); at the masses used in Ref.~\cite{brandenburg2002} they give $\kappa_b=-\kappabBSU$ and $\kappa_\nu=-\kappanuBSU$, which agree with the leading-order values tabulated there to within the effects of the $b$-quark mass and the $W$ width included in that reference (below $2\%$). For antiparticles all $\kappa$ change sign.
+
+\subsection{Fragments and noncontextual models}
+\label{sec:models}
+
+\begin{definition}
+A \emph{fragment} $\cF=(\Omega,\cE)$ is a convex set $\Omega$ of states, the preparations that occur, together with a set $\cE$ of effects that contains the unit effect $u$ and is closed under coarse-graining, complementation and mixing. An \emph{ontological model} of $\cF$ is a finite set $\Lambda$, a probability distribution $\mu(\lambda|\omega)$ for each $\omega\in\Omega$ and a response function $r(e|\lambda)\in[0,1]$ for each $e\in\cE$, additive under coarse-graining, with $\sum_\lambda r(e|\lambda)\mu(\lambda|\omega)=e(\omega)$. The model is \emph{noncontextual} if operationally equivalent states have the same $\mu$ and operationally equivalent effects the same $r$ \cite{spekkens2005}.
+\end{definition}
+
+Two readings of ``operationally equivalent'' occur. (I) \emph{Fragment-relative}: two states are equivalent if no effect of $\cE$ separates them, two effects if they agree on $\Omega$. (II) \emph{Quantum-relative}: two procedures are equivalent if they are represented by the same operator. Reading II imposes fewer constraints. The readings coincide when states and effects each span the full operator space. Unless stated otherwise we use reading I, which refers to the data only; the cases in which the readings differ are identified explicitly.
+
+\begin{lemma}[Simplex embedding \cite{schmid2021,gitton2022,selby2024lp}]
+\label{lem:simplex}
+Let $V$ be the real span of $\Omega$ and suppose that the effects, restricted to $V$, separate the points of $V$. Then $\cF$ has a noncontextual model if and only if there are finitely many $Z_\lambda\in V$ and linear functionals $g_\lambda$ on $V$ with
+\begin{equation}
+\begin{gathered}
+g_\lambda(\omega)\ge0\ \ \forall\omega\in\Omega,\qquad e(Z_\lambda)\ge0\ \ \forall e\in\cE,\\
+\sum_\lambda Z_\lambda\,g_\lambda(\cdot)=\mathrm{id}_V .
+\end{gathered}
+\label{eq:simplex}
+\end{equation}
+\end{lemma}
+
+The model is $\mu(\lambda|\omega)=u(Z_\lambda)g_\lambda(\omega)$ and $r(e|\lambda)=e(Z_\lambda)/u(Z_\lambda)$; the proof is recalled in Appendix~\ref{app:lemma1}. For a quantum fragment containing all states of $\mathbb{C}^d$, $g_\lambda=\Tr[G_\lambda\,\cdot\,]$ with $G_\lambda\ge0$, and the $Z_\lambda$ are Hermitian operators that need not be positive: only $\Tr[Z_\lambda e]\ge0$ on the available effects is required.
+
+\begin{remark}[The recorded-outcome model]
+\label{rem:lhv}
+For any distribution $p(\bq_A,\bq_B)$ take $\lambda=(\bq_A,\bq_B)$, $\mu=p$, and indicator response functions $r(\bq_\alpha\in S|\lambda)=1_S(\lambda_\alpha)$. This is a local deterministic hidden-variable model \cite{abel1992,abel2025,fucci2026}. Hence single-setting data violate no Bell inequality \cite{brunner2014}, and a single-measurement assemblage is unsteerable \cite{wiseman2007}. In the one-particle version, $\mu(\bq|\rho)=\Tr[\rho E(\bq)]$ is linear in $\rho$, so the model is preparation noncontextual; it is not measurement noncontextual. For spin $1/2$ the function $f(\bq)=3q_z^2-1$ has $\int d\bq\,f(\bq)E(\bq)=0$; the post-processings of the outcome with weights $f_+/2$ and $f_-/2$ (the positive and negative parts of $f$) are therefore the same effect, while their response functions $f_\pm(\lambda)/2$ differ. Noncontextuality removes exactly this freedom: by Lemma~\ref{lem:simplex} a response function must be a linear functional of the effect, so that for a spin-$j$ parent it is a polynomial of degree at most $2j$ in $\bq$.
+\end{remark}
+
+\begin{definition}
+A decay polarimeter with kernel $w$ is \emph{classical} if the fragment consisting of all spin states and the effects generated by $E_w(\bq)$ has a noncontextual model, and \emph{nonclassical} otherwise.
+\end{definition}

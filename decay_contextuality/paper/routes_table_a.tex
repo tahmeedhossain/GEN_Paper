@@ -1,0 +1,38 @@
+\begin{ruledtabular}
+\begin{tabular}{lllllll}
+Route & Inputs & Target & Layers & Relation & Grade / status & Certificate \\
+\hline
+DV1 & \texttt{m\_cc}, \texttt{u\_mh} & \texttt{p-half} & MS$\to$M & derives & exact / checked & \texttt{va\_trace} \\
+DV2 & \texttt{p-half}, \texttt{s-spin} & \texttt{o-ang1} & MS$\to$O & derives & exact / checked & \texttt{rank\_one\_effect} \\
+DV3 & \texttt{m\_mu}, \texttt{u\_mh} & \texttt{p-half} & MS$\to$M & derives & exact / checked & \texttt{leptonic\_spectrum} \\
+DV4 & \texttt{m\_cc}, \texttt{u\_mh} & \texttt{p-half} & MS$\to$M & derives & exact / checked & \texttt{top\_b\_power} \\
+DV5 & \texttt{m\_cc}, \texttt{u\_mh} & \texttt{p-half} & MS$\to$M & derives & numeric / checked & \texttt{top\_powers} \\
+DV6 & \texttt{m\_A}, \texttt{u\_mh} & \texttt{p-decay} & MS$\to$M & derives & written / proof in text & -- \\
+DV7 & \texttt{m\_A}, \texttt{u\_m1} & \texttt{p-one} & MS$\to$M & derives & exact / checked & \texttt{spin1\_algebra} \\
+DV8 & \texttt{p-decay}, \texttt{s-spin} & \texttt{o-ang1} & MS$\to$O & derives & numeric / checked & \texttt{general\_j} \\
+DV9 & \texttt{p-half}, \texttt{s-ent} & \texttt{o-ang2} & MS$\to$O & derives & exact / checked & \texttt{raw\_operator} \\
+DV10 & \texttt{o-ang2} & \texttt{o-D} & O$\to$O & derives & definition & -- \\
+DV11 & \texttt{p-half}, \texttt{s-ent} & \texttt{s-steer} & MS$\to$S & defines & definition & -- \\
+DV12 & \texttt{m\_va}, \texttt{m\_mu} & \texttt{o\_wu} & M$\to$O & derives & written / proof in text & -- \\
+FW1 & \texttt{ax-tomo}, \texttt{m-classical} & \texttt{m-ncom} & M$\to$M & defines & import / cited & -- \\
+FW2 & \texttt{o-ang2} & \texttt{m-lhv1} & O$\to$M & implies & exact / checked & \texttt{single\_setting\_lhv} \\
+FW3 & \texttt{m-lhv1} & \texttt{e-bell} & M$\to$O & forbids & logic / checked & \texttt{single\_setting\_lhv} \\
+FW4 & \texttt{m-lhv1} & \texttt{e-steer} & M$\to$O & forbids & logic / checked & \texttt{single\_setting\_lhv} \\
+FW5 & \texttt{m-lhv1}, \texttt{p-half} & \texttt{m-ncom} & M$\to$M & not implies & exact / checked & \texttt{single\_setting\_lhv} \\
+FW6 & \texttt{p-decay}, \texttt{s-spin} & \texttt{m-ncom} & MS$\to$M & equiv & written / proof in text & -- \\
+FW7 & \texttt{p-decay} & \texttt{w-ncineq} & M$\to$O & witness & definition & -- \\
+H1 & \texttt{p-half}, \texttt{s-spin} & \texttt{m-ncom} & MS$\to$M & implies & exact / checked & \texttt{spin\_half\_model} \\
+H13 & \texttt{p-half}, \texttt{s-spin} & \texttt{m-ncom} & MS$\to$M & equiv & exact / checked & \texttt{ellipsoid} \\
+H2 & \texttt{p-half}, \texttt{s-spin}, \texttt{w-ncineq} & \texttt{e-ctx} & MOS$\to$O & implies & logic / checked & \texttt{spin\_half\_necessity} \\
+H3 & \texttt{m-ncom}, \texttt{o-ang2} & \texttt{w-rawppt} & MO$\to$O & implies & written / proof in text & -- \\
+H4 & \texttt{w-rawppt}, \texttt{ax-tomo} & \texttt{m-ncom} & MO$\to$M & implies & written / proof in text & -- \\
+H12 & \texttt{w-rawppt}, \texttt{ax-tomo} & \texttt{m-ncom} & MO$\to$M & implies & numeric / checked & \texttt{range\_projection} \\
+H5 & \texttt{s-tstate}, \texttt{w-rawppt} & \texttt{e-ctx} & OS$\to$O & equiv & exact / checked & \texttt{tstate} \\
+H6 & \texttt{o-D}, \texttt{w-rawppt} & \texttt{e-ctx} & O$\to$O & implies & exact / checked & \texttt{trace\_witness} \\
+H7 & \texttt{p-half}, \texttt{s-ent} & \texttt{m-ncom} & MS$\to$M & implies & exact / checked & \texttt{eb\_threshold} \\
+H8 & \texttt{e-ctx}, \texttt{o-ang2} & \texttt{s-ent} & O$\to$S & implies & written / proof in text & -- \\
+H9 & \texttt{w-rawppt}, \texttt{w-entw} & \texttt{e-ctx} & O$\to$O & witness & written / proof in text & -- \\
+H10 & \texttt{s-steer}, \texttt{w-ncineq} & \texttt{e-ctx} & OS$\to$O & witness & numeric / checked & \texttt{two\_qubit\_sandwich} \\
+V1 & \texttt{p-one} & \texttt{w-region1} & M$\to$O & derives & written / proof in text & -- \\
+\end{tabular}
+\end{ruledtabular}

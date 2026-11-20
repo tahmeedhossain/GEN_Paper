@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+decay_contextuality/paper/*.aux
+decay_contextuality/paper/*.log
+decay_contextuality/paper/*.out
+decay_contextuality/paper/*.blg
+decay_contextuality/paper/mainNotes.bib

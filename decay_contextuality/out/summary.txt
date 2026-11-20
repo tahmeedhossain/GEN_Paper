@@ -1,0 +1,7 @@
+63 routes: 38 checked (21 exact, 3 logic, 13 numeric, 1 import with a consistency check), 0 failed; 6 imported, 4 definitions, 15 written proof steps
+35 nodes (17 released, 18 new); layers {'S': 10, 'M': 13, 'O': 12}
+claims: C1: verified modulo written proof steps; C2: verified; C3: verified modulo imports; C4: verified modulo imports and written proof steps; C5: verified modulo imports and written proof steps; C6: verified modulo imports and written proof steps; C7: verified modulo imports and written proof steps; C8: verified modulo imports; C9: verified modulo imports and written proof steps; C10: verified; C11: verified modulo imports and written proof steps
+negative controls rejected: 16 of 16
+scope separation (single setting: no Bell test, yet contextuality testable): True
+lint: no issues
+run time 38 s

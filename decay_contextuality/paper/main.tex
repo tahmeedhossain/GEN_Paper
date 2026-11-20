@@ -1,0 +1,90 @@
+\documentclass[aps,pra,10pt,twocolumn,superscriptaddress,nofootinbib,floatfix]{revtex4-2}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,bm,graphicx,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\input{numbers}
+
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\bq}{\bm{q}}
+\newcommand{\bn}{\bm{n}}
+\newcommand{\bp}{\bm{p}}
+\newcommand{\bv}{\bm{v}}
+\newcommand{\bt}{\bm{t}}
+\newcommand{\bb}{\bm{b}}
+\newcommand{\ba}{\bm{a}}
+\newcommand{\bx}{\bm{x}}
+\newcommand{\bz}{\bm{z}}
+\newcommand{\bu}{\bm{u}}
+\newcommand{\bP}{\bm{P}}
+\newcommand{\bS}{\bm{S}}
+\newcommand{\bJ}{\bm{J}}
+\newcommand{\bsig}{\bm{\sigma}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\rhoraw}{\rho_{\mathrm{raw}}}
+\newcommand{\Rraw}{R}
+\newcommand{\T}{\mathsf{T}}
+\newcommand{\node}[1]{\texttt{#1}}
+\newcommand{\inlinecaption}[2]{\refstepcounter{table}\label{#1}\begin{center}\small TABLE~\thetable. #2\end{center}\vspace{-1ex}}
+
+\begin{document}
+
+\title{Particle decays as fixed measurements: exact noncontextuality thresholds for decay-angle correlations}
+
+\author{Tahmeed Hossain}
+\affiliation{Department of Theoretical Physics, University of Dhaka, Dhaka, Bangladesh}
+
+\date{17 November 2026. \textbf{Generated work} produced with Claude (Anthropic); unpublished, not peer reviewed.}
+
+\begin{abstract}
+A particle decay records the spin of its parent through one fixed rotation-covariant measurement.
+Data taken with one such measurement per particle cannot violate a Bell or a steering inequality, because the recorded directions themselves serve as local hidden variables.
+We ask instead whether the data admit a generalized-noncontextual ontological model, and answer exactly.
+For a spin-$1/2$ particle with polarisation $P$ and spin analysing power $\kappa$ a model exists if and only if $P|\kappa|\le 1/3$.
+For two spin-$1/2$ particles it exists if and only if the operator $\rhoraw$ assembled from the raw angular coefficients, not divided by the analysing powers, is positive with positive partial transpose; for unpolarised pairs this reads $\|c\|_1\le 1$, and it implies $|D|\le 1/3$ for the opening-angle coefficient.
+For spin $1$ the helicity weights of noncontextual polarimeters form, in the plane of vector and tensor analysing ratios, the convex hull of an ellipse and a point; for a spin-singlet pair of spin-$1$ particles the admissible products of ratios form a second region bounded by parabolic arcs, and two ideal $W\to\ell\nu$ decays give contextual data if and only if the singlet visibility exceeds $5/8$.
+For spin $j$ the largest vector analysing power of a noncontextual polarimeter is the largest node $\xi_{2j}$ of a Gauss--Legendre (integer $j$) or Gauss--Radau (half-integer $j$) quadrature rule, and for two particles of any spins and in any state noncontextual data obey $\|\langle\bq_A\bq_B^{\T}\rangle\|_1\le\xi_{2j_A}\xi_{2j_B}$ for the matrix of first moments of the two recorded directions.
+Consequences: the direction-only electron asymmetry of muon decay lies exactly on the threshold; the $b$-quark direction is a nonclassical top-quark polarimeter if and only if $m_t>2m_W$ at leading order; the measured top-pair coefficient $D$ excludes noncontextual models at the significance quoted for entanglement, with no input on the analysing power; with the BESIII fit parameters the $p\bar p$ angular data of $J/\psi\to\Lambda\bar\Lambda$ are contextual for $|\cos\theta|<\cosc$, although the pair is entangled at all production angles.
+The results are recorded as routes of a three-layer concept graph (states, models, observables): \nChecked\ of \nRoutes\ routes carry executable certificates, \nWritten\ are proofs written in this paper, and \nControlsRejected\ of \nControls\ planted errors are rejected.
+\end{abstract}
+
+\maketitle
+
+\input{sec_intro}
+\input{sec_setting}
+\input{sec_half}
+\input{sec_one}
+\input{sec_apps}
+\input{sec_graph}
+\input{sec_discussion}
+
+\begin{acknowledgments}
+\emph{Use of an AI system.} The derivations, the code and the text were produced in a dialogue between the author and an AI system (Claude, Anthropic), which also carried out the literature searches and wrote the certificates. Statements graded ``written'' in Appendix~\ref{app:catalogue} are proofs given in this paper that no program has checked; no independent reviewer, human or machine, has examined them. The author is responsible for the content.
+
+\emph{Data and code.} The node, route and claim encoding, all certificates, the recorded numerical runs, the negative controls and the scripts that generate every number, table and figure of this paper are in the accompanying archive (\texttt{run\_all.py} reproduces the summary in \runSeconds~s on two cores; the recorded linear programmes take several minutes each). The released graphs from which \nReleased\ nodes are taken are Refs.~\cite{genhep,gengpt,genqrt}.
+\end{acknowledgments}
+
+\appendix
+\input{app_proofs}
+\input{app_numerics}
+\input{app_catalogue}
+
+\bibliography{refs}
+
+\end{document}

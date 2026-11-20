@@ -1,0 +1,9 @@
+{'case': 'T-state', 'N': 40, 'exact': 1.0, 'inner': 0.9854980468750001, 'outer': 1.139306640625}
+{'case': 'T-state', 'N': 100, 'exact': 1.0, 'inner': 0.9967285156250001, 'outer': 1.058740234375}
+{'case': 'T-state', 'N': 250, 'exact': 1.0, 'inner': 0.9996582031250001, 'outer': 1.022607421875}
+{'case': 'polarised state, kA=0.75, kB=1', 'N': 40, 'exact': 0.5095085431626103, 'inner': 0.496337890625, 'outer': 0.590576171875}
+{'case': 'polarised state, kA=0.75, kB=1', 'N': 100, 'exact': 0.5095085431626103, 'inner': 0.503662109375, 'outer': 0.539306640625}
+{'case': 'polarised state, kA=0.75, kB=1', 'N': 250, 'exact': 0.5095085431626103, 'inner': 0.507568359375, 'outer': 0.521728515625}
+{'cos': 0.0, 'outer_feasible': False, 'inner_feasible': False}
+{'cos': 0.4, 'outer_feasible': False, 'inner_feasible': False}
+{'cos': 0.65, 'outer_feasible': True, 'inner_feasible': True}

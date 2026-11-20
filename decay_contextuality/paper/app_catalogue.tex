@@ -1,0 +1,18 @@
+\onecolumngrid
+\section{Nodes, routes and controls}
+\label{app:catalogue}
+
+Tables~\ref{tab:nodes}--\ref{tab:routesb} list the encoding as generated from the results file of the run (software: Python \verPython, SymPy \verSympy, NumPy \verNumpy, SciPy \verScipy, CVXPY \verCvxpy, Z3 \verZthree). ``Layers'' gives the layers of the inputs and of the target. In the column ``Grade / status'', \emph{checked} means that the certificate named in the last column was executed and passed; \emph{proof in text} marks a written proof of this paper; \emph{cited} marks an import. The full statements of the routes, the certificate outputs and the \nControls\ negative controls are in the accompanying archive (\texttt{out/results.json}, \texttt{out/summary.txt}).
+
+\inlinecaption{tab:nodes}{Nodes. Source: the released graph whose identifier is kept, or ``new''.}
+{\small\input{nodes_table}}
+
+\bigskip
+\inlinecaption{tab:routesa}{Routes, first part.}
+{\small\input{routes_table_a}}
+
+\clearpage
+\inlinecaption{tab:routesb}{Routes, second part.}
+{\small\input{routes_table_b}}
+
+\twocolumngrid

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GEN Edge-Kernel Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* layout: header and view tabs; a paper view is one main column (claims, three layer columns joined by wires,
+     route table, findings) beside a sticky detail rail that shows the selected node, route or claim */
+  --paper:#f5f6f8; --panel:#ffffff; --ink:#18202b; --muted:#5b6777; --line:#d8dde5; --accent:#0f5c7a; --accent-soft:#e2eff4;
+  --g-exact:#1c7a52; --g-logic:#2a5db0; --g-import:#a86400; --g-compose:#7646ad; --g-def:#69737f; --g-interp:#a13a62; --g-fail:#bf2630; --g-num:#0f7480;
+  --font-display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI","Cambria Math","STIX Two Math","Noto Sans Math","Segoe UI Symbol","Apple Symbols","DejaVu Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,"DejaVu Sans Mono","Cambria Math","Noto Sans Math",monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#10151c; --panel:#171f29; --ink:#e5eaf1; --muted:#99a6b5; --line:#2b3644; --accent:#6cc3de; --accent-soft:#16313c;
+    --g-exact:#5fce9e; --g-logic:#82b2f6; --g-import:#e0a54a; --g-compose:#b996e8; --g-def:#9aa5b3; --g-interp:#e38bad; --g-fail:#f2737a; --g-num:#5cc4cf;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#10151c; --panel:#171f29; --ink:#e5eaf1; --muted:#99a6b5; --line:#2b3644; --accent:#6cc3de; --accent-soft:#16313c;
+  --g-exact:#5fce9e; --g-logic:#82b2f6; --g-import:#e0a54a; --g-compose:#b996e8; --g-def:#9aa5b3; --g-interp:#e38bad; --g-fail:#f2737a; --g-num:#5cc4cf;
+}
+*{box-sizing:border-box}
+html{font-size:15px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.5}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1500px;margin:0 auto;padding:0 20px 56px}
+header.top{padding:22px 0 10px;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline}
+header.top h1{font-family:var(--font-display);font-weight:600;font-size:1.75rem;line-height:1.15;margin:0;text-wrap:balance}
+header.top .meta{color:var(--muted);font-size:.87rem;font-variant-numeric:tabular-nums}
+nav.tabs{display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--line);margin-bottom:20px;padding-bottom:0}
+nav.tabs a{padding:8px 13px;text-decoration:none;color:var(--muted);border:1px solid transparent;border-bottom:none;border-radius:6px 6px 0 0;font-weight:500;margin-bottom:-1px}
+nav.tabs a[aria-current="page"]{color:var(--ink);background:var(--panel);border-color:var(--line)}
+nav.tabs a:hover{color:var(--ink)}
+h2{font-family:var(--font-display);font-weight:600;font-size:1.25rem;margin:0 0 8px;text-wrap:balance}
+h3{font-family:var(--font-display);font-weight:600;font-size:1.02rem;margin:0 0 6px;letter-spacing:.01em}
+p{margin:0 0 10px}
+.lede{max-width:68ch;font-size:1.02rem}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+.stack{display:flex;flex-direction:column;gap:18px}
+.muted{color:var(--muted)}
+.mono{font-family:var(--font-mono);font-size:.86em}
+.small{font-size:.87rem}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--line)}
+th{font-weight:600;color:var(--muted);font-size:.8rem;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.scroll-x{overflow-x:auto}
+/* chips */
+.chip{display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;font-size:.78rem;font-weight:500;border:1px solid currentColor;white-space:nowrap;line-height:1.5}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.g-exact{color:var(--g-exact)} .g-logic{color:var(--g-logic)} .g-import{color:var(--g-import)} .g-compose{color:var(--g-compose)}
+.g-definition{color:var(--g-def)} .g-interpretive{color:var(--g-interp)} .g-fail{color:var(--g-fail)} .g-witness{color:var(--g-exact)} .g-numeric{color:var(--g-num)}
+.v-ok{color:var(--g-exact)} .v-inst{color:var(--g-logic)} .v-imp{color:var(--g-import)} .v-wps{color:var(--g-compose)} .v-num{color:var(--g-num)} .v-und{color:var(--g-interp)} .v-bad{color:var(--g-fail)}
+.gen-badge{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase;border:1px solid var(--g-interp);color:var(--g-interp);border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:1px}
+.gen-note{border-left:4px solid var(--g-interp);padding:8px 12px;max-width:80ch}
+/* method view */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:10px 14px}
+.stat b{display:block;font-family:var(--font-display);font-size:1.6rem;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:.84rem}
+ol.steps{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;counter-reset:s}
+ol.steps li{counter-increment:s;border:1px solid var(--line);border-radius:8px;padding:10px 14px 10px 44px;position:relative;background:var(--panel)}
+ol.steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:22px;height:22px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:.85rem;display:grid;place-items:center}
+ol.steps li b{display:block}
+.cols2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px}
+ul.plain{margin:0;padding-left:18px}
+ul.plain li{margin-bottom:6px;max-width:75ch}
+/* paper view */
+.paper-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:18px;align-items:start}
+@media (max-width:1100px){.paper-grid{grid-template-columns:minmax(0,1fr)}}
+.rail{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}
+@media (max-width:1100px){.rail{position:static;max-height:none}}
+.cite{font-weight:500;max-width:80ch}
+.links{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.87rem;margin-top:4px}
+.claims{display:flex;flex-direction:column;gap:6px}
+.claim{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:10px;align-items:start;text-align:left;border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:8px 10px;cursor:pointer}
+.claim:hover,.claim.sel{border-color:var(--accent);background:var(--accent-soft)}
+.claim .cid{font-family:var(--font-mono);font-size:.82rem;color:var(--muted);padding-top:2px}
+.claim .q{font-size:.8rem;color:var(--muted);margin-top:2px}
+/* graph */
+.graph{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 96px;padding:4px 8px 8px}
+@media (max-width:760px){.graph{gap:0 44px}}
+.col{display:flex;flex-direction:column;gap:9px;position:relative;z-index:2}
+.col h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-family:var(--font-body);font-weight:600;margin-bottom:2px}
+.node{display:block;width:100%;text-align:left;border:1px solid var(--line);border-left:4px solid var(--muted);background:var(--panel);border-radius:5px;padding:6px 8px;cursor:pointer;min-height:44px}
+.node .nid{font-family:var(--font-mono);font-size:.76rem;color:var(--muted);display:block}
+.node .nt{display:block;font-size:.84rem;line-height:1.3;font-weight:500;overflow-wrap:anywhere}
+.node .ns{display:block;font-size:.72rem;color:var(--muted);margin-top:1px}
+.node.st-new{border-left-color:var(--accent)}
+.node.st-split{border-left-color:var(--accent);border-left-style:dashed}
+.node.st-out-of-scope{border-style:dashed;border-left-style:dashed}
+.node:hover,.node.sel{border-color:var(--accent);background:var(--accent-soft)}
+.node.dim{opacity:.35}
+svg.wires{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
+svg.wires path.leg{fill:none;stroke:currentColor;stroke-width:1.2;opacity:.4;pointer-events:stroke;cursor:pointer}
+svg.wires path.leg.import{stroke-dasharray:5 4}
+svg.wires path.leg.compose,svg.wires path.leg.interpretive{stroke-dasharray:1.5 4;stroke-linecap:round}
+svg.wires path.leg.definition{stroke-dasharray:8 3 1.5 3}
+svg.wires path.leg.hl{opacity:1;stroke-width:2.6}
+svg.wires path.leg.lo{opacity:.08}
+svg.wires .mk{fill:currentColor}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.8rem;color:var(--muted);align-items:center;margin-top:6px}
+.legend .sw{display:inline-block;width:14px;height:10px;border:1px solid var(--line);border-left:4px solid var(--muted);border-radius:2px;margin-right:4px;vertical-align:-1px}
+.legend .sw.new{border-left-color:var(--accent)} .legend .sw.out{border-style:dashed}
+/* route table */
+tr.route{cursor:pointer}
+tr.route:hover td,tr.route.sel td{background:var(--accent-soft)}
+tr.route td:first-child{font-family:var(--font-mono);font-size:.82rem;white-space:nowrap}
+td.rt{font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.status-FAILED{color:var(--g-fail);font-weight:600}
+/* detail rail */
+.rail h2{font-size:1.1rem}
+.kv{display:grid;grid-template-columns:92px minmax(0,1fr);gap:4px 10px;font-size:.87rem;margin:8px 0}
+.kv dt{color:var(--muted)} .kv dd{margin:0;overflow-wrap:anywhere}
+.stmt{border-left:3px solid var(--accent);padding:6px 10px;background:var(--accent-soft);border-radius:0 5px 5px 0;margin:8px 0;font-size:.92rem;overflow-wrap:anywhere}
+.checks{list-style:none;margin:6px 0;padding:0;font-size:.84rem}
+.checks li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:8px;padding:3px 0;border-bottom:1px dotted var(--line)}
+.checks .ok{color:var(--g-exact);font-weight:600} .checks .no{color:var(--g-fail);font-weight:600}
+.checks .grp{grid-template-columns:1fr;color:var(--muted);font-weight:600;border-bottom:none;padding-top:8px}
+.checks li>.chip{justify-self:start}
+.linkbtn{background:none;border:none;padding:0;color:var(--accent);cursor:pointer;font-family:var(--font-mono);font-size:.84rem;text-decoration:underline}
+.finding{border-left:3px solid var(--line);padding:2px 0 2px 12px;margin-bottom:10px;max-width:80ch}
+.finding .lvl{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.finding.premise,.finding.note{border-left-color:var(--g-import)}
+.finding.structure{border-left-color:var(--accent)} .finding.derived{border-left-color:var(--g-compose)}
+.op{font-family:var(--font-mono);font-size:.78rem;font-weight:500;color:var(--accent);white-space:nowrap}
+.sig{width:auto;font-variant-numeric:tabular-nums}
+.sig td,.sig th{text-align:center;padding:4px 12px}
+.err{color:var(--g-fail);padding:20px}
+@media (prefers-reduced-motion:no-preference){.node,.claim{transition:background .12s,border-color .12s}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>GEN edge-kernel check</h1>
+    <div class="meta" id="runmeta"></div>
+  </header>
+  <nav class="tabs" id="tabs" aria-label="Views"></nav>
+  <main id="view"><p class="muted">Loading the check results…</p></main>
+</div>
+
+<script>
+(function(){
+"use strict";
+var VIEWS=[["method","Method and summary"],["battery","Entanglement battery"],["real-qm","Real-number QM"],["top-quarks","Top-quark entanglement"],["decay-contextuality","Decay contextuality (generated work)"],["controls","Negative controls"]];
+var KEY={"battery":"battery","real-qm":"realqm","top-quarks":"top","decay-contextuality":"decay"};
+function isGenerated(p){return !!(p.ids&&p.ids.status==="generated work");}
+var GRADE_TEXT={
+ exact:["exact","Symbolic or exact-arithmetic computation: matrix identities with symbolic entries or symbolic dimension, arithmetic in Q(√2, i), symbolic integration, polynomial identities.","The statement for all values of its symbols. Where only some dimensions were run, the scope on the route says so."],
+ logic:["logic","SMT entailment: the premises together with the negated conclusion are unsatisfiable. Each premise is then dropped in turn to test that it is needed. The kernel's scope-separation rule has this grade too.","The conclusion from exactly the listed premises, in real arithmetic."],
+ numeric:["numeric","Floating-point computation with a stated tolerance: linear and semidefinite programmes, quadrature, random instances, or the reading of a recorded long run.","The statement at the stated tolerance and on the instances run. A claim resting only on such routes gets the verdict numerical support only."],
+ "import":["import","Nothing is run. The route cites a result that is not regenerated.","Nothing. The route joins the trust list of every claim that uses it."],
+ definition:["definition","Nothing is run. The route unfolds a definition.","Nothing beyond the definition."],
+ compose:["compose","Nothing is run. A composition of other routes is written out in words.","Nothing mechanical. Listed with every claim that uses it."],
+ interpretive:["interpretive","Nothing is run. The statement is not mathematical.","The kernel does not decide it."]
+};
+function el(tag,attrs,kids){var e=document.createElement(tag);if(attrs){for(var k in attrs){if(k==="class")e.className=attrs[k];else if(k==="text")e.textContent=attrs[k];else if(k==="html")e.innerHTML=attrs[k];else e.setAttribute(k,attrs[k]);}}
+ (kids||[]).forEach(function(c){if(c==null)return;e.appendChild(typeof c==="string"?document.createTextNode(c):c);});return e;}
+function chip(cls,text){return el("span",{class:"chip "+cls,text:text});}
+function verdictClass(v){if(v==="verified")return"v-ok";if(v==="verified on instances")return"v-inst";if(v==="verified modulo imports")return"v-imp";if(v==="verified modulo written proof steps"||v==="verified modulo imports and written proof steps")return"v-wps";if(v==="numerical support only")return"v-num";if(v==="discrepancy")return"v-bad";return"v-und";}
+var DATA=null,state={sel:null};
+
+function start(d){DATA=d;
+ document.getElementById("runmeta").textContent="Run "+d.meta.run_utc+" · Python "+d.meta.python+" · SymPy "+d.meta.sympy+" · Z3 "+d.meta.z3+" · "+d.meta.seconds+" s";
+ var nav=document.getElementById("tabs");VIEWS.forEach(function(v){nav.appendChild(el("a",{href:"#"+v[0],text:v[1],"data-v":v[0]}));});
+ window.addEventListener("hashchange",route);window.addEventListener("resize",function(){if(state.draw)state.draw();});route();}
+function route(){var h=(location.hash||"").replace("#","");if(!VIEWS.some(function(v){return v[0]===h;}))h="method";
+ Array.prototype.forEach.call(document.querySelectorAll("#tabs a"),function(a){if(a.getAttribute("data-v")===h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});
+ var view=document.getElementById("view");view.innerHTML="";state.draw=null;state.sel=null;
+ if(h==="method")renderMethod(view);else if(h==="controls")renderControls(view);else renderPaper(view,DATA.papers.filter(function(p){return p.key===KEY[h];})[0],h);
+ window.scrollTo(0,0);}
+
+/* ---------------- method ---------------- */
+function renderMethod(root){var t=DATA.totals;
+ var s=el("div",{class:"stack"});
+ s.appendChild(el("p",{class:"lede",text:"Each paper is written as a change to the released concept graphs: nodes with definitions, and routes that each carry one statement. A small checker, the edge kernel, then tries to regenerate every route from the definitions of its end nodes. What it cannot regenerate is listed as an import, so every headline claim comes with the exact list of things it rests on."}));
+ var stats=el("div",{class:"stats"});
+ [[t.papers,"papers encoded"],[t.nodes,"nodes ("+DATA.papers.reduce(function(a,p){return a+p.lint.counts.nodes_existing;},0)+" already in a released network)"],[t.edges,"routes"],[t.checked,"routes checked by certificate or kernel rule"],[t.imported,"routes imported"],[t.controls_detected+" of "+t.controls,"planted errors rejected"]].forEach(function(x){stats.appendChild(el("div",{class:"stat"},[el("b",{text:String(x[0])}),el("span",{text:x[1]})]));});
+ s.appendChild(stats);
+ /* papers table */
+ var tb=el("tbody");
+ DATA.papers.forEach(function(p){var hash=Object.keys(KEY).filter(function(k){return KEY[k]===p.key;})[0];var c=p.lint.counts;
+  var ne=p.edges.length,ch=p.edges.filter(function(e){return e.status==="checked";}).length,im=p.edges.filter(function(e){return e.status==="imported";}).length;
+  var vs=el("div",{style:"display:flex;flex-wrap:wrap;gap:4px"});var cnt={};p.claims.forEach(function(q){cnt[q.verdict]=(cnt[q.verdict]||0)+1;});
+  Object.keys(cnt).forEach(function(v){vs.appendChild(chip(verdictClass(v),cnt[v]+" "+v));});
+  tb.appendChild(el("tr",null,[el("td",null,[el("a",{href:"#"+hash,text:p.citation.split(", Phys. Rev.")[0].split(", Nature")[0].split(", generated work")[0]}),isGenerated(p)?el("span",{class:"gen-badge",text:"generated work"}):null,el("div",{class:"muted small",text:p.branch})]),
+   el("td",{class:"num",text:c.nodes+" ("+c.nodes_existing+" / "+c.nodes_new+")"}),el("td",{class:"num",text:String(ne)}),el("td",{class:"num",text:String(ch)}),el("td",{class:"num",text:String(im)}),el("td",null,[vs])]));});
+ s.appendChild(el("div",{class:"panel"},[el("h2",{text:"The four papers"}),el("p",{class:"small muted",style:"max-width:80ch",text:"Three published papers and one generated work. The generated work was written by an AI system (Claude, Anthropic) in a session directed by T. Hossain on 17 November 2026, together with its encoding; it is unpublished and not peer reviewed."}),el("div",{class:"scroll-x"},[el("table",null,[el("thead",null,[el("tr",null,[el("th",{text:"Paper and branch"}),el("th",{class:"num",text:"Nodes (released / new)"}),el("th",{class:"num",text:"Routes"}),el("th",{class:"num",text:"Checked"}),el("th",{class:"num",text:"Imported"}),el("th",{text:"Headline claims"})])]),tb])])]));
+ /* what the check found */
+ var fl=el("ul",{class:"plain"});
+ [["battery","Theorems 1 to 3 follow from the stated premises; every premise is needed. The continuity premise as printed (linear in the trace norm) is not what the cited bound for squashed entanglement gives (a square-root modulus); the kernel proves Theorem 2 for the weaker premise, which the cited bound does satisfy."],
+  ["real-qm","All identities behind the real-number model hold exactly, and the model reproduces every probability of the network experiment for all four outcomes of the middle party. The functional as restated in the arXiv text has one sign prefactor and the weighting different from Renou et al.; only the original form gives 6√2. The model is complex quantum theory in real coordinates, and the no-go theorem keeps all its premises."],
+  ["top-quarks","The chain from the V−A decay vertex to the estimator D = −3⟨cos φ⟩ and the bound D ≥ −1/3 for separable states is regenerated exactly, with two independent routes to the bound. The experimental conclusion rests on three imported routes: folding of the bound to particle level, the measured value with its uncertainties, and the production model."],
+  ["decay-contextuality","Generated work, not a published paper. Its 38 certificates were run again after the project was rebuilt from the session record and all pass, with the recorded outputs reproduced; 16 of 16 of its planted errors are rejected. Its 15 written proofs are checked by no program. Closed over the dependencies of its proofs, two verdicts printed in the paper are too strong: the top-pair claim also rests on the written proof of Theorem 2 and on the imported simplex-embedding lemma, and the top-polarimeter claim on that lemma."]].forEach(function(x){fl.appendChild(el("li",null,[el("a",{href:"#"+x[0],text:VIEWS.filter(function(v){return v[0]===x[0];})[0][1]}),". "+x[1]]));});
+ s.appendChild(el("div",{class:"panel"},[el("h2",{text:"What the check found"}),fl]));
+ /* steps */
+ var steps=el("ol",{class:"steps"});
+ [["Nodes","Every object the argument uses becomes a node in one layer (state, model or observable) with a definition. A node that exists in a released network keeps its identifier."],
+  ["Routes","Every inference becomes a route with inputs, a target and one statement. Several inputs form an AND route. Several routes into one target are alternatives."],
+  ["Certificates","Each route gets one certificate that the kernel runs: an exact computation, an SMT entailment or a kernel rule. A route without one is an import, a definition or an unmechanised composition, and carries that label."],
+  ["Closure","Each headline claim is closed over the routes it uses. Its verdict names every import, every instance-only check and every unmechanised step on the way."],
+  ["Library check","A new possibility route is compared with the no-go routes it touches. The two are accepted together only if a checked route shows that a premise of the no-go is absent."],
+  ["Delta","The result is also a list of operations on the released networks: nodes to add or split, routes to add, rescope or retarget."]].forEach(function(x){steps.appendChild(el("li",null,[el("b",{text:x[0]}),x[1]]));});
+ s.appendChild(el("div",null,[el("h2",{text:"How a paper is checked"}),steps]));
+ /* grades */
+ var gb=el("tbody");Object.keys(GRADE_TEXT).forEach(function(g){var G=GRADE_TEXT[g];gb.appendChild(el("tr",null,[el("td",null,[chip("g-"+g,G[0])]),el("td",{class:"num",text:String(t.by_grade[g]||0)}),el("td",{text:G[1]}),el("td",{text:G[2]})]));});
+ var grades=el("div",{class:"panel"},[el("h2",{text:"Certificate grades"}),el("div",{class:"scroll-x"},[el("table",null,[el("thead",null,[el("tr",null,[el("th",{text:"Grade"}),el("th",{class:"num",text:"Routes"}),el("th",{text:"What the kernel does"}),el("th",{text:"What it establishes"})])]),gb])])]);
+ s.appendChild(grades);
+ /* lean */
+ var lb=el("tbody");
+ [["Every statement lives in one foundation, dependent type theory.","Statements live in three small languages: polynomial and matrix identities over exact number fields, quantifier-free real arithmetic, and rules on the graph.","Limits, infinite dimension and asymptotic rates are outside them. Such steps are imported or composed by hand."],
+  ["A small kernel checks a proof term.","The kernel runs a certificate.","The trusted base is Python, SymPy and Z3, far larger than Lean's kernel."],
+  ["Mathlib and Physlib supply proven lemmas.","Released GEN networks supply nodes; the literature supplies imports.","Library entries here are cited, not proven."],
+  ["sorry, axioms and #print axioms.","Grades import and compose; a trust list per claim.","Same idea."],
+  ["A blueprint is a dependency graph of lemmas.","The concept graph is the dependency graph.","Here nodes carry a layer and routes a signature, so the graph can be linted and compared with no-go routes."],
+  ["A definition must type-check.","A definition is prose with an executable representative.","Nothing checks that the encoding is faithful to the paper."],
+  ["No counterpart.","Measured values and calibrations enter as imports; the arithmetic on them is checked.","The empirical part of a claim is separated, not verified."]].forEach(function(r){lb.appendChild(el("tr",null,r.map(function(x){return el("td",{text:x});})));});
+ var lim=el("ul",{class:"plain"});
+ ["A route is only as good as its statement. The three published papers were transcribed into nodes and routes from the arXiv texts by an AI system; a wrong transcription gives a correct check of the wrong statement.",
+  "The fourth paper is a generated work: the paper, its proofs, its encoding and its certificates were written by the same AI system in one session. Its check is therefore not independent of its text.",
+  "Several identities were run for small dimensions only. The scope is written on each route and carried into the verdict.",
+  "Composition of routes into a headline claim is mechanised where it fits SMT. The other compositions are written out in words and graded compose: 2 in the three published papers, 15 in the generated paper.",
+  "Imports were checked bibliographically, not mathematically.",
+  "Nothing here is peer reviewed. The findings about each paper should be confirmed against the published versions before they are quoted."].forEach(function(x){lim.appendChild(el("li",{text:x}));});
+ var rel=el("ul",{class:"plain"});
+ [["Physlib, the Lean physics library","https://reservoir.lean-lang.org/@HEPLean/PhysLean","Physics results formalised in Lean 4; formed from PhysLean (earlier HepLean) and Lean-QuantumInfo. Statements are proved inside one foundation."],
+  ["HepLean: Digitalising high energy physics (arXiv:2405.08863)","https://arxiv.org/abs/2405.08863","The paper that introduced the project, with flavour physics, anomaly cancellation and Higgs physics as first areas."],
+  ["LeanArchitect (arXiv:2601.22554)","https://arxiv.org/pdf/2601.22554","Blueprints: dependency graphs that link informal statements to formal declarations and show proof status, after Patrick Massot's leanblueprint."]].forEach(function(x){rel.appendChild(el("li",null,[el("a",{href:x[1],text:x[0]}),". "+x[2]]));});
+ s.appendChild(el("div",{class:"panel"},[el("h2",{text:"Related work"}),rel,el("p",{class:"small muted",style:"max-width:80ch;margin-top:8px",text:"The edge kernel works at the level of a blueprint: a dependency graph with a status on every item. It adds executable certificates, physical layers and a comparison with no-go routes. Each route of grade exact or logic is a candidate for a proof in Lean."})]));
+ s.appendChild(el("div",{class:"cols2"},[el("div",{class:"panel"},[el("h2",{text:"Compared with Lean"}),el("div",{class:"scroll-x"},[el("table",null,[el("thead",null,[el("tr",null,[el("th",{text:"Lean 4"}),el("th",{text:"Edge kernel"}),el("th",{text:"Difference"})])]),lb])])]),el("div",{class:"panel"},[el("h2",{text:"Limits"}),lim])]));
+ root.appendChild(s);}
+
+/* ---------------- controls ---------------- */
+function renderControls(root){var tb=el("tbody");DATA.controls.forEach(function(c){tb.appendChild(el("tr",null,[el("td",{text:c.control}),el("td",{text:c.planted_error}),el("td",null,[chip(c.detected?"g-exact":"g-fail",c.detected?"rejected":"missed")]),el("td",{class:"muted",text:c.detail})]));});
+ root.appendChild(el("div",{class:"stack"},[el("p",{class:"lede",text:"A checker that never fails proves nothing. Each control plants one error in a statement the kernel accepted in its correct form. The same check must then reject it."}),
+  el("div",{class:"panel"},[el("div",{class:"scroll-x"},[el("table",null,[el("thead",null,[el("tr",null,[el("th",{text:"Control"}),el("th",{text:"Planted error"}),el("th",{text:"Result"}),el("th",{text:"Detail"})])]),tb])])])]));}
+
+/* ---------------- paper ---------------- */
+function renderPaper(root,p,hash){
+ var nodes={},edges={};p.nodes.forEach(function(n){nodes[n.id]=n;});p.edges.forEach(function(e){edges[e.id]=e;});
+ var grid=el("div",{class:"paper-grid"}),main=el("div",{class:"stack"}),rail=el("aside",{class:"panel rail",id:"rail"});
+ /* head */
+ var links=el("div",{class:"links"});p.sources.forEach(function(s){links.appendChild(el("a",{href:s.url,text:s.title}));});
+ if(isGenerated(p))main.appendChild(el("div",{class:"panel gen-note"},[el("b",{text:"Generated work. "}),"This paper is not published and has not been peer reviewed. Its derivations, code and text were produced by an AI system (Claude, Anthropic) in a session directed by T. Hossain on 17 November 2026; its encoding as nodes and routes was written in the same session. Sources, code and PDF: decay_contextuality/ in this repository."]));
+ main.appendChild(el("div",{class:"panel"},[el("p",{class:"cite",text:p.citation}),el("p",{class:"muted small",text:p.branch}),el("p",{text:p.summary,style:"max-width:80ch"}),el("p",{class:"small",style:"max-width:80ch"},[el("span",{class:"muted",text:"Phases of the method cycle in this step (read by hand): "}),p.phases.map(function(x){return x[0]+" ("+x[1]+")";}).join("; ")+"."]),links]));
+ /* claims */
+ var cl=el("div",{class:"claims"});
+ p.claims.forEach(function(c){var q=[];if(c.imports.length)q.push("imports: "+c.imports.join(", "));if(c.instance_scoped.length)q.push("instance scope: "+c.instance_scoped.join(", "));if(c.unmechanised_steps.length)q.push("unmechanised: "+c.unmechanised_steps.join(", "));if(c.interpretive.length)q.push("interpretive: "+c.interpretive.join(", "));
+  var b=el("button",{class:"claim",type:"button","data-claim":c.id},[el("span",{class:"cid",text:c.id}),el("span",null,[el("span",{text:c.text}),el("div",{class:"q",text:(c.where||"")+(q.length?" · "+q.join(" · "):"")})]),chip(verdictClass(c.verdict),c.verdict)]);
+  b.addEventListener("click",function(){select({type:"claim",id:c.id});});cl.appendChild(b);});
+ main.appendChild(el("div",null,[el("h2",{text:"Headline claims"}),cl]));
+ /* graph */
+ var g=el("div",{class:"graph",id:"graph"});var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");svg.setAttribute("class","wires");g.appendChild(svg);
+ [["S","State layer"],["M","Model layer"],["O","Observable layer"]].forEach(function(L){var col=el("div",{class:"col","data-layer":L[0]},[el("h3",{text:L[1]})]);
+  p.nodes.filter(function(n){return n.layer===L[0];}).forEach(function(n){var b=el("button",{class:"node st-"+n.status,type:"button","data-node":n.id},[el("span",{class:"nid",text:n.id}),el("span",{class:"nt",text:n.title}),el("span",{class:"ns",text:n.layer+"."+n.sub+" · "+(n.status==="existing"?"released network":n.status)})]);
+   b.addEventListener("click",function(){select({type:"node",id:n.id});});col.appendChild(b);});g.appendChild(col);});
+ var legend=el("div",{class:"legend"},[el("span",null,[el("span",{class:"sw"}),"released network"]),el("span",null,[el("span",{class:"sw new"}),"new or split"]),el("span",null,[el("span",{class:"sw out"}),"outside released scope"])]);
+ ["exact","logic","numeric","import","definition","compose","interpretive"].forEach(function(gk){if(p.edges.some(function(e){return e.grade===gk;}))legend.appendChild(chip("g-"+gk,gk));});
+ main.appendChild(el("div",{class:"panel"},[el("h2",{text:"The paper as a graph"}),el("p",{class:"muted small",text:"Select a node, a line or a claim. Lines are routes; a route with several inputs has one line per input."}),el("div",{class:"scroll-x"},[g]),legend]));
+ /* routes table */
+ var tb=el("tbody");p.edges.forEach(function(e){var tr=el("tr",{class:"route","data-edge":e.id,tabindex:"0"},[el("td",{text:e.id}),el("td",{class:"rt",text:e.inputs.join(" ∧ ")+" → "+e.target}),el("td",{text:e.kind}),el("td",null,[chip("g-"+e.grade,e.grade)]),el("td",{class:"status-"+e.status,text:e.status}),el("td",{text:e.statement})]);
+  tr.addEventListener("click",function(){select({type:"edge",id:e.id});});tr.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();select({type:"edge",id:e.id});}});tb.appendChild(tr);});
+ main.appendChild(el("div",{class:"panel"},[el("h2",{text:"Routes and certificates"}),el("div",{class:"scroll-x"},[el("table",null,[el("thead",null,[el("tr",null,[el("th",{text:"Route"}),el("th",{text:"Inputs → target"}),el("th",{text:"Kind"}),el("th",{text:"Grade"}),el("th",{text:"Status"}),el("th",{text:"Statement"})])]),tb])])]));
+ /* findings */
+ var fd=el("div");p.findings.forEach(function(f){fd.appendChild(el("div",{class:"finding "+f.level.replace(/\s+/g,"-")},[el("div",{class:"lvl",text:f.level}),el("b",{text:f.title}),el("div",{text:f.text})]));});
+ main.appendChild(el("div",{class:"panel"},[el("h2",{text:"Findings"}),fd]));
+ /* delta */
+ var db=el("tbody");p.delta.forEach(function(d){var rest=Object.keys(d).filter(function(k){return k!=="op";}).map(function(k){return k+": "+(Array.isArray(d[k])?d[k].join(", "):d[k]);}).join(" · ");db.appendChild(el("tr",null,[el("td",null,[el("span",{class:"op",text:d.op})]),el("td",{text:rest})]));});
+ main.appendChild(el("div",{class:"panel"},[el("h2",{text:"Proposed operations on the released networks"}),el("p",{class:"muted small",text:"Not applied to any repository."}),el("div",{class:"scroll-x"},[el("table",null,[db])])]));
+ /* lint */
+ var L=p.lint,sig=el("table",{class:"sig"},[el("thead",null,[el("tr",null,[el("th",{text:"from \\ to"}),el("th",{text:"S"}),el("th",{text:"M"}),el("th",{text:"O"})])]),el("tbody",null,["S","M","O"].map(function(a){return el("tr",null,[el("th",{text:a})].concat(["S","M","O"].map(function(b){return el("td",{text:String(L.signature[a][b])});})));}))]);
+ var rtypes=Object.keys(L.route_types).sort(function(a,b){return L.route_types[b]-L.route_types[a];}).map(function(k){return k+" ×"+L.route_types[k];}).join(", ");
+ main.appendChild(el("div",{class:"panel"},[el("h2",{text:"Graph lint"}),el("div",{class:"cols2"},[el("div",null,[el("p",{class:"small muted",text:"Layer-pair signature: number of route legs from each layer to each layer."}),sig]),
+  el("dl",{class:"kv"},[el("dt",{text:"Route types"}),el("dd",{text:rtypes}),el("dt",{text:"AND routes"}),el("dd",{text:String(L.and_routes)+" of "+p.edges.length}),el("dt",{text:"No model route"}),el("dd",{text:(L.observables_without_model_route.join(", ")||"none")+" (observables with no direct route from the model layer)"}),el("dt",{text:"Effects"}),el("dd",{text:L.effects_without_witness.length?("without a witness: "+L.effects_without_witness.join(", ")):"every effect has a witness leg"}),el("dt",{text:"Problems"}),el("dd",{text:L.problems.join("; ")||"none"})])])]));
+ grid.appendChild(main);grid.appendChild(rail);root.appendChild(grid);
+
+ /* wires */
+ var legs=[];
+ function draw(){while(svg.firstChild)svg.removeChild(svg.firstChild);legs=[];
+  var gr=g.getBoundingClientRect();svg.setAttribute("viewBox","0 0 "+gr.width+" "+gr.height);
+  var defs=document.createElementNS(svg.namespaceURI,"defs");svg.appendChild(defs);
+  ["exact","logic","numeric","import","definition","compose","interpretive","fail"].forEach(function(gk){var m=document.createElementNS(svg.namespaceURI,"marker");m.setAttribute("id","mk-"+hash+"-"+gk);m.setAttribute("viewBox","0 0 8 8");m.setAttribute("refX","7");m.setAttribute("refY","4");m.setAttribute("markerWidth","7");m.setAttribute("markerHeight","7");m.setAttribute("orient","auto");var pth=document.createElementNS(svg.namespaceURI,"path");pth.setAttribute("d","M0 0 L8 4 L0 8 Z");pth.setAttribute("class","mk g-"+gk);m.appendChild(pth);defs.appendChild(m);});
+  var box={},colOf={S:0,M:1,O:2},slots={};
+  Array.prototype.forEach.call(g.querySelectorAll(".node"),function(b){var r=b.getBoundingClientRect();box[b.getAttribute("data-node")]={l:r.left-gr.left,r:r.right-gr.left,t:r.top-gr.top,b:r.bottom-gr.top,m:(r.top+r.bottom)/2-gr.top,h:r.height};});
+  /* collect legs with their sides, then spread the attachment points along each side */
+  var raw=[];p.edges.forEach(function(e){e.inputs.forEach(function(i){if(!box[i]||!box[e.target])return;var cs=colOf[nodes[i].layer],ct=colOf[nodes[e.target].layer],ss,ts;
+    if(cs<ct){ss="r";ts="l";}else if(cs>ct){ss="l";ts="r";}else{ss=ts=(cs===2?"l":"r");}
+    raw.push({e:e,from:i,to:e.target,ss:ss,ts:ts,same:cs===ct});});});
+  raw.forEach(function(x){[[x.from,x.ss,x.to],[x.to,x.ts,x.from]].forEach(function(a,k){var key=a[0]+"|"+a[1];(slots[key]=slots[key]||[]).push({leg:x,end:k,other:box[a[2]].m});});});
+  Object.keys(slots).forEach(function(key){var arr=slots[key].sort(function(a,b){return a.other-b.other;});var id=key.split("|")[0],bx=box[id],span=Math.max(0,bx.h-14);
+   arr.forEach(function(s,i){var y=bx.m+(arr.length===1?0:(i/(arr.length-1)-.5)*span);if(s.end===0)s.leg.y1=y;else s.leg.y2=y;});});
+  raw.forEach(function(x){var a=box[x.from],b=box[x.to],x1=x.ss==="r"?a.r:a.l,x2=x.ts==="r"?b.r:b.l,d,cls=x.e.status==="FAILED"?"fail":x.e.grade;
+   if(x.from===x.to){var sgn=x.ss==="r"?1:-1,y=a.m;d="M"+x1+" "+(y-9)+" C"+(x1+sgn*40)+" "+(y-26)+","+(x1+sgn*40)+" "+(y+26)+","+x2+" "+(y+9);}
+   else if(x.same){var s2=x.ss==="r"?1:-1,off=26+Math.min(52,Math.abs(x.y2-x.y1)*0.16);d="M"+x1+" "+x.y1+" C"+(x1+s2*off)+" "+x.y1+","+(x2+s2*off)+" "+x.y2+","+x2+" "+x.y2;}
+   else{var dx=Math.max(34,Math.abs(x2-x1)*0.5),s3=x2>x1?1:-1;d="M"+x1+" "+x.y1+" C"+(x1+s3*dx)+" "+x.y1+","+(x2-s3*dx)+" "+x.y2+","+x2+" "+x.y2;}
+   var pth=document.createElementNS(svg.namespaceURI,"path");pth.setAttribute("d",d);pth.setAttribute("class","leg g-"+cls+" "+x.e.grade);pth.setAttribute("marker-end","url(#mk-"+hash+"-"+cls+")");pth.setAttribute("data-edge",x.e.id);
+   pth.addEventListener("click",function(){select({type:"edge",id:x.e.id});});var ti=document.createElementNS(svg.namespaceURI,"title");ti.textContent=x.e.id+": "+x.e.statement;pth.appendChild(ti);svg.appendChild(pth);legs.push(pth);});
+  paint();}
+ state.draw=draw;
+
+ function focusSet(){var s=state.sel,E={},N={};if(!s)return null;
+  if(s.type==="edge"){E[s.id]=1;}
+  else if(s.type==="node"){p.edges.forEach(function(e){if(e.target===s.id||e.inputs.indexOf(s.id)>=0)E[e.id]=1;});N[s.id]=1;}
+  else if(s.type==="claim"){p.claims.filter(function(c){return c.id===s.id;})[0].depends_on.forEach(function(id){E[id]=1;});}
+  Object.keys(E).forEach(function(id){var e=edges[id];N[e.target]=1;e.inputs.forEach(function(i){N[i]=1;});});return {E:E,N:N};}
+ function paint(){var f=focusSet();
+  legs.forEach(function(pth){var id=pth.getAttribute("data-edge");pth.classList.toggle("hl",!!(f&&f.E[id]));pth.classList.toggle("lo",!!(f&&!f.E[id]));});
+  Array.prototype.forEach.call(g.querySelectorAll(".node"),function(b){var id=b.getAttribute("data-node");b.classList.toggle("dim",!!(f&&!f.N[id]));b.classList.toggle("sel",!!(state.sel&&state.sel.type==="node"&&state.sel.id===id));});
+  Array.prototype.forEach.call(main.querySelectorAll("tr.route"),function(tr){tr.classList.toggle("sel",!!(f&&f.E[tr.getAttribute("data-edge")]));});
+  Array.prototype.forEach.call(main.querySelectorAll(".claim"),function(b){b.classList.toggle("sel",!!(state.sel&&state.sel.type==="claim"&&state.sel.id===b.getAttribute("data-claim")));});}
+ function select(s){state.sel=(state.sel&&s&&state.sel.type===s.type&&state.sel.id===s.id)?null:s;paint();renderRail();}
+ function edgeLink(id){var b=el("button",{class:"linkbtn",type:"button",text:id});b.addEventListener("click",function(){state.sel=null;select({type:"edge",id:id});});return b;}
+ function nodeLink(id){var b=el("button",{class:"linkbtn",type:"button",text:id});b.addEventListener("click",function(){state.sel=null;select({type:"node",id:id});});return b;}
+ function joinLinks(ids,fn){var sp=el("span");ids.forEach(function(id,i){if(i)sp.appendChild(document.createTextNode(", "));sp.appendChild(fn(id));});if(!ids.length)sp.textContent="none";return sp;}
+ function renderChecks(obj,ul,depth){Object.keys(obj).forEach(function(k){var v=obj[k];
+   if(typeof v==="boolean"){ul.appendChild(el("li",null,[el("span",{class:v?"ok":"no",text:v?"holds":"fails"}),el("span",{text:k})]));}
+   else if(v&&typeof v==="object"&&!Array.isArray(v)){ul.appendChild(el("li",{class:"grp",text:k}));renderChecks(v,ul,depth+1);}
+   else{ul.appendChild(el("li",null,[el("span",{class:"muted",text:"value"}),el("span",null,[el("b",{text:k+": "}),String(Array.isArray(v)?v.join("; "):v)])]));}});}
+ function renderRail(){rail.innerHTML="";var s=state.sel;
+  if(!s){rail.appendChild(el("h2",{text:"Detail"}));rail.appendChild(el("p",{class:"muted",text:"Nothing selected. Choose a claim to see the routes it rests on, a node to see its definition, or a route to see its statement and the output of its certificate."}));
+   var gc=el("ul",{class:"checks"});Object.keys(p.grade_counts).forEach(function(k){gc.appendChild(el("li",null,[el("span",{class:"muted",text:String(p.grade_counts[k])}),chip("g-"+k,k)]));});rail.appendChild(el("h3",{text:"Routes by grade"}));rail.appendChild(gc);return;}
+  if(s.type==="node"){var n=nodes[s.id];rail.appendChild(el("div",{class:"mono muted",text:n.id}));rail.appendChild(el("h2",{text:n.title}));
+   rail.appendChild(el("div",{class:"stmt",text:n.definition}));
+   var dl=el("dl",{class:"kv"},[el("dt",{text:"Layer"}),el("dd",{text:({S:"state",M:"model",O:"observable"})[n.layer]+" · "+n.sub}),el("dt",{text:"Status"}),el("dd",{text:n.status==="existing"?"in a released network":n.status})]);
+   if(n.glue){dl.appendChild(el("dt",{text:"Glued to"}));dl.appendChild(el("dd",{class:"mono",text:n.glue}));}
+   if(n.refs&&n.refs.length){dl.appendChild(el("dt",{text:"References"}));dl.appendChild(el("dd",{text:n.refs.join("; ")}));}
+   dl.appendChild(el("dt",{text:"Routes in"}));dl.appendChild(el("dd",null,[joinLinks(p.edges.filter(function(e){return e.target===n.id;}).map(function(e){return e.id;}),edgeLink)]));
+   dl.appendChild(el("dt",{text:"Routes out"}));dl.appendChild(el("dd",null,[joinLinks(p.edges.filter(function(e){return e.inputs.indexOf(n.id)>=0;}).map(function(e){return e.id;}),edgeLink)]));
+   rail.appendChild(dl);return;}
+  if(s.type==="claim"){var c=p.claims.filter(function(x){return x.id===s.id;})[0];rail.appendChild(el("div",{class:"mono muted",text:c.id+" · "+c.kind+" claim"}));rail.appendChild(el("h2",{text:"Headline claim"}));rail.appendChild(el("div",{class:"stmt",text:c.text}));
+   rail.appendChild(el("p",null,[chip(verdictClass(c.verdict),c.verdict)]));
+   var d2=el("dl",{class:"kv"},[el("dt",{text:"In the paper"}),el("dd",{text:c.where}),el("dt",{text:"Rests on"}),el("dd",null,[joinLinks(c.depends_on,edgeLink)]),el("dt",{text:"Checked"}),el("dd",null,[joinLinks(c.kernel_checked,edgeLink)]),el("dt",{text:"Imports"}),el("dd",null,[joinLinks(c.imports,edgeLink)]),el("dt",{text:"Instances"}),el("dd",null,[joinLinks(c.instance_scoped,edgeLink)]),el("dt",{text:"By hand"}),el("dd",null,[joinLinks(c.unmechanised_steps,edgeLink)])]);
+   if(c.interpretive.length){d2.appendChild(el("dt",{text:"Interpretive"}));d2.appendChild(el("dd",null,[joinLinks(c.interpretive,edgeLink)]));}
+   rail.appendChild(d2);return;}
+  var e=edges[s.id];rail.appendChild(el("div",{class:"mono muted",text:e.id+" · "+e.kind}));rail.appendChild(el("h2",{text:"Route "+e.id}));
+  rail.appendChild(el("div",{class:"stmt",text:e.statement}));
+  rail.appendChild(el("p",null,[chip("g-"+e.grade,e.grade)," ",el("span",{class:"status-"+e.status,text:e.status})]));
+  var d3=el("dl",{class:"kv"},[el("dt",{text:"Inputs"}),el("dd",null,[joinLinks(e.inputs,nodeLink)]),el("dt",{text:"Target"}),el("dd",null,[nodeLink(e.target)]),el("dt",{text:"In the paper"}),el("dd",{text:e.where}),el("dt",{text:"Scope"}),el("dd",{text:e.scope})]);
+  if(e.method){d3.appendChild(el("dt",{text:"Method"}));d3.appendChild(el("dd",{text:e.method}));}
+  if(e.uses.length){d3.appendChild(el("dt",{text:"Uses"}));d3.appendChild(el("dd",null,[joinLinks(e.uses,edgeLink)]));}
+  if(e.refs&&e.refs.length){d3.appendChild(el("dt",{text:"References"}));d3.appendChild(el("dd",{text:e.refs.join("; ")}));}
+  rail.appendChild(d3);
+  if(e.summary&&e.grade!=="compose"){rail.appendChild(el("h3",{text:"Certificate output"}));rail.appendChild(el("p",{class:"small",text:e.summary}));}
+  if(e.note){rail.appendChild(el("h3",{text:"Note"}));rail.appendChild(el("p",{class:"small",text:e.note}));}
+  if(e.data&&Object.keys(e.data).length){var ul=el("ul",{class:"checks"});renderChecks(e.data,ul,0);rail.appendChild(el("h3",{text:"Recorded checks"}));rail.appendChild(ul);}
+ }
+ renderRail();
+ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(draw);}
+ requestAnimationFrame(draw);setTimeout(draw,400);
+}
+
+/* ---------------- load ---------------- */
+if(window.__GEN_DATA__){start(window.__GEN_DATA__);}
+else{fetch("results.json").then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json();}).then(start).catch(function(err){document.getElementById("view").innerHTML="";document.getElementById("view").appendChild(el("p",{class:"err",text:"The check results (results.json) could not be loaded: "+err.message+". Open the standalone file gen_edge_kernel_standalone.html from the bundle instead."}));});}
+})();
+</script>
+</body>
+</html>

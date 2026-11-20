@@ -1,0 +1,131 @@
+\section{Proof of Lemma~\ref{lem:simplex}}
+\label{app:lemma1}
+
+The statement is that of Refs.~\cite{schmid2021,selby2024lp} for the fragment at hand; we recall the argument. Let a noncontextual model be given. In an ontological model a mixture of preparations is represented by the mixture of their distributions, and by noncontextuality $\mu(\lambda|\cdot)$ depends on the preparation only through the vector $\omega\in V$. A convex-linear function on $\Omega$ extends uniquely to a linear functional $g_\lambda$ on $V=\operatorname{span}\Omega$. Likewise $r(\cdot|\lambda)$ is convex-linear, additive under coarse-graining, and depends on an effect only through its restriction to $V$; because the effects separate the points of $V$, their restrictions span the dual of $V$, and $r(e|\lambda)=e(Z_\lambda)$ for a unique $Z_\lambda\in V$. Reproduction of the statistics, $e(\omega)=\sum_\lambda e(Z_\lambda)g_\lambda(\omega)$ for all $e$ and $\omega$, is $\sum_\lambda Z_\lambda g_\lambda(\cdot)=\mathrm{id}_V$, and nonnegativity of $\mu$ and $r$ gives the inequalities of Eq.~\eqref{eq:simplex}. Conversely, given Eq.~\eqref{eq:simplex}, terms with $u(Z_\lambda)=0$ have $e(Z_\lambda)=0$ for every effect (since $0\le e(Z_\lambda)\le u(Z_\lambda)$) and can be dropped. Applying $u$ to the decomposition of the identity gives $\sum_\lambda u(Z_\lambda)g_\lambda=u$ on $V$, so that $\mu(\lambda|\omega)=u(Z_\lambda)g_\lambda(\omega)$ is a probability distribution and $r(e|\lambda)=e(Z_\lambda)/u(Z_\lambda)\in[0,1]$ with $r(u|\lambda)=1$. Both depend on states and effects only through their vectors, so the model is noncontextual. That a finite ontic set suffices is shown in Ref.~\cite{schmid2021}. \hfill$\square$
+
+When the effects do not separate the points of $V$ (degenerate kernels), states that differ by an element of $N=\{v\in V:e(v)=0\ \forall e\in\cE\}$ are equivalent under reading I and the lemma applies to $V/N$; under reading II the $g_\lambda$ are functionals on the full operator space and the $Z_\lambda$ functionals on the span of the effects. Both cases are treated where they occur (Remark~\ref{rem:deg}).
+
+\section{Charged-current kernels}
+\label{app:va}
+
+Equation~\eqref{eq:trace} is a polynomial identity in the components of the momenta and of the spin vector; route DV1 verifies it with explicit Dirac matrices. For the fermion of the second current, the two unobserved massless momenta are integrated with
+\begin{equation}
+\int\!\frac{d^3p_2}{2E_2}\frac{d^3p_4}{2E_4}\,\delta^4(Q-p_2-p_4)\,p_2^\alpha p_4^\beta=\frac{\pi}{24}\big(g^{\alpha\beta}Q^2+2Q^\alpha Q^\beta\big),
+\end{equation}
+$Q=p_1-p_3$. In the rest frame, with $x=2E_3/m$ and $c=\hat{\bm s}\!\cdot\!\bq_3$, one has $Q^2=m^2(1-x)$, $p_3\!\cdot\!(p_1-ms)=\tfrac12m^2x(1+c)$, $Q\!\cdot\!p_3=\tfrac12m^2x$ and $Q\!\cdot\!(p_1-ms)=m^2(1-\tfrac x2-\tfrac x2c)$, so that $p_{3\alpha}(p_1-ms)_\beta(g^{\alpha\beta}Q^2+2Q^\alpha Q^\beta)=\tfrac12m^4x\,[(3-2x)-(2x-1)c]$; with the phase-space factor $x\,dx\,d\bq$ this is Eq.~\eqref{eq:michel}, and Eq.~\eqref{eq:kappacut} follows by integration (route DV3).
+
+For $t\to bW$ with $m_b=0$ the $b$ quark has helicity $-\tfrac12$, so a $W$ of helicity $0$ or $-1$ along its direction $\bn$ carries the top spin projection $+\tfrac12$ or $-\tfrac12$ along $\bn$. The kernel of the $W$ direction is therefore $(w_{+},w_{-})=(F_0,F_-)$ with the helicity fractions $F_0=\xi/(\xi+2)$, $F_-=2/(\xi+2)$, and the $b$ quark, emitted opposite, has $\kappa_b=-(F_0-F_-)$, Eq.~\eqref{eq:kappab} (route DV4). Equation~\eqref{eq:kappanu} results from integrating Eq.~\eqref{eq:trace} with a narrow $W$ over the variables other than the neutrino direction; route DV5 checks it against a direct numerical quadrature of Eq.~\eqref{eq:trace}, which also returns $\kappa_\ell=1$ and Eq.~\eqref{eq:kappab}. The entries for $\tau$ decays in Table~\ref{tab:kappa} are those of Ref.~\cite{tsai1971}; for $\tau\to\rho\nu$ with only the $\rho$ direction recorded, $\kappa=(m_\tau^2-2m_\rho^2)/(m_\tau^2+2m_\rho^2)$, which is the same helicity counting with $m_t\to m_\tau$, $m_W\to m_\rho$ \cite{pdg2024}.
+
+\section{Range lemma}
+\label{app:range}
+
+\begin{lemma}
+\label{lem:range}
+Let $W\subset\mathbb{R}^4$ be a linear subspace that contains an interior point $u$ of the Bloch cone $\cK$. There is a linear projection $P$ onto $W$ with $P\cK\subset\cK$.
+\end{lemma}
+
+\begin{proof}
+$\cK$ is the forward light cone. Let $L$ be the Lorentz boost with $Lu\propto e_0=(1,\bm{0})$; $L\cK=\cK$. The subspace $LW$ contains $e_0$, hence $LW=\mathbb{R}e_0\oplus(\{0\}\times S)$ with $S\subset\mathbb{R}^3$. Let $\Pi=1\oplus\Pi_S$ with $\Pi_S$ the orthogonal projector onto $S$. Then $\Pi$ is a projection onto $LW$, and $\Pi\cK\subset\cK$ because $|\Pi_S\bx|\le|\bx|\le t$. Put $P=L^{-1}\Pi L$.
+\end{proof}
+
+In Theorem~\ref{thm:pair}, $\operatorname{range}\Rraw$ contains $\Rraw e_0=(1,\ba)$ and $\operatorname{range}\Rraw^{\T}$ contains $(1,\bb)$. With $P_A$, $P_B$ the projections of the lemma, $P_A\Rraw=\Rraw$ and $P_B\Rraw^{\T}=\Rraw^{\T}$, so that a decomposition $\Rraw=\sum_\lambda z_\lambda h_\lambda^{\T}$ with $z_\lambda,h_\lambda\in\cK$ yields $\Rraw=P_A\Rraw P_B^{\T}=\sum_\lambda(P_Az_\lambda)(P_Bh_\lambda)^{\T}$ with factors in $\cK\cap\operatorname{range}\Rraw$ and $\cK\cap\operatorname{range}\Rraw^{\T}$. Route H12 checks the construction on random singular matrices whose given decomposition violates Eq.~\eqref{eq:rangecond}. A Euclidean orthogonal projector does not have the property (negative control k15).
+
+\section{Proof of Proposition~\ref{prop:cov}}
+\label{app:cov}
+
+Since all $\eta_l\ne0$, the effects $E_w(\bq)$ span the Hermitian operators, and Lemma~\ref{lem:simplex} applies with $V$ the space of Hermitian operators: the polarimeter is classical if and only if there are $G_\lambda\ge0$ and Hermitian $Z_\lambda$ with $X=\sum_\lambda Z_\lambda\Tr[G_\lambda X]$ for all $X$ and $\Tr[Z_\lambda E_w(\bq)]\ge0$. By Eq.~\eqref{eq:lambda} the last condition says that $Z'_\lambda=\Lambda_\eta Z_\lambda$ has a nonnegative Husimi function. Applying $\Lambda_\eta$, the conditions become
+\begin{equation}
+\Lambda_\eta=\sum_\lambda|Z'_\lambda\rangle\!\rangle\langle\!\langle G_\lambda|,\qquad G_\lambda\ge0,\quad Q_{Z'_\lambda}\ge0 ,
+\label{eq:lamdec}
+\end{equation}
+where $|Z\rangle\!\rangle\langle\!\langle G|$ denotes the map $X\mapsto Z\Tr[GX]$; conversely Eq.~\eqref{eq:lamdec} gives $Z_\lambda=\Lambda_\eta^{-1}Z'_\lambda$. Both sides can be averaged over rotations acting by conjugation. The operator space carries each rank $l=0,\dots,2j$ once, so by Schur's lemma the average of $|Z'\rangle\!\rangle\langle\!\langle G|$ is $\sum_l(2l+1)^{-1}\Tr(\Pi_l[G]\Pi_l[Z'])\,\Pi_l$. Decomposing each $G_\lambda$ into rank-one terms and normalising $\Tr Z'_\lambda=1$ (the rank-$0$ component gives $\sum_\lambda\Tr G_\lambda=d$), Eq.~\eqref{eq:lamdec} implies $\eta_l=\sum_k\pi_km_l(\psi_k,Z'_k)$ with weights $\pi_k\ge0$ summing to one and $m_l$ as in Eq.~\eqref{eq:ml}. Conversely, if $\eta=\sum_k\pi_km(\psi_k,Z'_k)$, then $\Lambda_\eta=\sum_k\pi_kd\int\!dU\,|UZ'_kU^\dagger\rangle\!\rangle\langle\!\langle U\psi_k\psi_k^\dagger U^\dagger|$. The integral is a point of the convex hull of a compact set in a finite-dimensional space, hence a finite convex combination of its elements (Carath\'eodory), which is Eq.~\eqref{eq:lamdec}. \hfill$\square$
+
+For $j=1$ the Haar average can be replaced by the average over the $60$ rotations of the icosahedral group: maps on the nine-dimensional operator space decompose into tensor ranks up to four, and the icosahedral group has no invariant of rank one to five \cite{klein1956}. This gives the finite models of Appendix~\ref{app:finite}.
+
+\section{Spin $1$: proofs}
+\label{app:spin1}
+
+\subsection{Nonnegative quadratic functions on the sphere}
+
+Let $J=\operatorname{diag}(1,-1,-1,-1)$.
+
+\begin{lemma}
+\label{lem:sos}
+(a) A real symmetric $4\times4$ matrix satisfies $M\ge0$ and $\Tr(MJ)=0$ if and only if $M=\sum_kc_k(1,\bq_k)(1,\bq_k)^{\T}$ with $c_k\ge0$ and unit vectors $\bq_k$; that is, if and only if its entries are the moments of order at most two of a positive measure on the sphere.
+(b) $F(\bq)=f_0+\bm{f}\!\cdot\!\bq+\bq^{\T}F_2\bq$ is nonnegative on the unit sphere if and only if, for some real $\mu$,
+\begin{equation}
+\begin{pmatrix}f_0+\mu&\tfrac12\bm{f}^{\T}\\ \tfrac12\bm{f}&F_2-\mu\openone_3\end{pmatrix}\ge0 ,
+\label{eq:pencil}
+\end{equation}
+that is, if and only if $F$ coincides on the sphere with a sum of squares of affine functions.
+\end{lemma}
+
+\begin{proof}
+(a) ``If'' is immediate. For ``only if'' write $M=BB^{\T}$ with columns $b_k$. The symmetric matrix $N=B^{\T}JB$ has $\Tr N=\Tr(JM)=0$. A real symmetric matrix of trace zero has zero diagonal in a suitable orthonormal basis: there is a unit vector $x$ with $x^{\T}Nx=0$, because the quadratic form takes both signs or vanishes, and one proceeds by induction on the orthogonal complement. With the corresponding orthogonal matrix $O$, the columns $u_k$ of $BO$ satisfy $u_k^{\T}Ju_k=0$ and $\sum_ku_ku_k^{\T}=M$; a lightlike vector is $\pm\sqrt{c}\,(1,\bq)$.
+(b) ``If'': on the sphere the terms in $\mu$ cancel. ``Only if'': the set $\mathcal{P}$ of matrices $P+\mu J$ with $P\ge0$ is a convex cone, and it is closed: if $P_n+\mu_nJ$ converges and $|\mu_n|\to\infty$, then $P_n/|\mu_n|\to\mp J$, which is not positive. Let $M_F$ be the matrix \eqref{eq:pencil} at $\mu=0$, so that $F(\bq)=(1,\bq)M_F(1,\bq)^{\T}$. If $M_F$ were not in $\mathcal{P}$, a separating matrix $M$ would satisfy $\Tr(MP)\ge0$ for all $P\ge0$, $\Tr(MJ)=0$ and $\Tr(MM_F)<0$. By (a), $\Tr(MM_F)=\sum_kc_kF(\bq_k)\ge0$, a contradiction.
+\end{proof}
+
+These are the forms of the $S$-lemma needed here \cite{sturm2003,polik2007}; route V2 checks the construction in (a) on random matrices. By (b), every element of $\cQ$ is a convex combination of the operators $Z_{\tau,\bn}^{\pm}$ for which the left-hand side of Eq.~\eqref{eq:Q1} is the square $(\pm\sqrt{(2-\tau)/3}+\sqrt\tau\,\bn\!\cdot\!\bq)^2$, $0\le\tau\le2$; they have
+\begin{equation}
+\bp=\pm2\sqrt{\tau(2-\tau)/3}\;\bn,\qquad A=\tau\,(\bn\bn^{\T}-\tfrac13\openone_3).
+\label{eq:squares}
+\end{equation}
+
+\subsection{Proof of Theorem~\ref{thm:one}}
+
+By Proposition~\ref{prop:cov} the classical kernels with $\eta_1\eta_2\ne0$ are those in the convex hull $\cR$ of the points \eqref{eq:m12}. $\cR$ is compact, so it is determined by its support function $h(a,b)=\max[a\,m_1+b\,m_2]$.
+
+\emph{Upper bound.} Fix $\psi=\psi_\alpha$ and write $am_1+bm_2=\bz\!\cdot\!\bp_Z+\Tr(\mathsf{Z}A_Z)$ with $\bz=\tfrac a2\bp_\psi$ and $\mathsf{Z}=\tfrac{3b}{5}A_\psi$. If $t$ is such that
+\begin{equation}
+M(t)=\begin{pmatrix}t&-\bz^{\T}\\-\bz&\tfrac t3\openone_3-\mathsf{Z}\end{pmatrix}\ge0 ,
+\label{eq:Mt}
+\end{equation}
+then, since $\Tr(M(t)J)=0$, Lemma~\ref{lem:sos}(a) gives $M(t)=\sum_kc_k(1,\bq_k)(1,\bq_k)^{\T}$, and for every $(\bp_Z,A_Z)\in\cQ$
+\begin{equation}
+0\le\sum_kc_k\big[\tfrac23+\bp_Z\!\cdot\!\bq_k+\bq_k^{\T}A_Z\bq_k\big]=\tfrac23t-\bz\!\cdot\!\bp_Z-\Tr(\mathsf{Z}A_Z).
+\end{equation}
+Hence $am_1+bm_2\le\tfrac23t$. For $\psi_\alpha$ the matrix \eqref{eq:Mt} is block diagonal with entries $\tfrac t3-\tfrac b5+\tfrac{3b}{5}\cos^2\!\alpha$, $\tfrac t3-\tfrac b5+\tfrac{3b}{5}\sin^2\!\alpha$ and the $2\times2$ block $\big(\begin{smallmatrix}t&-\frac a2\sin2\alpha\\-\frac a2\sin2\alpha&\frac t3-\frac b5\end{smallmatrix}\big)$. For $b\ge0$ the block is binding and the smallest admissible $t$ gives $\tfrac23t=\tfrac b5+(\tfrac{b^2}{25}+\tfrac{a^2}{3}\sin^22\alpha)^{1/2}$, largest at $\alpha=\pi/4$. For $b<0$, $t$ must exceed both $t_1(\alpha)=\tfrac{3|b|}{5}(3\cos^2\!\alpha-1)$, which decreases on $[0,\pi/4]$, and the root $t_2(\alpha)$ of the block condition, which increases; hence $\tfrac23t\le\max\{\tfrac23t_1(0),\tfrac23t_2(\pi/4)\}$. In both cases $h(a,b)\le h_{\cR}(a,b)$ of Eq.~\eqref{eq:hR}.
+
+\emph{Attainment.} The first entry of Eq.~\eqref{eq:hR} is the support function of the ellipse, whose points $(\pm\sqrt{\tau(2-\tau)/3},\tau/5)$ are $m(\psi_{\pi/4},Z^{\pm}_{\tau,\bm{e}_z})$ by Eqs.~\eqref{eq:m12} and \eqref{eq:squares}; the second is the value at $(0,-\tfrac45)=m(\psi_0,Z_{2,\bm{e}_x})$. Hence $h=h_{\cR}$ and $\cR$ is the set \eqref{eq:R} (routes V3, V6).
+
+\emph{The case $\eta_1=0\ne\eta_2$.} The effects then have no rank-one component. Under reading I the lemma applies to the six-dimensional space of operators without rank-one part: the $G_\lambda$ are positive operators with $\bp=0$, which are mixtures of linearly polarised states, the $Z'_\lambda$ have $\bp=0$ and satisfy \eqref{eq:Q1}, and the same averaging gives $\eta_2\in\conv\{m_2\}$ over these classes. Under reading II the $G_\lambda$ are arbitrary and the $Z'_\lambda$ again have $\bp=0$. In both cases $m_1=0$, so that $(0,m_2)\in\cR$, and the end points $\tfrac25$ and $-\tfrac45$ are attained by the pairs named after Theorem~\ref{thm:one}, which have $\bp_\psi=\bp_Z=0$. The criterion is therefore $-\tfrac45\le\eta_2\le\tfrac25$, the section of $\cR$. For $\eta_2=0$ the analogous computation gives the values of Remark~\ref{rem:deg} (route V7): under reading I, $G=\tfrac13(\openone+c\,\bn\!\cdot\!\bS)$ with $|c|\le1$ has $|\bp_G|\le\tfrac23$; under reading II $|\bp_G|\le1$; in both, $|\bp_Z|\le2/(3|\eta_1|)$ and $1=\sum_\lambda\pi_\lambda\tfrac12\bp_{G_\lambda}\!\cdot\!\bp_{Z_\lambda}$. \hfill$\square$
+
+\subsection{Proof of Theorem~\ref{thm:onepair}}
+
+In the Cartesian basis $|\Psi_0\rangle=\tfrac1{\sqrt3}\sum_i\bm{e}_i\otimes\bm{e}_i$, so an effect $F$ of $B$ steers $A$ to $\tfrac13F^{\T}$; transposition maps $(\bp,A)\to(-\bp,A)$, i.e.\ $\eta_1^B\to-\eta_1^B$. For $\rho_v$ the steered states are therefore the cone $\Lambda_{v\bar\eta^B}[\mathcal{C}]$, where $\mathcal{C}$ is the cone generated by the coherent projectors and $\bar\eta^B=(-\eta_1^B,\eta_2^B)$, and the effects of $A$ generate $\Lambda_{\eta^A}[\mathcal{C}]$. If all ratios are nonzero, Lemma~\ref{lem:simplex} requires $X=\sum_\lambda Z_\lambda\Tr[G_\lambda X]$ with $\Lambda_{\eta^A}Z_\lambda$ and $\Lambda_{v\bar\eta^B}G_\lambda$ both having nonnegative Husimi functions. Repeating the argument of Appendix~\ref{app:cov} with $G'_\lambda=\Lambda_{v\bar\eta^B}G_\lambda$ in place of $G_\lambda$,
+\begin{equation}
+\begin{aligned}
+&\big(-v\eta_1^A\eta_1^B,\ v\eta_2^A\eta_2^B\big)\in\cR_2,\\
+&\cR_2=\conv\big\{(\tfrac12\bp\!\cdot\!\bp',\tfrac35\Tr(AA')):(\bp,A),(\bp',A')\in\cQ\big\}.
+\end{aligned}
+\end{equation}
+By Lemma~\ref{lem:sos}(b) it suffices to take both arguments of the form \eqref{eq:squares}, with parameters $(\tau,\bn)$, $(\tau',\bn')$ and $\gamma$ the angle between $\bn$ and $\bn'$:
+\begin{equation}
+\big(\pm\tfrac23\sqrt{g(\tau)g(\tau')}\cos\gamma,\ \tfrac35\tau\tau'(\cos^2\!\gamma-\tfrac13)\big),
+\label{eq:R2points}
+\end{equation}
+where $g(\tau)=\tau(2-\tau)$.
+(i) With $s=\sqrt{\tau\tau'}$ the arithmetic--geometric inequality gives $\sqrt{g(\tau)g(\tau')}\le s(2-s)$ at fixed $\tau\tau'=s^2$; every point \eqref{eq:R2points} lies on the horizontal segment between the points with $\tau=\tau'=s$ and $\pm\cos\gamma$, so only $\tau=\tau'=s$ need be considered. (ii) For $\cos\gamma=\pm1$ these are $\Gamma$ and $\Gamma^-$. (iii) For $b\ge0$ the functional $am_1+bm_2$ is convex in $\cos\gamma$ and is maximal at $\cos\gamma=\pm1$. For $b<0$ it is concave in $\cos\gamma$; if its stationary point lies in $(-1,1)$ the value there is $\tfrac{|b|}{5}s^2+\tfrac{5a^2}{27|b|}(2-s)^2$, a convex function of $s$ on the interval $s\ge10|a|/(9|b|+5|a|)$ where this happens, hence maximal at an end point: at $s=2$ it is $\tfrac45|b|$, the value at $(0,-\tfrac45)$, and at the other end point $\cos\gamma=\pm1$; if the stationary point lies outside $(-1,1)$ the maximum over $\cos\gamma$ is at $\pm1$ as well. This proves Eq.~\eqref{eq:hR2}; the tangent from $(0,-\tfrac45)$ touches $\Gamma$ at $s=\sqrt3-1$, and $\Gamma$ is convex (route P1).
+
+If $\eta_1^A\eta_1^B=0\ne\eta_2^A\eta_2^B$ the fragment has no rank-one part on at least one side, and, as for Theorem~\ref{thm:one}, the criterion is the section $[-\tfrac45,\tfrac85]$ of $\cR_2$, whose end points are attained with $\tau=\tau'=2$, for which $\bp=\bp'=0$. \hfill$\square$
+
+\section{Finite models}
+\label{app:finite}
+
+Let $\mathcal{I}$ be the icosahedral rotation group and $(\psi,Z')$ a pair with $m(\psi,Z')=\eta$. The model with ontic states $g\in\mathcal{I}$,
+\begin{equation}
+\mu(g|\rho)=\tfrac{1}{20}\langle g\psi|\rho|g\psi\rangle,\qquad r(\bq|g)=\tfrac{3}{4\pi}\langle\bq|\,gZ'g^\dagger|\bq\rangle,
+\end{equation}
+reproduces $\Tr[\rho E_w(\bq)]$ for the kernel with ratios $\eta$, and $r(\bq|g)=\Tr[(g\Lambda_\eta^{-1}Z'g^\dagger)E_w(\bq)]$ is a linear functional of the effect. Route V4 verifies in exact arithmetic that the average over $\mathcal{I}$ of $|gZ'g^\dagger\rangle\!\rangle\langle\!\langle g\psi\psi^\dagger g^\dagger|$ equals $\tfrac13\Lambda_\eta$ for the pairs at the points $(0,\tfrac25)$, $(\tfrac12,\tfrac1{10})$, $(\tfrac1{\sqrt3},\tfrac15)$, $(\tfrac{2\sqrt2}{5},\tfrac4{25})$ and $(0,-\tfrac45)$ of $\cR$, and, with both factors in $\cQ$, at the points $(0,\tfrac85)$, $(\tfrac58,\tfrac58)$ and $\Gamma(\sqrt3-1)$ of $\cR_2$. Kernels in the interior are convex combinations, with at most $180$ ontic states; pairs with a nontrivial stabiliser need fewer.
+
+\section{Spin $j$: attainment}
+\label{app:spinj}
+
+Let $f^\star$ be the polynomial of degree $2j$ that vanishes at all nodes of the quadrature rule except the largest, squared at the free nodes and with a simple zero at $-1$ in the Radau case, normalised to $\int_{-1}^1f^\star=1$. It is nonnegative on $[-1,1]$ and $\int tf^\star=\xi_{2j}$ by exactness of the rule. Let $Z^\star$ be the operator with Husimi function $Q^\star(\bq)=\tfrac2d\,f^\star(q_z)$, so that $\tfrac{d}{4\pi}\int\!d\bq\,Q^\star=1$; every polynomial of degree $2j$ on the sphere is the Husimi function of a unique operator. Consider the model with ontic states $U\in SO(3)$, $G_U=d\,U|j,j\rangle\langle j,j|U^\dagger$ with respect to the Haar measure, and $r(\bq|U)=\tfrac{d}{4\pi}Q^\star(U^{-1}\bq)$. Since $Q^\star$ is zonal, $r(\bq|U)$ depends on $U$ through $\bn=U\bm{e}_z$ only, and
+\begin{equation}
+\begin{aligned}
+\int\!dU\,G_U\,r(\bq|U)&=\frac{d}{4\pi}\,\frac{d}{4\pi}\!\int\!d\bn\,Q^\star(\bn\!\cdot\!\bq)\,|\bn\rangle\langle\bn|\\
+&=\frac{d}{4\pi}\,U_{\bq}D^\star U_{\bq}^\dagger ,
+\end{aligned}
+\end{equation}
+the polarimeter with kernel $D^\star$ of Theorem~\ref{thm:spinj}(b). $D^\star$ is a mixture of coherent projectors, hence positive, and commutes with $J_z$; $\Tr D^\star=1$, and $\kappa_1(D^\star)=\tfrac{d}{4\pi}\int d\bq\,q_z\,Q^\star=\xi_{2j}$ because $\langle\bq|J_z|\bq\rangle=jq_z$. The multipole ratios of $D^\star$ are $m_l(|j,j\rangle,Z^\star)$. If they are all nonzero, $r(\bq|U)=\Tr[(U\Lambda_{\eta^\star}^{-1}Z^\star U^\dagger)E_{D^\star}(\bq)]$ is a linear functional of the effect and the model is noncontextual (a finite one exists by Proposition~\ref{prop:cov}). Route G4 finds $\min_l|\eta^\star_l|=\etaStarMin$ for $j\le4$ and confirms the value $\xi_{2j}$ by a linear programme (Table~\ref{tab:gj}). For general $j$, replace $Z^\star$ by $(1-\epsilon)Z^\star+\epsilon|j,j\rangle\langle j,j|$: the ratios become $(1-\epsilon)\eta^\star_l+\epsilon\,m_l(|j,j\rangle,|j,j\rangle\langle j,j|)$ with the second term positive, so they are all nonzero for all but finitely many $\epsilon$, the polarimeter is classical by Proposition~\ref{prop:cov}, and $\kappa_1\to\xi_{2j}$ as $\epsilon\to0$. \hfill$\square$

@@ -1,0 +1,2357 @@
+{
+ "summary": {
+  "python": "3.13.18",
+  "sympy": "1.14.0",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "cvxpy": "1.9.3",
+  "z3": "5.4.1",
+  "nodes": 35,
+  "nodes_released": 17,
+  "nodes_new": 18,
+  "nodes_by_layer": {
+   "S": 10,
+   "M": 13,
+   "O": 12
+  },
+  "routes": 63,
+  "grades": {
+   "exact": 21,
+   "numeric": 13,
+   "compose": 15,
+   "definition": 4,
+   "import": 7,
+   "logic": 3
+  },
+  "status": {
+   "checked": 38,
+   "written proof step": 15,
+   "definition": 4,
+   "imported": 6
+  },
+  "checked": 38,
+  "checked_by_grade": {
+   "exact": 21,
+   "logic": 3,
+   "numeric": 13,
+   "import": 1
+  },
+  "failed": 0,
+  "claims": {
+   "C1": "verified modulo written proof steps",
+   "C2": "verified",
+   "C3": "verified modulo imports",
+   "C4": "verified modulo imports and written proof steps",
+   "C5": "verified modulo imports and written proof steps",
+   "C6": "verified modulo imports and written proof steps",
+   "C7": "verified modulo imports and written proof steps",
+   "C8": "verified modulo imports",
+   "C9": "verified modulo imports and written proof steps",
+   "C10": "verified",
+   "C11": "verified modulo imports and written proof steps"
+  },
+  "verdict_counts": {
+   "verified modulo written proof steps": 1,
+   "verified": 2,
+   "verified modulo imports": 2,
+   "verified modulo imports and written proof steps": 6
+  },
+  "controls": 16,
+  "controls_rejected": 16,
+  "scope_separation_single_setting": true,
+  "lint_issues": [],
+  "signature": {
+   "SS": 1,
+   "SM": 17,
+   "SO": 18,
+   "MS": 1,
+   "MM": 27,
+   "MO": 24,
+   "OS": 2,
+   "OM": 4,
+   "OO": 29
+  },
+  "seconds": 37.8
+ },
+ "nodes": [
+  {
+   "id": "u_mh",
+   "layer": "S",
+   "sub": "uir",
+   "label": "Massive spin-1/2 particle",
+   "def": "Wigner class m > 0, s = 1/2 (t, tau, mu, Lambda).",
+   "released": "GEN_HEP",
+   "glue": []
+  },
+  {
+   "id": "u_m1",
+   "layer": "S",
+   "sub": "uir",
+   "label": "Massive spin-1 particle",
+   "def": "Wigner class m > 0, s = 1 (W, Z, J/psi).",
+   "released": "GEN_HEP",
+   "glue": []
+  },
+  {
+   "id": "s-spin",
+   "layer": "S",
+   "sub": "hilbert",
+   "label": "All spin states of one particle",
+   "def": "Density operators on C^(2j+1) of a particle at rest; data Bloch vector v = kappa r for j = 1/2.",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "s-steer",
+   "layer": "S",
+   "sub": "cluster",
+   "label": "Steered ensemble",
+   "def": "States of particle A conditioned on the recorded decay direction of particle B (remote preparations).",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "s-sep",
+   "layer": "S",
+   "sub": "free",
+   "label": "Separable states",
+   "def": "Convex hull of product states.",
+   "released": "GEN_GPT_Level",
+   "glue": [
+    "GEN_QRT_Level:sF-ent"
+   ]
+  },
+  {
+   "id": "s-ent",
+   "layer": "S",
+   "sub": "resource",
+   "label": "Entangled states",
+   "def": "Non-separable bipartite states.",
+   "released": "GEN_GPT_Level",
+   "glue": [
+    "GEN_QRT_Level:sR-ent"
+   ]
+  },
+  {
+   "id": "s-tstate",
+   "layer": "S",
+   "sub": "cluster",
+   "label": "Unpolarised pair states",
+   "def": "Two spin-1/2 particles with vanishing single-particle polarisation; correlation matrix C.",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "s-iso1",
+   "layer": "S",
+   "sub": "cluster",
+   "label": "Isotropic spin-1 pair states",
+   "def": "v |singlet><singlet| + (1-v) 1/9 for two spin-1 particles.",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "s-ttbar",
+   "layer": "S",
+   "sub": "sector",
+   "label": "Top-pair spin state",
+   "def": "Spin state of a t tbar pair at fixed kinematics.",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "s-LLbar",
+   "layer": "S",
+   "sub": "sector",
+   "label": "Hyperon-pair spin state",
+   "def": "Lambda anti-Lambda from e+ e- -> J/psi at production angle theta.",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "m_A",
+   "layer": "M",
+   "sub": "frame",
+   "label": "Observable postulate, Born rule",
+   "def": "Hermitian observables and the Born rule.",
+   "released": "GEN_HEP",
+   "glue": []
+  },
+  {
+   "id": "m_cc",
+   "layer": "M",
+   "sub": "fund",
+   "label": "Charged-current vertex",
+   "def": "(g/sqrt2) W_mu J^mu_CC + h.c.",
+   "released": "GEN_HEP",
+   "glue": []
+  },
+  {
+   "id": "m_va",
+   "layer": "M",
+   "sub": "eff",
+   "label": "Universal V-A current-current term",
+   "def": "(G_F/sqrt2) J_mu J^mu dagger.",
+   "released": "GEN_HEP",
+   "glue": []
+  },
+  {
+   "id": "m_mu",
+   "layer": "M",
+   "sub": "eff",
+   "label": "Muon-decay contact term",
+   "def": "(G_F/sqrt2)(nubar_mu gamma^mu mu)(ebar gamma_mu nu_e) with V-A structure.",
+   "released": "GEN_HEP",
+   "glue": []
+  },
+  {
+   "id": "m_nc",
+   "layer": "M",
+   "sub": "fund",
+   "label": "Neutral-current vertex",
+   "def": "(g/cos theta_W) Z_mu J^mu_NC.",
+   "released": "GEN_HEP",
+   "glue": []
+  },
+  {
+   "id": "m-quantum",
+   "layer": "M",
+   "sub": "model",
+   "label": "Quantum theory",
+   "def": "Complex quantum theory.",
+   "released": "GEN_GPT_Level",
+   "glue": []
+  },
+  {
+   "id": "m-classical",
+   "layer": "M",
+   "sub": "model",
+   "label": "Classical probability (simplex)",
+   "def": "Simplicial state space with all response functions.",
+   "released": "GEN_GPT_Level",
+   "glue": []
+  },
+  {
+   "id": "p-decay",
+   "layer": "M",
+   "sub": "process",
+   "label": "Decay polarimeter",
+   "def": "The measurement a decay implements on the parent spin: one fixed SU(2)-covariant POVM E_w(q) = (d/4pi) R_q D_w R_q^dagger with kernel w (helicity weights of the recorded direction).",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "p-half",
+   "layer": "M",
+   "sub": "process",
+   "label": "Spin-1/2 polarimeter",
+   "def": "E(q) = (1 + kappa q.sigma)/4pi; kappa is the spin analysing power.",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "p-one",
+   "layer": "M",
+   "sub": "process",
+   "label": "Spin-1 polarimeter",
+   "def": "Kernel (w+, w0, w-); eta1 = w+ - w-, eta2 = 1 - 3 w0.",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "m-lhv1",
+   "layer": "M",
+   "sub": "model",
+   "label": "Recorded-outcome hidden-variable model",
+   "def": "Local hidden-variable model of single-setting data whose hidden variables are the recorded outcomes (Kasday; Abel-Dittmar-Dreiner).",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "m-ncom",
+   "layer": "M",
+   "sub": "model",
+   "label": "Noncontextual ontological model",
+   "def": "Finite ontic set, convex-linear epistemic states and response functions that respect all operational equivalences of the fragment (simplex embedding).",
+   "released": null,
+   "glue": [
+    "GEN_GPT_Level:m-classical",
+    "GEN_QRT_Level:sF-ctx"
+   ]
+  },
+  {
+   "id": "ax-tomo",
+   "layer": "M",
+   "sub": "axiom",
+   "label": "Mutual tomographic completeness",
+   "def": "The accessible states and effects span each other's dual space; operational equivalences are then those read off the data.",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "o_wu",
+   "layer": "O",
+   "sub": "direct",
+   "label": "Parity-violating decay asymmetries",
+   "def": "Angular asymmetries in weak decays (60Co, muon decay).",
+   "released": "GEN_HEP",
+   "glue": []
+  },
+  {
+   "id": "o-ang1",
+   "layer": "O",
+   "sub": "direct",
+   "label": "Decay-angle distribution",
+   "def": "p(q) = Tr[rho E_w(q)] of one particle; multipole coefficients.",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "o-ang2",
+   "layer": "O",
+   "sub": "direct",
+   "label": "Joint decay-angle distribution",
+   "def": "(4pi)^2 p(qA,qB) = 1 + a.qA + b.qB + qA^T c qB; raw coefficients (a, b, c).",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "o-D",
+   "layer": "O",
+   "sub": "direct",
+   "label": "Opening-angle coefficient D",
+   "def": "D = -3 <cos phi> = -tr(c)/3.",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "w-rawppt",
+   "layer": "O",
+   "sub": "witness",
+   "label": "Raw-PPT test",
+   "def": "rho_raw = (1/4)(1 + a.sigma x 1 + 1 x b.sigma + sum c_ij sigma_i x sigma_j) and its partial transpose are positive semidefinite; for a = b = 0: ||c||_1 <= 1.",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "w-ncineq",
+   "layer": "O",
+   "sub": "witness",
+   "label": "Noncontextuality inequalities / simplex-embedding LP",
+   "def": "Linear programme deciding simplex embeddability of a fragment.",
+   "released": "GEN_GPT_Level",
+   "glue": [
+    "GEN_QRT_Level:wD-ctx"
+   ]
+  },
+  {
+   "id": "w-entw",
+   "layer": "O",
+   "sub": "witness",
+   "label": "Entanglement witness / PPT",
+   "def": "Witness operators and the PPT test on the state.",
+   "released": "GEN_GPT_Level",
+   "glue": [
+    "GEN_QRT_Level:wD-ent"
+   ]
+  },
+  {
+   "id": "w-region1",
+   "layer": "O",
+   "sub": "witness",
+   "label": "Spin-1 region test",
+   "def": "(eta1, eta2) outside R (all states) or the product of ratios outside R2 (pair, one decay each).",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "w-kappa",
+   "layer": "O",
+   "sub": "witness",
+   "label": "Vector analysing power bound",
+   "def": "|kappa_1| > xi_2j with xi_n the largest Gauss (n even) or Gauss-Radau (n odd) node.",
+   "released": null,
+   "glue": []
+  },
+  {
+   "id": "e-ctx",
+   "layer": "O",
+   "sub": "effect",
+   "label": "Generalized contextuality",
+   "def": "No noncontextual ontological model of the accessible fragment exists.",
+   "released": "GEN_GPT_Level",
+   "glue": [
+    "GEN_QRT_Level:sR-ctx"
+   ]
+  },
+  {
+   "id": "e-bell",
+   "layer": "O",
+   "sub": "effect",
+   "label": "Bell inequality violation",
+   "def": "No local hidden-variable model of a multi-setting behaviour.",
+   "released": "GEN_GPT_Level",
+   "glue": []
+  },
+  {
+   "id": "e-steer",
+   "layer": "O",
+   "sub": "effect",
+   "label": "EPR steering",
+   "def": "No local hidden-state model of an assemblage.",
+   "released": "GEN_GPT_Level",
+   "glue": []
+  }
+ ],
+ "routes": [
+  {
+   "id": "DV1",
+   "inputs": [
+    "m_cc",
+    "u_mh"
+   ],
+   "target": "p-half",
+   "kind": "derives",
+   "statement": "For [ubar_2 gamma^mu P_L u_1(s)][ubar_3 gamma_mu P_L v_4] with massless 2,3,4: sum |M|^2 = 8 ((p1 - m s).p4)(p2.p3).",
+   "where": "Sec. II, App. A",
+   "grade": "exact",
+   "certs": [
+    "cert_va_trace"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "DV2",
+   "inputs": [
+    "p-half",
+    "s-spin"
+   ],
+   "target": "o-ang1",
+   "kind": "derives",
+   "statement": "In the parent rest frame (p1 - m s).p4 = m E4 (1 + s.q): recording the direction of fermion 4 (charged lepton or down-type quark of a top decay) is the rank-one covariant effect (1 + q.sigma)/4pi, kappa = +1, at every value of the other variables.",
+   "where": "Sec. II, App. A",
+   "grade": "exact",
+   "certs": [
+    "cert_rank_one_effect"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "DV3",
+   "inputs": [
+    "m_mu",
+    "u_mh"
+   ],
+   "target": "p-half",
+   "kind": "derives",
+   "statement": "Three-body V-A decay with fermion 3 recorded (electron of mu decay, charged lepton of leptonic tau decay): effects x^2[(3-2x) - (2x-1) q.sigma]; direction only: |kappa| = 1/3; with the energy recorded the sharpest effect has |kappa| = 1.",
+   "where": "Sec. II, App. A",
+   "grade": "exact",
+   "certs": [
+    "cert_leptonic_spectrum"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "DV4",
+   "inputs": [
+    "m_cc",
+    "u_mh"
+   ],
+   "target": "p-half",
+   "kind": "derives",
+   "statement": "t -> b W, narrow width, m_b = 0, b direction: kappa_b = -(xi-2)/(xi+2), xi = m_t^2/m_W^2; |kappa_b| > 1/3 iff m_t > 2 m_W.",
+   "where": "Sec. II, App. A",
+   "grade": "exact",
+   "certs": [
+    "cert_top_b_power"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "DV5",
+   "inputs": [
+    "m_cc",
+    "u_mh"
+   ],
+   "target": "p-half",
+   "kind": "derives",
+   "statement": "Neutrino or up-type-quark direction: kappa_nu = [(xi-1)(xi^2-11xi-2)+12 xi ln xi]/[(xi+2)(xi-1)^2]; quadrature of the matrix element reproduces it and the published leading-order values; kappa_nu = -0.336 at the PDG 2026 masses, |kappa_nu| = 1/3 at m_t = 173.0 GeV.",
+   "where": "Sec. V",
+   "grade": "numeric",
+   "certs": [
+    "cert_top_powers"
+   ],
+   "scope": "general",
+   "refs": [
+    "Brandenburg, Si, Uwer, PLB 539, 235 (2002)"
+   ]
+  },
+  {
+   "id": "DV6",
+   "inputs": [
+    "m_A",
+    "u_mh"
+   ],
+   "target": "p-decay",
+   "kind": "derives",
+   "statement": "Rotational covariance of the decay and the Born rule give E(q) = (d/4pi) R_q D R_q^dagger with D >= 0, Tr D = 1, [D, J_z] = 0.",
+   "where": "Sec. II",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "DV7",
+   "inputs": [
+    "m_A",
+    "u_m1"
+   ],
+   "target": "p-one",
+   "kind": "derives",
+   "statement": "Spin 1: R_q D_w R_q^dagger = 1/3 + (eta1/2) q.S + (eta2/6)(3 (q.S)^2 - 2); symbol of sigma = (1/3, p, A): 1/3 + (eta1/2) p.q + (eta2/2) q^T A q.",
+   "where": "Sec. IV, App. C",
+   "grade": "exact",
+   "certs": [
+    "cert_spin1_algebra"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "DV8",
+   "inputs": [
+    "p-decay",
+    "s-spin"
+   ],
+   "target": "o-ang1",
+   "kind": "derives",
+   "statement": "First moment of the polarimeter: int q E_w(q) dq = kappa_1 J/(j+1); the coefficient of P.q in 4 pi p(q) is 3 j kappa_1/(j+1).",
+   "where": "Sec. IV",
+   "grade": "numeric",
+   "certs": [
+    "cert_general_j"
+   ],
+   "scope": "instance: j <= 4",
+   "refs": []
+  },
+  {
+   "id": "DV9",
+   "inputs": [
+    "p-half",
+    "s-ent"
+   ],
+   "target": "o-ang2",
+   "kind": "derives",
+   "statement": "Two decays: (4pi)^2 p = 1 + a.qA + b.qB + qA^T c qB with a = kappa_A B_A, b = kappa_B B_B, c = kappa_A kappa_B C; rho_raw = (D_kA x D_kB) rho; a sign flip of one analysing power is a partial transpose up to a local unitary.",
+   "where": "Sec. III",
+   "grade": "exact",
+   "certs": [
+    "cert_raw_operator"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "DV10",
+   "inputs": [
+    "o-ang2"
+   ],
+   "target": "o-D",
+   "kind": "derives",
+   "statement": "D = -3 <cos phi> = -tr(c)/3.",
+   "where": "Sec. III",
+   "grade": "definition",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "DV11",
+   "inputs": [
+    "p-half",
+    "s-ent"
+   ],
+   "target": "s-steer",
+   "kind": "defines",
+   "statement": "Back-edge: conditioning on the direction recorded by the partner polarimeter prepares the state of A with data Bloch vector v(qB) = (a + c qB)/(1 + b.qB).",
+   "where": "Sec. III",
+   "grade": "definition",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "DV12",
+   "inputs": [
+    "m_va",
+    "m_mu"
+   ],
+   "target": "o_wu",
+   "kind": "derives",
+   "statement": "The decay asymmetries of the released graph are first multipoles of the polarimeter: o_wu is the l = 1 coefficient of o-ang1.",
+   "where": "Sec. II",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "FW1",
+   "inputs": [
+    "ax-tomo",
+    "m-classical"
+   ],
+   "target": "m-ncom",
+   "kind": "defines",
+   "statement": "A fragment (states Omega, effects E) has a noncontextual model iff id_V = sum_l Z_l g_l with g_l >= 0 on Omega and e(Z_l) >= 0 for all e in E.",
+   "where": "Sec. II, Lemma 1",
+   "grade": "import",
+   "certs": [],
+   "scope": "general",
+   "refs": [
+    "Schmid et al., PRX Quantum 2, 010331 (2021)",
+    "Gitton, Woods, Quantum 6, 732 (2022)",
+    "Selby et al., PRL 132, 050202 (2024)"
+   ]
+  },
+  {
+   "id": "FW2",
+   "inputs": [
+    "o-ang2"
+   ],
+   "target": "m-lhv1",
+   "kind": "implies",
+   "statement": "With one setting per side the recorded outcomes are themselves local hidden variables.",
+   "where": "Sec. I",
+   "grade": "exact",
+   "certs": [
+    "cert_single_setting_lhv"
+   ],
+   "scope": "general",
+   "refs": [
+    "Abel, Dittmar, Dreiner, PLB 280, 304 (1992)",
+    "Abel et al., arXiv:2507.15949",
+    "Fucci et al., arXiv:2609.09294 (Theorem 1)"
+   ]
+  },
+  {
+   "id": "FW3",
+   "inputs": [
+    "m-lhv1"
+   ],
+   "target": "e-bell",
+   "kind": "forbids",
+   "statement": "Single-setting data cannot violate a Bell inequality.",
+   "where": "Sec. I",
+   "grade": "logic",
+   "certs": [
+    "cert_single_setting_lhv"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "FW4",
+   "inputs": [
+    "m-lhv1"
+   ],
+   "target": "e-steer",
+   "kind": "forbids",
+   "statement": "A single-measurement assemblage always has a local hidden-state model (lambda = outcome).",
+   "where": "Sec. I",
+   "grade": "logic",
+   "certs": [
+    "cert_single_setting_lhv"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "FW5",
+   "inputs": [
+    "m-lhv1",
+    "p-half"
+   ],
+   "target": "m-ncom",
+   "kind": "not_implies",
+   "statement": "The recorded-outcome model is not noncontextual: outcome functions differing by an l >= 2 harmonic define the same effect and are given different response functions.",
+   "where": "Sec. II",
+   "grade": "exact",
+   "certs": [
+    "cert_single_setting_lhv"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "FW6",
+   "inputs": [
+    "p-decay",
+    "s-spin"
+   ],
+   "target": "m-ncom",
+   "kind": "equiv",
+   "statement": "Covariant reduction (all multipole ratios nonzero): the fragment (all states, E_w) is noncontextual iff (eta_1, ..., eta_2j) lies in the convex hull of the points m_l(psi, Z) = d Tr(Pi_l[psi psi^dagger] Pi_l[Z])/(2l+1), psi a unit vector, Z unit-trace with nonnegative Husimi function.",
+   "where": "Sec. IV, Prop. 1",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "FW7",
+   "inputs": [
+    "p-decay"
+   ],
+   "target": "w-ncineq",
+   "kind": "witness",
+   "statement": "Simplex-embedding LPs on finite sub-fragments: infeasible implies contextual; LPs on finite subsets of the dual cones: feasible implies noncontextual.",
+   "where": "App. E",
+   "grade": "definition",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "H1",
+   "inputs": [
+    "p-half",
+    "s-spin"
+   ],
+   "target": "m-ncom",
+   "kind": "implies",
+   "statement": "Polarisation P and analysing power kappa with P|kappa| <= 1/3: explicit four-state (tetrahedral) model.",
+   "where": "Sec. III, Thm 1",
+   "grade": "exact",
+   "certs": [
+    "cert_spin_half_model"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "H13",
+   "inputs": [
+    "p-half",
+    "s-spin"
+   ],
+   "target": "m-ncom",
+   "kind": "equiv",
+   "statement": "Polarisation vectors filling an ellipsoid with semi-axes P1, P2, P3: noncontextual iff |kappa|(P1+P2+P3) <= 1 (six ontic states along the principal axes); planar ensembles: P|kappa| <= 1/2.",
+   "where": "Sec. III",
+   "grade": "exact",
+   "certs": [
+    "cert_ellipsoid"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "H2",
+   "inputs": [
+    "p-half",
+    "s-spin",
+    "w-ncineq"
+   ],
+   "target": "e-ctx",
+   "kind": "implies",
+   "statement": "P|kappa| > 1/3 implies no noncontextual model: 3 = sum_l t_l.b_l <= sum_l |b_l| <= 1/(P|kappa|).",
+   "where": "Sec. III, Thm 1",
+   "grade": "logic",
+   "certs": [
+    "cert_spin_half_necessity"
+   ],
+   "scope": "general",
+   "refs": [
+    "Horodecki, Shor, Ruskai, Rev. Math. Phys. 15, 629 (2003); Ruskai, ibid. 643 (entanglement-breaking threshold 1/3)",
+    "Marvian, arXiv:2003.05984 (preparation noncontextuality alone: average gate fidelity <= 3/4, i.e. 1/2)"
+   ]
+  },
+  {
+   "id": "H3",
+   "inputs": [
+    "m-ncom",
+    "o-ang2"
+   ],
+   "target": "w-rawppt",
+   "kind": "implies",
+   "statement": "If the joint data have a noncontextual model then rho_raw and its partial transpose are positive semidefinite.",
+   "where": "Sec. III, Thm 2(i); App. B",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "H4",
+   "inputs": [
+    "w-rawppt",
+    "ax-tomo"
+   ],
+   "target": "m-ncom",
+   "kind": "implies",
+   "statement": "If rho_raw passes the test, a noncontextual model exists: from a separable decomposition, directly if the coefficient matrix is invertible and after the cone-preserving projections of the range lemma otherwise.",
+   "where": "Sec. III, Thm 2; App. B",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "H12",
+   "inputs": [
+    "w-rawppt",
+    "ax-tomo"
+   ],
+   "target": "m-ncom",
+   "kind": "implies",
+   "statement": "Range lemma: a subspace meeting the interior of the Bloch cone has a projection onto it that maps the cone into itself; a separable decomposition of a singular coefficient matrix can therefore be moved into its range and row space.",
+   "where": "App. B, Lemma 2",
+   "grade": "numeric",
+   "certs": [
+    "cert_range_projection"
+   ],
+   "scope": "instance: 200 random singular matrices",
+   "refs": []
+  },
+  {
+   "id": "H5",
+   "inputs": [
+    "s-tstate",
+    "w-rawppt"
+   ],
+   "target": "e-ctx",
+   "kind": "equiv",
+   "statement": "Unpolarised pairs, any rank of c: noncontextual iff ||c||_1 <= 1; explicit model with at most seven ontic states from the singular value decomposition.",
+   "where": "Sec. III, Cor. 1",
+   "grade": "exact",
+   "certs": [
+    "cert_tstate"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "H6",
+   "inputs": [
+    "o-D",
+    "w-rawppt"
+   ],
+   "target": "e-ctx",
+   "kind": "implies",
+   "statement": "|D| > 1/3 implies contextual data: <Phi+| rho_raw^T_B |Phi+> = (1 + tr c)/4 and <Psi-| rho_raw |Psi-> = (1 - tr c)/4.",
+   "where": "Sec. III, Cor. 2",
+   "grade": "exact",
+   "certs": [
+    "cert_trace_witness"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "H7",
+   "inputs": [
+    "p-half",
+    "s-ent"
+   ],
+   "target": "m-ncom",
+   "kind": "implies",
+   "statement": "|kappa_A| <= 1/3 or |kappa_B| <= 1/3: the corresponding local map is entanglement breaking, rho_raw passes the test for every state.",
+   "where": "Sec. III, Cor. 3",
+   "grade": "exact",
+   "certs": [
+    "cert_eb_threshold"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "H8",
+   "inputs": [
+    "e-ctx",
+    "o-ang2"
+   ],
+   "target": "s-ent",
+   "kind": "implies",
+   "statement": "Contextual decay data imply an entangled pair state; the converse holds for all states iff |kappa_A kappa_B| = 1.",
+   "where": "Sec. III",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": [
+    "Plavala, Guhne, PRL 132, 100201 (2024)"
+   ]
+  },
+  {
+   "id": "H9",
+   "inputs": [
+    "w-rawppt",
+    "w-entw"
+   ],
+   "target": "e-ctx",
+   "kind": "witness",
+   "statement": "The test acts on the raw angular coefficients; the entanglement test acts on the coefficients divided by the analysing powers. The two coincide iff |kappa_A kappa_B| = 1.",
+   "where": "Sec. III",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "H10",
+   "inputs": [
+    "s-steer",
+    "w-ncineq"
+   ],
+   "target": "e-ctx",
+   "kind": "witness",
+   "statement": "Two-sided LP bracket of the threshold on random pair states and on the hyperon pair.",
+   "where": "App. E",
+   "grade": "numeric",
+   "certs": [
+    "cert_two_qubit_sandwich"
+   ],
+   "scope": "instance: three families",
+   "refs": []
+  },
+  {
+   "id": "V1",
+   "inputs": [
+    "p-one"
+   ],
+   "target": "w-region1",
+   "kind": "derives",
+   "statement": "Nonnegative quadratic functions on the sphere (Lemma 3): 2/3 + p.q + q^T A q >= 0 on the sphere iff a 4x4 matrix pencil is positive semidefinite, i.e. iff it is a sum of squares of affine functions; moment form: (t, z, N) are moments of a positive measure on the sphere iff [[t, z^T],[z, N]] >= 0 with tr N = t.",
+   "where": "App. C, Lemma 2",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": [
+    "Sturm, Zhang, Math. Oper. Res. 28, 246 (2003)"
+   ]
+  },
+  {
+   "id": "V2",
+   "inputs": [
+    "p-one"
+   ],
+   "target": "w-region1",
+   "kind": "derives",
+   "statement": "Rank-one decomposition lemma (Lemma 3a), checked constructively on random instances.",
+   "where": "App. C",
+   "grade": "numeric",
+   "certs": [
+    "cert_rank_one_lemma"
+   ],
+   "scope": "instance: 200 random matrices",
+   "refs": []
+  },
+  {
+   "id": "V3",
+   "inputs": [
+    "p-one",
+    "s-spin"
+   ],
+   "target": "w-region1",
+   "kind": "derives",
+   "statement": "Support function of the region: h_R(a,b) = max{ b/5 + sqrt(b^2/25 + a^2/3), -4b/5 }; R = conv(ellipse 3 eta1^2 + 25 (eta2 - 1/5)^2 <= 1, apex (0,-4/5)).",
+   "where": "Sec. IV, Thm 3; App. C",
+   "grade": "exact",
+   "certs": [
+    "cert_region_R_formulas"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "V4",
+   "inputs": [
+    "p-one",
+    "s-spin"
+   ],
+   "target": "m-ncom",
+   "kind": "implies",
+   "statement": "Explicit finite noncontextual models (icosahedral orbits of one pair) at the extreme points of R.",
+   "where": "Sec. IV, App. D",
+   "grade": "exact",
+   "certs": [
+    "cert_finite_models"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "V5",
+   "inputs": [
+    "p-one",
+    "s-spin",
+    "w-region1"
+   ],
+   "target": "e-ctx",
+   "kind": "equiv",
+   "statement": "For eta2 != 0 the fragment (all spin-1 states, E_w) is noncontextual iff (eta1, eta2) in R.",
+   "where": "Sec. IV, Thm 3",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "V6",
+   "inputs": [
+    "w-region1",
+    "w-ncineq"
+   ],
+   "target": "e-ctx",
+   "kind": "witness",
+   "statement": "Independent numerical values of the support function (SDP) and of the boundary (brute-force LP without the covariant reduction).",
+   "where": "App. E",
+   "grade": "numeric",
+   "certs": [
+    "cert_support_sdp",
+    "<lambda>"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "V7",
+   "inputs": [
+    "p-one",
+    "s-spin"
+   ],
+   "target": "m-ncom",
+   "kind": "equiv",
+   "statement": "Exactly degenerate kernel eta2 = 0: noncontextual iff |eta1| <= 2/9 (fragment-relative equivalences); the limit eta2 -> 0 of R gives sqrt2/3.",
+   "where": "Sec. IV, Remark",
+   "grade": "exact",
+   "certs": [
+    "cert_degenerate_line"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "P1",
+   "inputs": [
+    "p-one",
+    "s-iso1"
+   ],
+   "target": "w-region1",
+   "kind": "derives",
+   "statement": "Maximally entangled pair, one decay on each side: steered states are images of the coherent cone; noncontextual iff (eta1^A eta1^B, eta2^A eta2^B) in R2 = conv(Gamma, mirror image, (0,-4/5)), Gamma(s) = ((2/3)s(2-s), (2/5)s^2), 0 <= s <= 2.",
+   "where": "Sec. IV, Thm 4; App. C",
+   "grade": "exact",
+   "certs": [
+    "cert_region_R2_formulas"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "P2",
+   "inputs": [
+    "p-one",
+    "s-iso1"
+   ],
+   "target": "m-ncom",
+   "kind": "implies",
+   "statement": "Explicit finite models at extreme points of R2, including the alignment-only point (0, 8/5).",
+   "where": "App. D",
+   "grade": "exact",
+   "certs": [
+    "cert_finite_models"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "P3",
+   "inputs": [
+    "p-one",
+    "s-iso1",
+    "w-region1"
+   ],
+   "target": "e-ctx",
+   "kind": "equiv",
+   "statement": "Isotropic state of visibility v: products scale by v; two ideal W decays are contextual iff v > 5/8 (entangled iff v > 1/4); with one Z -> l+ l- decay on a side the data are noncontextual for every v.",
+   "where": "Sec. IV, Cor. 4",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "P6",
+   "inputs": [
+    "p-one",
+    "s-iso1",
+    "w-region1"
+   ],
+   "target": "e-ctx",
+   "kind": "derives",
+   "statement": "Critical visibilities for pairs of kernels: 5/8 (W W), 2/5 (two decays into pseudoscalar pairs; one such decay with a dilepton or W decay); dilepton pairs, W Z and Z Z are noncontextual for every visibility.",
+   "where": "Sec. IV, Table II",
+   "grade": "exact",
+   "certs": [
+    "cert_pair_thresholds"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "P4",
+   "inputs": [
+    "w-region1",
+    "w-ncineq"
+   ],
+   "target": "e-ctx",
+   "kind": "witness",
+   "statement": "Brute-force LP for the pair region.",
+   "where": "App. E",
+   "grade": "numeric",
+   "certs": [
+    "<lambda>"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "P5",
+   "inputs": [
+    "w-region1",
+    "w-ncineq"
+   ],
+   "target": "e-ctx",
+   "kind": "witness",
+   "statement": "Refinement of the three LP directions that deviated by more than 0.5 per cent: the deviations shrink with the grids.",
+   "where": "App. E",
+   "grade": "numeric",
+   "certs": [
+    "cert_lp_refine"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "G1",
+   "inputs": [
+    "p-decay",
+    "s-spin",
+    "w-kappa"
+   ],
+   "target": "e-ctx",
+   "kind": "implies",
+   "statement": "If |kappa_1(w)| > xi_2j the spin-j polarimeter is contextual on all states.",
+   "where": "Sec. IV, Thm 5",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "G2",
+   "inputs": [
+    "w-kappa"
+   ],
+   "target": "w-kappa",
+   "kind": "derives",
+   "statement": "xi_1 = 1/3, xi_2 = 1/sqrt3, xi_3 = (1+sqrt6)/5, xi_4 = sqrt(3/5); extremal polynomials attain them.",
+   "where": "Sec. IV",
+   "grade": "exact",
+   "certs": [
+    "cert_gauss_nodes"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "G3",
+   "inputs": [
+    "p-decay",
+    "s-spin"
+   ],
+   "target": "m-ncom",
+   "kind": "implies",
+   "statement": "The bound is the supremum: the kernel D* = (d/4pi) int Q*(q)|q><q| dq, Q* the extremal polynomial, is noncontextual with kappa_1 = xi_2j when its multipole ratios are nonzero (checked for j <= 4); in general by a perturbation.",
+   "where": "Sec. IV, Thm 5",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "G5",
+   "inputs": [
+    "m-ncom",
+    "o-ang2"
+   ],
+   "target": "w-kappa",
+   "kind": "implies",
+   "statement": "Pairs of arbitrary spins: a noncontextual model has the form p = sum_l r_l(qA) s_l(qB) with nonnegative polynomials of degree 2jA, 2jB (Prop. 2), hence || <qA qB^T> ||_1 <= xi(2jA) xi(2jB) (Thm 5c).",
+   "where": "Sec. IV, Prop. 2, Thm 5(c)",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "G7",
+   "inputs": [
+    "p-decay"
+   ],
+   "target": "w-kappa",
+   "kind": "derives",
+   "statement": "First-moment bound behind Thm 5: a nonnegative polynomial of degree n on the sphere with unit integral has first moment at most xi_n; random non-zonal instances stay below, the extremal zonal polynomial attains it.",
+   "where": "Sec. IV, Thm 5",
+   "grade": "numeric",
+   "certs": [
+    "cert_first_moment_bound"
+   ],
+   "scope": "instance: degrees 1 to 8",
+   "refs": []
+  },
+  {
+   "id": "G6",
+   "inputs": [
+    "w-kappa",
+    "w-rawppt",
+    "w-region1"
+   ],
+   "target": "w-kappa",
+   "kind": "derives",
+   "statement": "Consistency of the first-moment inequality with the exact criteria: ||c||_1 <= 1 for spin 1/2; v |eta1A eta1B| <= 2/3, the largest abscissa of R2, for the spin-1 pair.",
+   "where": "Sec. IV",
+   "grade": "numeric",
+   "certs": [
+    "cert_pair_dipole_bound"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "G4",
+   "inputs": [
+    "w-kappa",
+    "w-ncineq"
+   ],
+   "target": "e-ctx",
+   "kind": "witness",
+   "statement": "LP value of max |<J>| over operators with nonnegative Husimi function and positivity of the attaining kernels, j <= 4.",
+   "where": "App. E",
+   "grade": "numeric",
+   "certs": [
+    "cert_general_j"
+   ],
+   "scope": "instance: j <= 4",
+   "refs": []
+  },
+  {
+   "id": "A1",
+   "inputs": [
+    "s-ttbar",
+    "p-half"
+   ],
+   "target": "o-D",
+   "kind": "import",
+   "statement": "ATLAS: D = -0.537 +- 0.002 +- 0.019 (particle level, 340 < m_tt < 380 GeV), folded bound -0.322 +- 0.009; CMS: D = -0.480 +0.026 -0.029 (parton level).",
+   "where": "Sec. V",
+   "grade": "import",
+   "certs": [],
+   "scope": "general",
+   "refs": [
+    "ATLAS, Nature 633, 542 (2024)",
+    "CMS, Rep. Prog. Phys. 87, 117801 (2024)"
+   ]
+  },
+  {
+   "id": "A2",
+   "inputs": [
+    "o-D",
+    "s-ttbar"
+   ],
+   "target": "e-ctx",
+   "kind": "implies",
+   "statement": "Arithmetic on the quoted numbers: 10.2 sigma (ATLAS, with its folded bound) and 5.1 sigma (CMS, bound -1/3).",
+   "where": "Sec. V",
+   "grade": "exact",
+   "certs": [
+    "cert_top_pair_numbers"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "A3",
+   "inputs": [
+    "s-LLbar",
+    "p-half"
+   ],
+   "target": "o-ang2",
+   "kind": "import",
+   "statement": "Joint angular distribution of e+e- -> J/psi -> Lambda Lambdabar and the fitted parameters alpha_psi, Delta Phi, alpha_-, alpha_+.",
+   "where": "Sec. V",
+   "grade": "import",
+   "certs": [],
+   "scope": "general",
+   "refs": [
+    "Faldt, Kupsc, PLB 772, 16 (2017)",
+    "BESIII, PRL 129, 131801 (2022)"
+   ]
+  },
+  {
+   "id": "A4",
+   "inputs": [
+    "s-LLbar",
+    "w-rawppt"
+   ],
+   "target": "e-ctx",
+   "kind": "implies",
+   "statement": "With the fitted form: the production state is a valid rank-2 state; ||c||_1 = 1.108 at 90 degrees; rho_raw fails the test for |cos theta| < 0.517 (46% of events).",
+   "where": "Sec. V",
+   "grade": "numeric",
+   "certs": [
+    "cert_lambda_pairs"
+   ],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "A5",
+   "inputs": [
+    "m_cc",
+    "p-half"
+   ],
+   "target": "p-half",
+   "kind": "import",
+   "statement": "Leading-order and QCD-corrected analysing powers of top decay products.",
+   "where": "Sec. V, Table I",
+   "grade": "import",
+   "certs": [],
+   "scope": "general",
+   "refs": [
+    "Brandenburg, Si, Uwer, PLB 539, 235 (2002)",
+    "Tweedie, PRD 90, 094010 (2014)"
+   ]
+  },
+  {
+   "id": "A6",
+   "inputs": [
+    "m_va",
+    "u_mh"
+   ],
+   "target": "p-half",
+   "kind": "import",
+   "statement": "tau -> pi nu: kappa = 1; tau -> rho nu (rho direction): (m_tau^2 - 2 m_rho^2)/(m_tau^2 + 2 m_rho^2) = 0.45.",
+   "where": "Sec. V, Table I",
+   "grade": "import",
+   "certs": [
+    "cert_tau_rho"
+   ],
+   "scope": "general",
+   "refs": [
+    "Tsai, PRD 4, 2821 (1971)"
+   ]
+  },
+  {
+   "id": "A7",
+   "inputs": [
+    "m_nc",
+    "u_m1"
+   ],
+   "target": "p-one",
+   "kind": "import",
+   "statement": "Z -> f fbar: kernel (eta1, eta2) = (A_f, 1) for massless fermions; W -> l nu: (+-1, 1); vector -> two pseudoscalars: (0, -2).",
+   "where": "Sec. V, Table II",
+   "grade": "import",
+   "certs": [],
+   "scope": "general",
+   "refs": [
+    "PDG 2026 (A_e = 0.1515 +- 0.0019)"
+   ]
+  },
+  {
+   "id": "A8",
+   "inputs": [
+    "u_m1",
+    "p-one",
+    "w-region1"
+   ],
+   "target": "e-ctx",
+   "kind": "implies",
+   "statement": "Fermion-pair decays of vector mesons (direction only): J/psi -> Lambda Lambdabar has w0 = 0.151 < 1/5 (contextual on all states); J/psi -> Sigma+ Sigmabar- sits at the boundary w0 = 3/5 within about one standard deviation; psi(2S) -> tau tau lies inside the window.",
+   "where": "Sec. V",
+   "grade": "numeric",
+   "certs": [
+    "cert_vector_pair_kernels"
+   ],
+   "scope": "general",
+   "refs": [
+    "BESIII, PRL 129, 131801 (2022)",
+    "BESIII, PRL 125, 052004 (2020)"
+   ]
+  },
+  {
+   "id": "H11",
+   "inputs": [
+    "s-sep",
+    "p-half"
+   ],
+   "target": "m-ncom",
+   "kind": "implies",
+   "statement": "Separable pair states give noncontextual decay data for all analysing powers: the local scaling maps preserve separability.",
+   "where": "Sec. III",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "X3",
+   "inputs": [
+    "m-quantum",
+    "m_A"
+   ],
+   "target": "p-decay",
+   "kind": "defines",
+   "statement": "The polarimeter is a POVM of quantum theory on C^(2j+1); the released frame node m_A (GEN_HEP) and model node m-quantum (GEN_GPT_Level) are glued here.",
+   "where": "Sec. II",
+   "grade": "definition",
+   "certs": [],
+   "scope": "general",
+   "refs": []
+  },
+  {
+   "id": "X1",
+   "inputs": [
+    "e-ctx"
+   ],
+   "target": "m-classical",
+   "kind": "forbids",
+   "statement": "Released edge A5 (simplex embedding) is the definition used here.",
+   "where": "Sec. II",
+   "grade": "import",
+   "certs": [],
+   "scope": "general",
+   "refs": [
+    "GEN_GPT_Level v2.6: A5"
+   ]
+  },
+  {
+   "id": "X2",
+   "inputs": [
+    "s-ent",
+    "p-decay"
+   ],
+   "target": "e-ctx",
+   "kind": "necessary",
+   "statement": "Released edge A8 (contextuality is a precondition for entanglement) with the measurement fixed to the decay polarimeter: holds for |kappa_A kappa_B| = 1 and fails otherwise (H8).",
+   "where": "Sec. III",
+   "grade": "compose",
+   "certs": [],
+   "scope": "general",
+   "refs": [
+    "GEN_GPT_Level v2.6: A8"
+   ]
+  }
+ ],
+ "results": {
+  "DV1": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "polynomial identity in 20 real symbols: sum |M|^2 = 8 ((p1-m s).p4)(p2.p3)",
+   "seconds": 0.83
+  },
+  "DV2": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "(p1-ms).p4 = m E (1+s.q); effect 1+q.sigma has determinant 0 on |q|=1",
+   "seconds": 0.46
+  },
+  "DV3": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "tensor coefficients 1/12, 1/6; spectrum x^2[(3-2x)-(2x-1)cos]; integrated analysing power = -1/3; endpoint analysing power = 1; with cut x>x0: |kappa|(x0) = -(3*x0**3 + x0**2 + x0 + 1)/(3*(x0**3 - x0**2 - x0 - 1))",
+   "seconds": 0.17
+  },
+  "DV4": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "kappa_b = -(xi-2)/(xi+2); equals -1/3 at xi = [4], i.e. m_t = 2 m_W",
+   "seconds": 0.06
+  },
+  "DV5": {
+   "grade": "numeric",
+   "status": "checked",
+   "ok": true,
+   "detail": "quadrature reproduces kappa_l=1, kappa_b, kappa_nu closed forms and the published LO values (-0.40622, -0.31817); at PDG 2026 masses kappa_b = -0.3951, kappa_nu = -0.3365 (+-0.0022 from m_t); |kappa_nu| = 1/3 at xi = 4.6338 (m_t = 172.99 GeV for the PDG 2026 m_W)",
+   "seconds": 0.51
+  },
+  "DV6": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  },
+  "DV7": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "Tr(QQ) identity; kernel = 1/3 + (eta1/2) q.S + (eta2/6)(3(q.S)^2-2); symbol 1/3 + (eta1/2) p.q + (eta2/2) q^T A q; pure-state (p,A); m1 = p.p'/2, m2 = (3/5) Tr(AA')",
+   "seconds": 0.2
+  },
+  "DV8": {
+   "grade": "numeric",
+   "status": "checked",
+   "ok": true,
+   "detail": "j = 1/2..4: LP value of max|<J>|/(j+1) over Husimi-nonnegative operators equals the quadrature node (max dev 3.8e-07); attaining kernels are probability vectors (min weight 0.0008)",
+   "seconds": 5.35
+  },
+  "DV9": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "sign flip of one analysing power = partial transpose up to a local unitary",
+   "seconds": 0.02
+  },
+  "DV10": {
+   "grade": "definition",
+   "status": "definition",
+   "ok": null
+  },
+  "DV11": {
+   "grade": "definition",
+   "status": "definition",
+   "ok": null
+  },
+  "DV12": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  },
+  "FW1": {
+   "grade": "import",
+   "status": "imported",
+   "ok": null
+  },
+  "FW2": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "identity for the recorded-outcome model; int (3q_z^2-1)(1, k q) dq = 0, so two outcome functions with different response functions give the same effect",
+   "seconds": 0.28
+  },
+  "FW3": {
+   "grade": "logic",
+   "status": "checked",
+   "ok": true,
+   "detail": "identity for the recorded-outcome model; int (3q_z^2-1)(1, k q) dq = 0, so two outcome functions with different response functions give the same effect",
+   "seconds": 0.17
+  },
+  "FW4": {
+   "grade": "logic",
+   "status": "checked",
+   "ok": true,
+   "detail": "identity for the recorded-outcome model; int (3q_z^2-1)(1, k q) dq = 0, so two outcome functions with different response functions give the same effect",
+   "seconds": 0.22
+  },
+  "FW5": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "identity for the recorded-outcome model; int (3q_z^2-1)(1, k q) dq = 0, so two outcome functions with different response functions give the same effect",
+   "seconds": 0.22
+  },
+  "FW6": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  },
+  "FW7": {
+   "grade": "definition",
+   "status": "definition",
+   "ok": null
+  },
+  "H1": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "sum_j mu xi = (1+v.q)/4pi; mu >= 0 iff |v| <= 1/3; four ontic states",
+   "seconds": 0.09
+  },
+  "H13": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "six-state model reproduces (1+v.q)/4pi; weights nonnegative iff alpha_k >= r_k; with sum alpha_k = 1 this requires r1+r2+r3 <= 1 (Z3, unsat otherwise)",
+   "seconds": 0.57
+  },
+  "H2": {
+   "grade": "logic",
+   "status": "checked",
+   "ok": true,
+   "detail": "premises entail rho <= 1/3 (unsat); each premise needed: [True, True, True, True]",
+   "seconds": 0.03
+  },
+  "H3": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  },
+  "H4": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  },
+  "H12": {
+   "grade": "numeric",
+   "status": "checked",
+   "ok": true,
+   "detail": "200 random singular matrices (rank 3 and 2): projections idempotent (1.8e-15), images inside the cone (min margin 3.2e-12), in the row space (2.0e-15), decomposition reproduced (6.7e-16); the original h_j were outside the row space (min distance 0.01)",
+   "seconds": 0.08
+  },
+  "H5": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "spectra of rho_raw and its partial transpose are the eight forms (1+-c1+-c2+-c3)/4; all >= 0 iff |c1|+|c2|+|c3| <= 1; product-form identity for the explicit model",
+   "seconds": 0.08
+  },
+  "H6": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "PSD of rho_raw and of its partial transpose imply -1 <= tr c <= 1",
+   "seconds": 0.12
+  },
+  "H7": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "Choi spectrum {1+3k, 1-k (x3)}/4, partial transpose {1-3k, 1+k (x3)}/4: PPT iff -1/3 <= k <= 1/3",
+   "seconds": 0.04
+  },
+  "H8": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  },
+  "H9": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  },
+  "H10": {
+   "grade": "numeric",
+   "status": "checked",
+   "ok": true,
+   "detail": "inner <= exact <= outer in all 6 runs; bracket width at N = 250: 0.0229; hyperon pair: sub-fragment LP infeasible at cos theta = [0.0, 0.4], dual-cone LP feasible at [0.65]",
+   "seconds": 0.0
+  },
+  "V1": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  },
+  "V2": {
+   "grade": "numeric",
+   "status": "checked",
+   "ok": true,
+   "detail": "200 random instances: residual 2.0e-13 (lightlike columns and M reproduced)",
+   "seconds": 0.02
+  },
+  "V3": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "t_B root; ellipse 3x^2+25(y-1/5)^2=1 traced by tau in [1/2,2]; apex (0,-4/5); top (0,2/5); tangent points (+-2sqrt2/5, 4/25); alpha window [-1/2,1/3]; x >= 1/8",
+   "seconds": 0.05
+  },
+  "V4": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "|I| = 60; R top (0, 2/5):ok; R coherent (1/2, 1/10):ok; R max vector (1/sqrt3, 1/5):ok; R tangent (2sqrt2/5, 4/25):ok; R apex (0, -4/5):ok; R2 top (0, 8/5):ok; R2 isotropic WW (5/8, 5/8):ok; R2 tangent Gamma(sqrt3-1):ok",
+   "seconds": 11.08
+  },
+  "V5": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  },
+  "V6": {
+   "grade": "numeric",
+   "status": "checked",
+   "ok": true,
+   "detail": "max |SDP - closed form| over 24 directions x 16 pure states: 8.4e-09 || 12 directions, K = 220 operators, 900 grid directions: LP/closed in [1.0001, 1.0079]",
+   "seconds": 1.05
+  },
+  "V7": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "symbol (1/3)(1 + (3 eta1/2) p.q); eigenvalues 1/3, 1/3 +- |p|/2; threshold eta1 = 2/9",
+   "seconds": 0.02
+  },
+  "P1": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "AM-GM step (Z3, unsat); stationary value 2a^2/(9(a/3-b/5)); Gamma convex (x'y''-y'x'' = 16/15); tangent at s = sqrt3-1; diagonal point (5/8,5/8); eta2 = 1 at eta1 = -5/3 + 2*sqrt(10)/3; axis range [-4/5, 8/5]",
+   "seconds": 0.13
+  },
+  "P2": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "|I| = 60; R top (0, 2/5):ok; R coherent (1/2, 1/10):ok; R max vector (1/sqrt3, 1/5):ok; R tangent (2sqrt2/5, 4/25):ok; R apex (0, -4/5):ok; R2 top (0, 8/5):ok; R2 isotropic WW (5/8, 5/8):ok; R2 tangent Gamma(sqrt3-1):ok",
+   "seconds": 6.17
+  },
+  "P3": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  },
+  "P6": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "v_c = 5/8 (W W), 2/5 (PP PP), 2/5 (PP with l l or with W); (l l)(l l), W Z and Z Z noncontextual for every v (boundary at eta2 product 1: eta1 product 0.4415; A_e = 0.1515)",
+   "seconds": 0.02
+  },
+  "P4": {
+   "grade": "numeric",
+   "status": "checked",
+   "ok": true,
+   "detail": "9 directions, K = 264 operators, 700 grid directions: LP/closed in [0.9879, 1.0086]",
+   "seconds": 0.0
+  },
+  "P5": {
+   "grade": "numeric",
+   "status": "checked",
+   "ok": true,
+   "detail": "R at 90 deg: 1.0069 -> 1.0019 (grid 900 -> 3600); R2 at 270 deg: 1.0100 -> 1.0022 (grid 700 -> 2800); R2 at 80 deg: 0.9879 -> 1.0001 (tau = 1.8 added)",
+   "seconds": 0.0
+  },
+  "G1": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  },
+  "G2": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "xi_1 = 1/3, xi_2 = 1/sqrt3, xi_3 = (1+sqrt6)/5, xi_4 = sqrt(3/5); extremal polynomials attain them; j=1 kernel w = (0.6553, 0.2667, 0.0780)",
+   "seconds": 0.15
+  },
+  "G3": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  },
+  "G5": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  },
+  "G7": {
+   "grade": "numeric",
+   "status": "checked",
+   "ok": true,
+   "detail": "degrees 1..8: largest first moment over random nonnegative polynomials stays below xi_n (closest: 1.000 of the bound); the extremal zonal polynomial attains xi_n (max dev 1.6e-15)",
+   "seconds": 0.11
+  },
+  "G6": {
+   "grade": "numeric",
+   "status": "checked",
+   "ok": true,
+   "detail": "spin 1/2: bound is ||c||_1 <= 1; spin 1: POVM first moment eta1 S/2 (dev 3.8e-06), singlet <S_i S_k> = -(2/3) delta_ik (dev 2.2e-16), bound v|eta1A eta1B| <= 2/3 = h_R2(1,0); thresholds (j+1) xi^2/j = 1/3 (j = 1/2), 2/3 (j = 1)",
+   "seconds": 0.91
+  },
+  "G4": {
+   "grade": "numeric",
+   "status": "checked",
+   "ok": true,
+   "detail": "j = 1/2..4: LP value of max|<J>|/(j+1) over Husimi-nonnegative operators equals the quadrature node (max dev 3.8e-07); attaining kernels are probability vectors (min weight 0.0008)",
+   "seconds": 5.08
+  },
+  "A1": {
+   "grade": "import",
+   "status": "imported",
+   "ok": null
+  },
+  "A2": {
+   "grade": "exact",
+   "status": "checked",
+   "ok": true,
+   "detail": "ATLAS: (bound - D)/sigma = 10.2 with the quoted particle-level bound; CMS parton level: (-1/3 - D)/sigma = 5.06; |tr c| = 3|D| = 1.44 (CMS), bound for noncontextual data: 1",
+   "seconds": 0.0
+  },
+  "A3": {
+   "grade": "import",
+   "status": "imported",
+   "ok": null
+  },
+  "A4": {
+   "grade": "numeric",
+   "status": "checked",
+   "ok": true,
+   "detail": "production state PSD with rank <= 2 at all angles (min eigenvalue -3.1e-16); ||c||_1 at 90 deg = 1.1081 (1.1090 +- 0.0088 with alpha_avg^2); raw operator fails PPT for |cos theta| < 0.5172 (range 0.501-0.535 under one-sigma shifts), 46.5% of events; min |det R_raw| in the window 2.44e-02",
+   "seconds": 1.31
+  },
+  "A5": {
+   "grade": "import",
+   "status": "imported",
+   "ok": null
+  },
+  "A6": {
+   "grade": "import",
+   "status": "checked",
+   "ok": true,
+   "detail": "kappa = (m_tau^2 - 2 m_rho^2)/(m_tau^2 + 2 m_rho^2) = 0.449 for m_tau = 1776.93 MeV, m_rho = 775.26 MeV",
+   "seconds": 0.02
+  },
+  "A7": {
+   "grade": "import",
+   "status": "imported",
+   "ok": null
+  },
+  "A8": {
+   "grade": "numeric",
+   "status": "checked",
+   "ok": true,
+   "detail": "w0(alpha) = (1-alpha)/(3+alpha); window alpha in [-1/2, 1/3]; J/psi -> Lambda Lambdabar: w0 = 0.151, 39 sigma below 1/5; J/psi -> Sigma+ Sigmabar-: w0 = 0.605 +- 0.005, 1.1 sigma above 3/5; psi(2S) -> tau tau: x = 0.232 >= 1/8, alpha = 0.037",
+   "seconds": 0.01
+  },
+  "H11": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  },
+  "X3": {
+   "grade": "definition",
+   "status": "definition",
+   "ok": null
+  },
+  "X1": {
+   "grade": "import",
+   "status": "imported",
+   "ok": null
+  },
+  "X2": {
+   "grade": "compose",
+   "status": "written proof step",
+   "ok": null
+  }
+ },
+ "claims": [
+  {
+   "id": "C1",
+   "text": "A decay is one fixed covariant measurement; V-A decays give sharp effects for the antifermion direction and |kappa| = 1/3 for the direction-only leptonic three-body decay.",
+   "routes": [
+    "DV1",
+    "DV2",
+    "DV3",
+    "DV6"
+   ],
+   "verdict": "verified modulo written proof steps",
+   "failed": [],
+   "imports": [],
+   "written_steps": [
+    "DV6"
+   ],
+   "numeric_crosschecks": [],
+   "instance_scoped": [],
+   "mechanised": [
+    "DV1",
+    "DV2",
+    "DV3"
+   ]
+  },
+  {
+   "id": "C2",
+   "text": "With one setting per side Bell and steering tests are empty, and the recorded-outcome model is not noncontextual.",
+   "routes": [
+    "FW2",
+    "FW3",
+    "FW4",
+    "FW5"
+   ],
+   "verdict": "verified",
+   "failed": [],
+   "imports": [],
+   "written_steps": [],
+   "numeric_crosschecks": [],
+   "instance_scoped": [],
+   "mechanised": [
+    "FW2",
+    "FW3",
+    "FW4",
+    "FW5"
+   ]
+  },
+  {
+   "id": "C3",
+   "text": "Spin 1/2, one particle: noncontextual iff P|kappa| <= 1/3.",
+   "routes": [
+    "FW1",
+    "H1",
+    "H2"
+   ],
+   "verdict": "verified modulo imports",
+   "failed": [],
+   "imports": [
+    "FW1"
+   ],
+   "written_steps": [],
+   "numeric_crosschecks": [],
+   "instance_scoped": [],
+   "mechanised": [
+    "H1",
+    "H2"
+   ]
+  },
+  {
+   "id": "C4",
+   "text": "Two spin-1/2 particles: the joint decay data are noncontextual iff rho_raw and its partial transpose are positive semidefinite; for unpolarised pairs iff ||c||_1 <= 1; |D| > 1/3 implies contextual data.",
+   "routes": [
+    "FW1",
+    "DV9",
+    "H3",
+    "H4",
+    "H12",
+    "H5",
+    "H6",
+    "H7",
+    "H10"
+   ],
+   "verdict": "verified modulo imports and written proof steps",
+   "failed": [],
+   "imports": [
+    "FW1"
+   ],
+   "written_steps": [
+    "H3",
+    "H4"
+   ],
+   "numeric_crosschecks": [
+    "H12",
+    "H10"
+   ],
+   "instance_scoped": [
+    "H12",
+    "H10"
+   ],
+   "mechanised": [
+    "DV9",
+    "H5",
+    "H6",
+    "H7"
+   ]
+  },
+  {
+   "id": "C5",
+   "text": "Spin 1, one particle: noncontextual iff (eta1, eta2) in R (eta2 != 0).",
+   "routes": [
+    "FW1",
+    "FW6",
+    "DV7",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "P5"
+   ],
+   "verdict": "verified modulo imports and written proof steps",
+   "failed": [],
+   "imports": [
+    "FW1"
+   ],
+   "written_steps": [
+    "FW6",
+    "V1",
+    "V5"
+   ],
+   "numeric_crosschecks": [
+    "V2",
+    "V6",
+    "P5"
+   ],
+   "instance_scoped": [
+    "V2"
+   ],
+   "mechanised": [
+    "DV7",
+    "V3",
+    "V4"
+   ]
+  },
+  {
+   "id": "C6",
+   "text": "Maximally entangled spin-1 pair with one decay on each side: noncontextual iff the product of ratios lies in R2; ideal W pairs need visibility above 5/8.",
+   "routes": [
+    "FW1",
+    "FW6",
+    "DV7",
+    "V1",
+    "V2",
+    "P1",
+    "P2",
+    "P3",
+    "P6",
+    "P4",
+    "P5"
+   ],
+   "verdict": "verified modulo imports and written proof steps",
+   "failed": [],
+   "imports": [
+    "FW1"
+   ],
+   "written_steps": [
+    "FW6",
+    "V1",
+    "P3"
+   ],
+   "numeric_crosschecks": [
+    "V2",
+    "P4",
+    "P5"
+   ],
+   "instance_scoped": [
+    "V2"
+   ],
+   "mechanised": [
+    "DV7",
+    "P1",
+    "P2",
+    "P6"
+   ]
+  },
+  {
+   "id": "C7",
+   "text": "Spin j: the largest vector analysing power of a noncontextual polarimeter is the largest Gauss or Gauss-Radau node xi_2j; for pairs || <qA qB^T> ||_1 <= xi(2jA) xi(2jB).",
+   "routes": [
+    "FW1",
+    "FW6",
+    "G1",
+    "G2",
+    "G3",
+    "G4",
+    "G5",
+    "G6",
+    "G7"
+   ],
+   "verdict": "verified modulo imports and written proof steps",
+   "failed": [],
+   "imports": [
+    "FW1"
+   ],
+   "written_steps": [
+    "FW6",
+    "G1",
+    "G3",
+    "G5"
+   ],
+   "numeric_crosschecks": [
+    "G4",
+    "G6",
+    "G7"
+   ],
+   "instance_scoped": [
+    "G4",
+    "G7"
+   ],
+   "mechanised": [
+    "G2"
+   ]
+  },
+  {
+   "id": "C8",
+   "text": "Top pairs: the measured D certifies contextual lepton-direction data at the significance quoted for entanglement, without the value of the analysing power.",
+   "routes": [
+    "H6",
+    "A1",
+    "A2"
+   ],
+   "verdict": "verified modulo imports",
+   "failed": [],
+   "imports": [
+    "A1"
+   ],
+   "written_steps": [],
+   "numeric_crosschecks": [],
+   "instance_scoped": [],
+   "mechanised": [
+    "H6",
+    "A2"
+   ]
+  },
+  {
+   "id": "C9",
+   "text": "Hyperon pairs: with the fitted BESIII parameters the proton-antiproton angular data are contextual for |cos theta| < 0.517.",
+   "routes": [
+    "H3",
+    "H4",
+    "DV9",
+    "A3",
+    "A4"
+   ],
+   "verdict": "verified modulo imports and written proof steps",
+   "failed": [],
+   "imports": [
+    "A3"
+   ],
+   "written_steps": [
+    "H3",
+    "H4"
+   ],
+   "numeric_crosschecks": [
+    "A4"
+   ],
+   "instance_scoped": [],
+   "mechanised": [
+    "DV9"
+   ]
+  },
+  {
+   "id": "C10",
+   "text": "The b-quark direction is a nonclassical top polarimeter iff m_t > 2 m_W; the neutrino direction sits within about one percent of the boundary.",
+   "routes": [
+    "H1",
+    "H2",
+    "DV4",
+    "DV5"
+   ],
+   "verdict": "verified",
+   "failed": [],
+   "imports": [],
+   "written_steps": [],
+   "numeric_crosschecks": [
+    "DV5"
+   ],
+   "instance_scoped": [],
+   "mechanised": [
+    "H1",
+    "H2",
+    "DV4"
+   ]
+  },
+  {
+   "id": "C11",
+   "text": "Vector mesons: the baryon direction of J/psi -> Lambda Lambdabar is a nonclassical polarimeter; J/psi -> Sigma+ Sigmabar- sits at the boundary; psi(2S) -> tau tau is classical.",
+   "routes": [
+    "V3",
+    "V5",
+    "A7",
+    "A8"
+   ],
+   "verdict": "verified modulo imports and written proof steps",
+   "failed": [],
+   "imports": [
+    "A7"
+   ],
+   "written_steps": [
+    "V5"
+   ],
+   "numeric_crosschecks": [
+    "A8"
+   ],
+   "instance_scoped": [],
+   "mechanised": [
+    "V3"
+   ]
+  }
+ ],
+ "controls": [
+  {
+   "id": "k01",
+   "planted": "spin-1/2 threshold 1/2 instead of 1/3: the tetrahedral weights (1+3 t.v)/4 must stay nonnegative at |v| = 1/2.",
+   "rejected": true,
+   "detail": "weight -0.125 < 0 at |v| = 1/2"
+  },
+  {
+   "id": "k02",
+   "planted": "direction-only leptonic analysing power 1/2 instead of 1/3.",
+   "rejected": true,
+   "detail": "integral gives 1/3"
+  },
+  {
+   "id": "k03",
+   "planted": "Dirac trace with (p1 + m s) instead of (p1 - m s).",
+   "rejected": true,
+   "detail": "identity fails with the wrong sign of the spin vector"
+  },
+  {
+   "id": "k04",
+   "planted": "T-state criterion with the Frobenius norm instead of the trace norm: c = diag(1/2,1/2,1/2) would be accepted.",
+   "rejected": true,
+   "detail": "Frobenius norm 0.866 <= 1 but raw-PPT margin -0.125 < 0"
+  },
+  {
+   "id": "k05",
+   "planted": "ellipse centred at (0, 1/4) instead of (0, 1/5).",
+   "rejected": true,
+   "detail": "extreme pair tau = 1 is not on the shifted ellipse"
+  },
+  {
+   "id": "k06",
+   "planted": "apex of R at (0, -1) instead of (0, -4/5): support value in direction (0,-1) from the dual cone.",
+   "rejected": true,
+   "detail": "support value is 4/5, extreme pair gives -0.800"
+  },
+  {
+   "id": "k07",
+   "planted": "twirl coefficient m2 = (1/2) Tr(AA') instead of (3/5) Tr(AA'): the finite model at the top of R must fail.",
+   "rejected": true,
+   "detail": "icosahedral twirl differs from Pi_0 + 1/3 Pi_2"
+  },
+  {
+   "id": "k08",
+   "planted": "top of R2 at 2 instead of 8/5, which would make two ideal W decays on a singlet noncontextual.",
+   "rejected": true,
+   "detail": "h(1,1) = 1.600 < 2 = (1,1).(1,1)"
+  },
+  {
+   "id": "k09",
+   "planted": "isotropic W-pair threshold 1/2 instead of 5/8: (1/2,1/2) must be strictly inside R2 and (5/8,5/8) on its boundary.",
+   "rejected": true,
+   "detail": "(1/2,1/2) is interior; boundary slack at (5/8,5/8) = 3.8e-08"
+  },
+  {
+   "id": "k10",
+   "planted": "largest noncontextual vector analysing power for spin 1 claimed to be 0.6 instead of 1/sqrt3.",
+   "rejected": true,
+   "detail": "LP value 0.57735"
+  },
+  {
+   "id": "k11",
+   "planted": "b-quark polarimeter nonclassical iff m_t > 3 m_W (instead of 2 m_W).",
+   "rejected": true,
+   "detail": "threshold xi = [4], not 9"
+  },
+  {
+   "id": "k12",
+   "planted": "hyperon-pair state with the wrong sign of C_yy: must not be a density matrix.",
+   "rejected": true,
+   "detail": "min eigenvalue -0.208"
+  },
+  {
+   "id": "k13",
+   "planted": "|D| <= 1/2 claimed as the noncontextuality bound: the witness values (1 +- tr c)/4 vanish at |tr c| = 1, i.e. |D| = 1/3.",
+   "rejected": true,
+   "detail": "witness is zero at |D| = 1/3, negative at 1/2"
+  },
+  {
+   "id": "k14",
+   "planted": "recorded-outcome model declared noncontextual: needs int (3 q_z^2 - 1) E(q) dq != 0, which is false.",
+   "rejected": true,
+   "detail": "the l = 2 outcome function integrates to the zero effect"
+  },
+  {
+   "id": "k15",
+   "planted": "range lemma with the Euclidean orthogonal projector instead of the boosted one: for a subspace that does not\ncontain the time axis the Euclidean projection throws lightlike vectors out of the cone.",
+   "rejected": true,
+   "detail": "Euclidean projector: min Lorentz norm -0.877 < 0; boosted projector: 1.3e-06"
+  },
+  {
+   "id": "k16",
+   "planted": "two decays into pseudoscalar pairs on a singlet: threshold visibility 1/2 instead of 2/5; the point (0, 2) must lie outside R2.",
+   "rejected": true,
+   "detail": "h(0,1) = 1.600 < 2; boundary at 4 v = 8/5"
+  }
+ ],
+ "inputs": {
+  "m_t": {
+   "value": 172.6,
+   "sigma": 0.27,
+   "source": "PDG 2026 summary table, direct measurements (S = 1.5)"
+  },
+  "m_W": {
+   "value": 80.3625,
+   "sigma": 0.0077,
+   "source": "PDG 2026 summary table (does not include the CDF 2022 measurement)"
+  },
+  "A_e": {
+   "value": 0.1515,
+   "sigma": 0.0019,
+   "source": "PDG 2026 summary table, Z asymmetry parameter"
+  },
+  "alpha_psi_Sigma": {
+   "value": -0.508,
+   "sigma": 0.007211102550927979,
+   "source": "BESIII PRL 125, 052004; J/psi -> Sigma+ anti-Sigma-"
+  },
+  "m_tau": {
+   "value": 1776.93,
+   "sigma": 0.09,
+   "source": "PDG 2024"
+  },
+  "alpha0_Sigma": {
+   "value": -0.998,
+   "sigma": 0.038078865529319536,
+   "source": "BESIII PRL 125, 052004; Sigma+ -> p pi0"
+  },
+  "alpha0bar_Sigma": {
+   "value": 0.99,
+   "sigma": 0.03860051813123756,
+   "source": "BESIII PRL 125, 052004; anti-Sigma- -> pbar pi0"
+  },
+  "m_psi2S": {
+   "value": 3686.1,
+   "sigma": 0.06,
+   "source": "PDG 2024 (rounded)"
+  },
+  "alpha_psi": {
+   "value": 0.4748,
+   "sigma": 0.0038013155617496425,
+   "source": "BESIII PRL 129, 131801"
+  },
+  "DeltaPhi": {
+   "value": 0.7521,
+   "sigma": 0.007823042886243178,
+   "source": "BESIII PRL 129, 131801"
+  },
+  "alpha_minus": {
+   "value": 0.7519,
+   "sigma": 0.004326661530556787,
+   "source": "BESIII PRL 129, 131801"
+  },
+  "alpha_plus": {
+   "value": -0.7559,
+   "sigma": 0.004686149805543992,
+   "source": "BESIII PRL 129, 131801"
+  },
+  "alpha_avg": {
+   "value": 0.7542,
+   "sigma": 0.0026,
+   "source": "BESIII PRL 129, 131801"
+  },
+  "D_ATLAS": {
+   "value": -0.537,
+   "sigma": 0.0191049731745428,
+   "source": "ATLAS Nature 633, 542; particle level, 340 < m_tt < 380 GeV"
+  },
+  "D_ATLAS_bound": {
+   "value": -0.322,
+   "sigma": 0.009,
+   "source": "ATLAS: separability bound folded to particle level (Powheg+Pythia)"
+  },
+  "D_CMS": {
+   "value": -0.48,
+   "sigma": 0.029,
+   "source": "CMS Rep. Prog. Phys. 87, 117801; parton level; upper uncertainty"
+  }
+ }
+}

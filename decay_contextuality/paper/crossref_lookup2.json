@@ -1,0 +1,407 @@
+{
+ "zhang2025prx": {
+  "doi": "10.1103/vqfz-wzjg",
+  "title": "Reassessing the Boundary between Classical and Nonclassical for Individual Quantum Processes",
+  "journal": "Physical Review X",
+  "short": "Phys. Rev. X",
+  "volume": "16",
+  "issue": "2",
+  "page": null,
+  "article": "021050",
+  "year": 2026,
+  "authors": [
+   "Zhang, Yujie",
+   "Schmid, David",
+   "Y\u012bng, Y\u00ecl\u00e8",
+   "Spekkens, Robert W."
+  ],
+  "n_authors": 4,
+  "type": "journal-article"
+ },
+ "besiii2025": {
+  "doi": "10.1038/s41467-025-59498-4",
+  "title": "Test of local realism via entangled $$\\Lambda \\bar{\\Lambda }$$ system",
+  "journal": "Nature Communications",
+  "short": "Nat Commun",
+  "volume": "16",
+  "issue": "1",
+  "page": null,
+  "article": "4948",
+  "year": 2025,
+  "authors": [
+   "BESIII Collaboration, ",
+   "Ablikim, M.",
+   "Achasov, M. N.",
+   "Adlarson, P.",
+   "Ai, X. C.",
+   "Aliberti, R.",
+   "Amoroso, A.",
+   "An, M. R."
+  ],
+  "n_authors": 621,
+  "type": "journal-article"
+ },
+ "pdg2026": {
+  "doi": "10.1142/s0217751x26430037",
+  "title": "Quantum gravity and entanglement in particle physics and gravitation",
+  "journal": "International Journal of Modern Physics A",
+  "short": "Int. J. Mod. Phys. A",
+  "volume": "41",
+  "issue": "11",
+  "page": null,
+  "article": "2643003",
+  "year": 2026,
+  "authors": [
+   "Mavromatos, Nick E."
+  ],
+  "n_authors": 1,
+  "type": "journal-article"
+ },
+ "tornqvist1981": {
+  "doi": "10.1007/bf00715204",
+  "title": "Suggestion for Einstein-Podolsky-Rosen experiments using reactions like $$e^ + e^ - \\to \\Lambda \\bar \\Lambda \\to \\pi ^ - p\\pi ^ + \\bar p$$",
+  "journal": "Foundations of Physics",
+  "short": "Found Phys",
+  "volume": "11",
+  "issue": "1-2",
+  "page": "171-177",
+  "article": null,
+  "year": 1981,
+  "authors": [
+   "T\ufffdrnqvist, Nils A."
+  ],
+  "n_authors": 1,
+  "type": "journal-article"
+ },
+ "leeyang1957": {
+  "doi": "10.1103/physrev.108.1645",
+  "title": "General Partial Wave Analysis of the Decay of a Hyperon of Spin \u00bd",
+  "journal": "Physical Review",
+  "short": "Phys. Rev.",
+  "volume": "108",
+  "issue": "6",
+  "page": "1645-1647",
+  "article": null,
+  "year": 1957,
+  "authors": [
+   "Lee, T. D.",
+   "Yang, C. N."
+  ],
+  "n_authors": 2,
+  "type": "journal-article"
+ },
+ "bernreuther2015": {
+  "doi": "10.1007/jhep12(2015)026",
+  "title": "A set of top quark spin correlation and polarization observables for the LHC: Standard Model predictions and new physics contributions",
+  "journal": "Journal of High Energy Physics",
+  "short": "J. High Energ. Phys.",
+  "volume": "2015",
+  "issue": "12",
+  "page": "1-36",
+  "article": null,
+  "year": 2015,
+  "authors": [
+   "Bernreuther, Werner",
+   "Heisler, Dennis",
+   "Si, Zong-Guo"
+  ],
+  "n_authors": 3,
+  "type": "journal-article"
+ },
+ "polik2007": {
+  "doi": "10.1137/s003614450444614x",
+  "title": "A Survey of the S-Lemma",
+  "journal": "SIAM Review",
+  "short": "SIAM Rev.",
+  "volume": "49",
+  "issue": "3",
+  "page": "371-418",
+  "article": null,
+  "year": 2007,
+  "authors": [
+   "P\u00f3lik, Imre",
+   "Terlaky, Tam\u00e1s"
+  ],
+  "n_authors": 2,
+  "type": "journal-article"
+ },
+ "marvian2020": {
+  "doi": "10.2139/ssrn.7538038",
+  "title": "Exact Noise Thresholds of the Minimal State-independent Contextuality Set: Critical State, Full Noise Profile, and a Machine-checked Gap between Contextuality and Incompatibility",
+  "journal": "",
+  "short": "",
+  "volume": null,
+  "issue": null,
+  "page": null,
+  "article": null,
+  "year": 2026,
+  "authors": [
+   "Postanovsky, Igor"
+  ],
+  "n_authors": 1,
+  "type": "posted-content"
+ },
+ "delsarte1977": {
+  "doi": "10.1007/bf03187604",
+  "title": "Spherical codes and designs",
+  "journal": "Geometriae Dedicata",
+  "short": "Geom Dedicata",
+  "volume": "6",
+  "issue": "3",
+  "page": "363-388",
+  "article": null,
+  "year": 1977,
+  "authors": [
+   "Delsarte, P.",
+   "Goethals, J. M.",
+   "Seidel, J. J."
+  ],
+  "n_authors": 3,
+  "type": "journal-article"
+ },
+ "michel1950": {
+  "doi": "10.1088/0370-1298/63/5/311",
+  "title": "Interaction between Four Half-Spin Particles and the Decay of the \u00a0-Meson",
+  "journal": "Proceedings of the Physical Society. Section A",
+  "short": "Proc. Phys. Soc. A",
+  "volume": "63",
+  "issue": "5",
+  "page": "514-531",
+  "article": null,
+  "year": 1950,
+  "authors": [
+   "Michel, L"
+  ],
+  "n_authors": 1,
+  "type": "journal-article"
+ },
+ "clarabel": {
+  "doi": "10.1007/s12532-026-00320-7",
+  "title": "Clarabel: An interior-point solver for conic programs with quadratic objectives",
+  "journal": "Mathematical Programming Computation",
+  "short": "Math. Prog. Comp.",
+  "volume": "18",
+  "issue": "4",
+  "page": "1279-1361",
+  "article": null,
+  "year": 2026,
+  "authors": [
+   "Goulart, Paul J.",
+   "Chen, Yuwen"
+  ],
+  "n_authors": 2,
+  "type": "journal-article"
+ },
+ "fucci2026": {
+  "doi": "10.1038/ismej.2010.77",
+  "title": "Experimental tests of the bacterial distance\u2013decay relationship",
+  "journal": "The ISME Journal",
+  "short": "",
+  "volume": "4",
+  "issue": "11",
+  "page": "1357-1365",
+  "article": null,
+  "year": 2010,
+  "authors": [
+   "Bell, Thomas"
+  ],
+  "n_authors": 1,
+  "type": "journal-article"
+ },
+ "abel2025": {
+  "doi": "10.1007/jhep08(2026)067",
+  "title": "Colliders are not testing locality via Bell\u2019s inequality nor providing an unconditional proof of entanglement",
+  "journal": "Journal of High Energy Physics",
+  "short": "J. High Energ. Phys.",
+  "volume": "2026",
+  "issue": "8",
+  "page": null,
+  "article": "67",
+  "year": 2026,
+  "authors": [
+   "Abel, Steven A.",
+   "Dreiner, Herbi K.",
+   "Sengupta, Rhitaja",
+   "Ubaldi, Lorenzo"
+  ],
+  "n_authors": 4,
+  "type": "journal-article"
+ },
+ "bechtle2025": {
+  "doi": "10.70675/abf30852ze63fz40e1zb36fz11b6a29a281f",
+  "title": "Non-locality tests and quantum communication protocols using hybrid entanglement of light",
+  "journal": "",
+  "short": "",
+  "volume": null,
+  "issue": null,
+  "page": null,
+  "article": null,
+  "year": null,
+  "authors": [
+   "Cavaille\u0300s, Adrien"
+  ],
+  "n_authors": 1,
+  "type": "dissertation"
+ },
+ "low2025": {
+  "doi": "10.1088/1751-8113/44/3/035305",
+  "title": "Local hidden variable modelling, classicality, quantum separability and the original Bell inequality",
+  "journal": "Journal of Physics A: Mathematical and Theoretical",
+  "short": "J. Phys. A: Math. Theor.",
+  "volume": "44",
+  "issue": "3",
+  "page": "035305",
+  "article": null,
+  "year": 2010,
+  "authors": [
+   "Loubenets, Elena R"
+  ],
+  "n_authors": 1,
+  "type": "journal-article"
+ },
+ "fabbrichesi2025bell": {
+  "doi": "10.1007/s10701-025-00894-7",
+  "title": "About Witnessing Bell Non-locality at Colliders",
+  "journal": "Foundations of Physics",
+  "short": "Found Phys",
+  "volume": "55",
+  "issue": "6",
+  "page": null,
+  "article": "83",
+  "year": 2025,
+  "authors": [
+   "Fabbrichesi, M.",
+   "Floreanini, R.",
+   "Marzola, L."
+  ],
+  "n_authors": 3,
+  "type": "journal-article"
+ },
+ "jokinen2026": {
+  "doi": "10.1017/9781108774918.010",
+  "title": "Continuous Variable Systems",
+  "journal": "Quantum Processes and Measurement",
+  "short": "",
+  "volume": null,
+  "issue": null,
+  "page": "142-177",
+  "article": null,
+  "year": 2023,
+  "authors": [],
+  "n_authors": 0,
+  "type": "book-chapter"
+ },
+ "radcliffe1971": {
+  "doi": "10.1088/0305-4470/4/3/009",
+  "title": "Some properties of coherent spin states",
+  "journal": "Journal of Physics A: General Physics",
+  "short": "J. Phys. A: Gen. Phys.",
+  "volume": "4",
+  "issue": "3",
+  "page": "313-323",
+  "article": null,
+  "year": 1971,
+  "authors": [
+   "Radcliffe, J M"
+  ],
+  "n_authors": 1,
+  "type": "journal-article"
+ },
+ "cms2024ljets": {
+  "doi": "10.1103/physrevd.110.112016",
+  "title": "Measurements of polarization and spin correlation and observation of entanglement in top quark pairs using \n<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mrow><mml:mi>lepton</mml:mi><mml:mo>+</mml:mo><mml:mtext>jets</mml:mtext></mml:mrow></mml:math>\n events from proton-proton collisions at \n<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:msqrt><mml:mi>s</mml:mi></mml:msqrt><mml:mo>=</mml:mo><mml:mn>13</mml:mn><mml:mtext>\u2009</mml:mtext><mml:mtext>\u2009</mml:mtext><mml:mi>TeV</mml:mi></mml:math>",
+  "journal": "Physical Review D",
+  "short": "Phys. Rev. D",
+  "volume": "110",
+  "issue": "11",
+  "page": null,
+  "article": "112016",
+  "year": 2024,
+  "authors": [
+   "Hayrapetyan, A.",
+   "Tumasyan, A.",
+   "Adam, W.",
+   "Andrejkovic, J.\u2009W.",
+   "Benato, L.",
+   "Bergauer, T.",
+   "Chatterjee, S.",
+   "Damanakis, K."
+  ],
+  "n_authors": 2397,
+  "type": "journal-article"
+ },
+ "kinoshita1957": {
+  "doi": "10.1103/physrev.107.593",
+  "title": "Muon Decay with Parity Nonconserving Interactions and Radiative Corrections in the Two-Component Theory",
+  "journal": "Physical Review",
+  "short": "Phys. Rev.",
+  "volume": "107",
+  "issue": "2",
+  "page": "593-599",
+  "article": null,
+  "year": 1957,
+  "authors": [
+   "Kinoshita, Toichiro",
+   "Sirlin, Alberto"
+  ],
+  "n_authors": 2,
+  "type": "journal-article"
+ },
+ "horodeckiEB2003": {
+  "doi": "10.1142/s0129055x03001709",
+  "title": "Entanglement Breaking Channels",
+  "journal": "Reviews in Mathematical Physics",
+  "short": "Rev. Math. Phys.",
+  "volume": "15",
+  "issue": "06",
+  "page": "629-641",
+  "article": null,
+  "year": 2003,
+  "authors": [
+   "Horodecki, Michael",
+   "Shor, Peter W.",
+   "Ruskai, Mary Beth"
+  ],
+  "n_authors": 3,
+  "type": "journal-article"
+ },
+ "spekkens2008": {
+  "doi": "10.1103/physrevlett.101.020401",
+  "title": "Negativity and Contextuality are Equivalent Notions of Nonclassicality",
+  "journal": "Physical Review Letters",
+  "short": "Phys. Rev. Lett.",
+  "volume": "101",
+  "issue": "2",
+  "page": null,
+  "article": "020401",
+  "year": 2008,
+  "authors": [
+   "Spekkens, Robert W."
+  ],
+  "n_authors": 1,
+  "type": "journal-article"
+ },
+ "besiii2020sigma": {
+  "doi": "10.1103/physrevlett.125.052004",
+  "title": "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:msup>\n                        <mml:mi mathvariant=\"normal\">\u03a3</mml:mi>\n                        <mml:mo>+</mml:mo>\n                      </mml:msup>\n                    </mml:math>\n                    and\n                    <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:msup>\n                        <mml:mover accent=\"true\">\n                          <mml:mi mathvariant=\"normal\">\u03a3</mml:mi>\n                          <mml:mo stretchy=\"false\">\u00af</mml:mo>\n                        </mml:mover>\n                        <mml:mo>\u2212</mml:mo>\n                      </mml:msup>\n                    </mml:math>\n                    Polarization in the\n                    <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mi>J</mml:mi>\n                      <mml:mo stretchy=\"false\">/</mml:mo>\n                      <mml:mi>\u03c8</mml:mi>\n                    </mml:math>\n                    and\n                    <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mi>\u03c8</mml:mi>\n                      <mml:mo stretchy=\"false\">(</mml:mo>\n                      <mml:mn>3686</mml:mn>\n                      <mml:mo stretchy=\"false\">)</mml:mo>\n                    </mml:math>\n                    Decays",
+  "journal": "Physical Review Letters",
+  "short": "Phys. Rev. Lett.",
+  "volume": "125",
+  "issue": "5",
+  "page": null,
+  "article": "052004",
+  "year": 2020,
+  "authors": [
+   "Ablikim, M.",
+   "Achasov, M.\u2009N.",
+   "Adlarson, P.",
+   "Ahmed, S.",
+   "Albrecht, M.",
+   "Amoroso, A.",
+   "An, Q.",
+   "Anita, "
+  ],
+  "n_authors": 492,
+  "type": "journal-article"
+ }
+}

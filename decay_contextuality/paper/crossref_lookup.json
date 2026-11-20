@@ -1,0 +1,741 @@
+{
+ "spekkens2005": {
+  "doi": "10.1103/physreva.71.052108",
+  "title": "Contextuality for preparations, transformations, and unsharp measurements",
+  "journal": "Physical Review A",
+  "short": "Phys. Rev. A",
+  "volume": "71",
+  "issue": "5",
+  "page": null,
+  "article": "052108",
+  "year": 2005,
+  "authors": [
+   "Spekkens, R. W."
+  ],
+  "n_authors": 1
+ },
+ "schmid2021": {
+  "doi": "10.1103/prxquantum.2.010331",
+  "title": "Characterization of Noncontextuality in the Framework of Generalized Probabilistic Theories",
+  "journal": "PRX Quantum",
+  "short": "PRX Quantum",
+  "volume": "2",
+  "issue": "1",
+  "page": null,
+  "article": "010331",
+  "year": 2021,
+  "authors": [
+   "Schmid, David",
+   "Selby, John H.",
+   "Wolfe, Elie",
+   "Kunjwal, Ravi",
+   "Spekkens, Robert W."
+  ],
+  "n_authors": 5
+ },
+ "gitton2022": {
+  "doi": "10.22331/q-2022-06-07-732",
+  "title": "Solvable Criterion for the Contextuality of any Prepare-and-Measure Scenario",
+  "journal": "Quantum",
+  "short": "Quantum",
+  "volume": "6",
+  "issue": null,
+  "page": "732",
+  "article": "732",
+  "year": 2022,
+  "authors": [
+   "Gitton, Victor",
+   "Woods, Mischa P."
+  ],
+  "n_authors": 2
+ },
+ "selby2023frag": {
+  "doi": "10.1103/physreva.107.062203",
+  "title": "Accessible fragments of generalized probabilistic theories, cone equivalence, and applications to witnessing nonclassicality",
+  "journal": "Physical Review A",
+  "short": "Phys. Rev. A",
+  "volume": "107",
+  "issue": "6",
+  "page": null,
+  "article": "062203",
+  "year": 2023,
+  "authors": [
+   "Selby, John H.",
+   "Schmid, David",
+   "Wolfe, Elie",
+   "Sainz, Ana Bel\u00e9n",
+   "Kunjwal, Ravi",
+   "Spekkens, Robert W."
+  ],
+  "n_authors": 6
+ },
+ "selby2023incomp": {
+  "doi": "10.1103/physrevlett.130.230201",
+  "title": "Contextuality without Incompatibility",
+  "journal": "Physical Review Letters",
+  "short": "Phys. Rev. Lett.",
+  "volume": "130",
+  "issue": "23",
+  "page": null,
+  "article": "230201",
+  "year": 2023,
+  "authors": [
+   "Selby, John H.",
+   "Schmid, David",
+   "Wolfe, Elie",
+   "Sainz, Ana Bel\u00e9n",
+   "Kunjwal, Ravi",
+   "Spekkens, Robert W."
+  ],
+  "n_authors": 6
+ },
+ "selby2024lp": {
+  "doi": "10.1103/physrevlett.132.050202",
+  "title": "Linear Program for Testing Nonclassicality and an Open-Source Implementation",
+  "journal": "Physical Review Letters",
+  "short": "Phys. Rev. Lett.",
+  "volume": "132",
+  "issue": "5",
+  "page": null,
+  "article": "050202",
+  "year": 2024,
+  "authors": [
+   "Selby, John H.",
+   "Wolfe, Elie",
+   "Schmid, David",
+   "Sainz, Ana Bel\u00e9n",
+   "Rossi, Vinicius P."
+  ],
+  "n_authors": 5
+ },
+ "plavala2024": {
+  "doi": "10.1103/physrevlett.132.100201",
+  "title": "Contextuality as a Precondition for Quantum Entanglement",
+  "journal": "Physical Review Letters",
+  "short": "Phys. Rev. Lett.",
+  "volume": "132",
+  "issue": "10",
+  "page": null,
+  "article": "100201",
+  "year": 2024,
+  "authors": [
+   "Pl\u00e1vala, Martin",
+   "G\u00fchne, Otfried"
+  ],
+  "n_authors": 2
+ },
+ "jokinen2024": {
+  "doi": "10.1103/physrevlett.133.240201",
+  "title": "No-Broadcasting Characterizes Operational Contextuality",
+  "journal": "Physical Review Letters",
+  "short": "Phys. Rev. Lett.",
+  "volume": "133",
+  "issue": "24",
+  "page": null,
+  "article": "240201",
+  "year": 2024,
+  "authors": [
+   "Jokinen, Pauli",
+   "Weilenmann, Mirjam",
+   "Pl\u00e1vala, Martin",
+   "Pellonp\u00e4\u00e4, Juha-Pekka",
+   "Kiukas, Jukka",
+   "Uola, Roope"
+  ],
+  "n_authors": 6
+ },
+ "mazurek2016": {
+  "doi": "10.1038/ncomms11780",
+  "title": "An experimental test of noncontextuality without unphysical idealizations",
+  "journal": "Nature Communications",
+  "short": "Nat Commun",
+  "volume": "7",
+  "issue": "1",
+  "page": null,
+  "article": "ncomms11780",
+  "year": 2016,
+  "authors": [
+   "Mazurek, Michael D.",
+   "Pusey, Matthew F.",
+   "Kunjwal, Ravi",
+   "Resch, Kevin J.",
+   "Spekkens, Robert W."
+  ],
+  "n_authors": 5
+ },
+ "afik2021": {
+  "doi": "10.1140/epjp/s13360-021-01902-1",
+  "title": "Entanglement and quantum tomography with top quarks at the LHC",
+  "journal": "The European Physical Journal Plus",
+  "short": "Eur. Phys. J. Plus",
+  "volume": "136",
+  "issue": "9",
+  "page": null,
+  "article": "907",
+  "year": 2021,
+  "authors": [
+   "Afik, Yoav",
+   "de Nova, Juan Ram\u00f3n Mu\u00f1oz"
+  ],
+  "n_authors": 2
+ },
+ "atlas2024": {
+  "doi": "10.1038/s41586-024-07824-z",
+  "title": "Observation of quantum entanglement with top quarks at the ATLAS detector",
+  "journal": "Nature",
+  "short": "Nature",
+  "volume": "633",
+  "issue": "8030",
+  "page": "542-547",
+  "article": null,
+  "year": 2024,
+  "authors": [
+   "The ATLAS Collaboration, ",
+   "Aad, G.",
+   "Abbott, B.",
+   "Abeling, K.",
+   "Abicht, N. J.",
+   "Abidi, S. H.",
+   "Aboulhorma, A.",
+   "Abramowicz, H."
+  ],
+  "n_authors": 2890
+ },
+ "cms2024": {
+  "doi": "10.1088/1361-6633/ad7e4d",
+  "title": "Observation of quantum entanglement in top quark pair production in proton\u2013proton collisions at\n                    <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\">\n                      <mml:mrow>\n                        <mml:msqrt>\n                          <mml:mi>s</mml:mi>\n                        </mml:msqrt>\n                        <mml:mo>=</mml:mo>\n                        <mml:mn>13</mml:mn>\n                      </mml:mrow>\n                    </mml:math>\n                    \u2009TeV",
+  "journal": "Reports on Progress in Physics",
+  "short": "Rep. Prog. Phys.",
+  "volume": "87",
+  "issue": "11",
+  "page": "117801",
+  "article": null,
+  "year": 2024,
+  "authors": [
+   "CMS Collaboration, The"
+  ],
+  "n_authors": 1
+ },
+ "barr2024": {
+  "doi": "10.1016/j.ppnp.2024.104134",
+  "title": "Quantum entanglement and Bell inequality violation at colliders",
+  "journal": "Progress in Particle and Nuclear Physics",
+  "short": "Progress in Particle and Nuclear Physics",
+  "volume": "139",
+  "issue": null,
+  "page": "104134",
+  "article": "104134",
+  "year": 2024,
+  "authors": [
+   "Barr, Alan J.",
+   "Fabbrichesi, Marco",
+   "Floreanini, Roberto",
+   "Gabrielli, Emidio",
+   "Marzola, Luca"
+  ],
+  "n_authors": 5
+ },
+ "abel1992": {
+  "doi": "10.1016/0370-2693(92)90071-b",
+  "title": "Testing locality at colliders via Bell's inequality?",
+  "journal": "Physics Letters B",
+  "short": "Physics Letters B",
+  "volume": "280",
+  "issue": "3-4",
+  "page": "304-312",
+  "article": null,
+  "year": 1992,
+  "authors": [
+   "Abel, S.A.",
+   "Dittmar, M.",
+   "Dreiner, H."
+  ],
+  "n_authors": 3
+ },
+ "li2024": {
+  "doi": "10.1140/epjc/s10052-024-13584-x",
+  "title": "Can Bell inequalities be tested via scattering cross-section at colliders ?",
+  "journal": "The European Physical Journal C",
+  "short": "Eur. Phys. J. C",
+  "volume": "84",
+  "issue": "11",
+  "page": null,
+  "article": "1195",
+  "year": 2024,
+  "authors": [
+   "Li, Song",
+   "Shen, Wei",
+   "Yang, Jin Min"
+  ],
+  "n_authors": 3
+ },
+ "fabbrichesi2025pra": {
+  "doi": "10.1103/9bvc-2w4m",
+  "title": "Quantum contextuality of spin-1 massive particles",
+  "journal": "Physical Review A",
+  "short": "Phys. Rev. A",
+  "volume": "112",
+  "issue": "2",
+  "page": null,
+  "article": "L020402",
+  "year": 2025,
+  "authors": [
+   "Fabbrichesi, M.",
+   "Floreanini, R.",
+   "Gabrielli, E.",
+   "Marzola, L."
+  ],
+  "n_authors": 4
+ },
+ "fabbrichesi2025prd": {
+  "doi": "10.1103/22zl-ltxm",
+  "title": "Tests of quantum contextuality in particle physics",
+  "journal": "Physical Review D",
+  "short": "Phys. Rev. D",
+  "volume": "112",
+  "issue": "3",
+  "page": null,
+  "article": "033005",
+  "year": 2025,
+  "authors": [
+   "Fabbrichesi, M.",
+   "Floreanini, R.",
+   "Gabrielli, E.",
+   "Marzola, L."
+  ],
+  "n_authors": 4
+ },
+ "ashby2023": {
+  "doi": "10.1007/jhep05(2023)020",
+  "title": "Quantum state tomography, entanglement detection and Bell violation prospects in weak decays of massive particles",
+  "journal": "Journal of High Energy Physics",
+  "short": "J. High Energ. Phys.",
+  "volume": "2023",
+  "issue": "5",
+  "page": null,
+  "article": "20",
+  "year": 2023,
+  "authors": [
+   "Ashby-Pickering, Rachel",
+   "Barr, Alan J.",
+   "Wierzchucka, Agnieszka"
+  ],
+  "n_authors": 3
+ },
+ "brandenburg2002": {
+  "doi": "10.1016/s0370-2693(02)02098-1",
+  "title": "QCD-corrected spin analysing power of jets in decays of polarized top quarks",
+  "journal": "Physics Letters B",
+  "short": "Physics Letters B",
+  "volume": "539",
+  "issue": "3-4",
+  "page": "235-241",
+  "article": null,
+  "year": 2002,
+  "authors": [
+   "Brandenburg, A.",
+   "Si, Z.G.",
+   "Uwer, P."
+  ],
+  "n_authors": 3
+ },
+ "tweedie2014": {
+  "doi": "10.1103/physrevd.90.094010",
+  "title": "Better hadronic top quark polarimetry",
+  "journal": "Physical Review D",
+  "short": "Phys. Rev. D",
+  "volume": "90",
+  "issue": "9",
+  "page": null,
+  "article": "094010",
+  "year": 2014,
+  "authors": [
+   "Tweedie, Brock"
+  ],
+  "n_authors": 1
+ },
+ "faldt2017": {
+  "doi": "10.1016/j.physletb.2017.06.011",
+  "title": "Hadronic structure functions in the<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" altimg=\"si1.gif\" overflow=\"scroll\"><mml:msup><mml:mrow><mml:mi>e</mml:mi></mml:mrow><mml:mrow><mml:mo>+</mml:mo></mml:mrow></mml:msup><mml:msup><mml:mrow><mml:mi>e</mml:mi></mml:mrow><mml:mrow><mml:mo>\u2212</mml:mo></mml:mrow></mml:msup><mml:mo stretchy=\"false\">\u2192</mml:mo><mml:mover accent=\"true\"><mml:mrow><mml:mi mathvariant=\"normal\">\u039b</mml:mi></mml:mrow><mml:mrow><mml:mo stretchy=\"false\">\u00af</mml:mo></mml:mrow></mml:mover><mml:mi mathvariant=\"normal\">\u039b</mml:mi></mml:math>reaction",
+  "journal": "Physics Letters B",
+  "short": "Physics Letters B",
+  "volume": "772",
+  "issue": null,
+  "page": "16-20",
+  "article": null,
+  "year": 2017,
+  "authors": [
+   "F\u00e4ldt, G\u00f6ran",
+   "Kupsc, Andrzej"
+  ],
+  "n_authors": 2
+ },
+ "besiii2022": {
+  "doi": "10.1103/physrevlett.129.131801",
+  "title": "Precise Measurements of Decay Parameters and\n                    <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mi>C</mml:mi>\n                      <mml:mi>P</mml:mi>\n                    </mml:math>\n                    Asymmetry with Entangled\n                    <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\">\n                      <mml:mrow>\n                        <mml:mi mathvariant=\"normal\">\u039b</mml:mi>\n                        <mml:mtext>\u2212</mml:mtext>\n                        <mml:mover accent=\"true\">\n                          <mml:mrow>\n                            <mml:mi mathvariant=\"normal\">\u039b</mml:mi>\n                          </mml:mrow>\n                          <mml:mrow>\n                            <mml:mo stretchy=\"false\">\u00af</mml:mo>\n                          </mml:mrow>\n                        </mml:mover>\n                      </mml:mrow>\n                    </mml:math>\n                    Pairs",
+  "journal": "Physical Review Letters",
+  "short": "Phys. Rev. Lett.",
+  "volume": "129",
+  "issue": "13",
+  "page": null,
+  "article": "131801",
+  "year": 2022,
+  "authors": [
+   "Ablikim, M.",
+   "Achasov, M.\u2009N.",
+   "Adlarson, P.",
+   "Albrecht, M.",
+   "Aliberti, R.",
+   "Amoroso, A.",
+   "An, M.\u2009R.",
+   "An, Q."
+  ],
+  "n_authors": 575
+ },
+ "pdg2024": {
+  "doi": "10.1103/physrevd.110.030001",
+  "title": "Review of Particle Physics",
+  "journal": "Physical Review D",
+  "short": "Phys. Rev. D",
+  "volume": "110",
+  "issue": "3",
+  "page": null,
+  "article": "030001",
+  "year": 2024,
+  "authors": [
+   "Navas, S.",
+   "Amsler, C.",
+   "Gutsche, T.",
+   "Hanhart, C.",
+   "Hern\u00e1ndez-Rey, J.\u2009J.",
+   "Louren\u00e7o, C.",
+   "Masoni, A.",
+   "Mikhasenko, M."
+  ],
+  "n_authors": 245
+ },
+ "tsai1971": {
+  "doi": "10.1103/physrevd.4.2821",
+  "title": "Decay Correlations of Heavy Leptons in<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mrow><mml:msup><mml:mrow><mml:mi>e</mml:mi></mml:mrow><mml:mrow><mml:mo>+</mml:mo></mml:mrow></mml:msup></mml:mrow><mml:mo>+</mml:mo><mml:mrow><mml:msup><mml:mrow><mml:mi>e</mml:mi></mml:mrow><mml:mrow><mml:mo>\u2212</mml:mo></mml:mrow></mml:msup></mml:mrow><mml:mo>\u2192</mml:mo><mml:mrow><mml:msup><mml:mrow><mml:mi>l</mml:mi></mml:mrow><mml:mrow><mml:mo>+</mml:mo></mml:mrow></mml:msup></mml:mrow><mml:mo>+</mml:mo><mml:mrow><mml:msup><mml:mrow><mml:mi>l</mml:mi></mml:mrow><mml:mrow><mml:mo>\u2212</mml:mo></mml:mrow></mml:msup></mml:mrow></mml:math>",
+  "journal": "Physical Review D",
+  "short": "Phys. Rev. D",
+  "volume": "4",
+  "issue": "9",
+  "page": "2821-2837",
+  "article": null,
+  "year": 1971,
+  "authors": [
+   "Tsai, Yung-Su"
+  ],
+  "n_authors": 1
+ },
+ "horodecki1996t": {
+  "doi": "10.1103/physreva.54.1838",
+  "title": "Information-theoretic aspects of inseparability of mixed states",
+  "journal": "Physical Review A",
+  "short": "Phys. Rev. A",
+  "volume": "54",
+  "issue": "3",
+  "page": "1838-1843",
+  "article": null,
+  "year": 1996,
+  "authors": [
+   "Horodecki, Ryszard",
+   "Horodecki, Michal/"
+  ],
+  "n_authors": 2
+ },
+ "peres1996": {
+  "doi": "10.1103/physrevlett.77.1413",
+  "title": "Separability Criterion for Density Matrices",
+  "journal": "Physical Review Letters",
+  "short": "Phys. Rev. Lett.",
+  "volume": "77",
+  "issue": "8",
+  "page": "1413-1415",
+  "article": null,
+  "year": 1996,
+  "authors": [
+   "Peres, Asher"
+  ],
+  "n_authors": 1
+ },
+ "horodecki1996ppt": {
+  "doi": "10.1016/s0375-9601(96)00706-2",
+  "title": "Separability of mixed states: necessary and sufficient conditions",
+  "journal": "Physics Letters A",
+  "short": "Physics Letters A",
+  "volume": "223",
+  "issue": "1-2",
+  "page": "1-8",
+  "article": null,
+  "year": 1996,
+  "authors": [
+   "Horodecki, Micha\u0142",
+   "Horodecki, Pawe\u0142",
+   "Horodecki, Ryszard"
+  ],
+  "n_authors": 3
+ },
+ "horodecki1999": {
+  "doi": "10.1103/physreva.59.4206",
+  "title": "Reduction criterion of separability and limits for a class of distillation protocols",
+  "journal": "Physical Review A",
+  "short": "Phys. Rev. A",
+  "volume": "59",
+  "issue": "6",
+  "page": "4206-4216",
+  "article": null,
+  "year": 1999,
+  "authors": [
+   "Horodecki, Micha\u0142",
+   "Horodecki, Pawe\u0142"
+  ],
+  "n_authors": 2
+ },
+ "ruskai2003": {
+  "doi": "10.1142/s0129055x03001710",
+  "title": "Qubit Entanglement Breaking Channels",
+  "journal": "Reviews in Mathematical Physics",
+  "short": "Rev. Math. Phys.",
+  "volume": "15",
+  "issue": "06",
+  "page": "643-662",
+  "article": null,
+  "year": 2003,
+  "authors": [
+   "Ruskai, Mary Beth"
+  ],
+  "n_authors": 1
+ },
+ "sturm2003": {
+  "doi": "10.1287/moor.28.2.246.14485",
+  "title": "On Cones of Nonnegative Quadratic Functions",
+  "journal": "Mathematics of Operations Research",
+  "short": "Mathematics of OR",
+  "volume": "28",
+  "issue": "2",
+  "page": "246-267",
+  "article": null,
+  "year": 2003,
+  "authors": [
+   "Sturm, Jos F.",
+   "Zhang, Shuzhong"
+  ],
+  "n_authors": 2
+ },
+ "giraud2008": {
+  "doi": "10.1103/physreva.78.042112",
+  "title": "Classicality of spin states",
+  "journal": "Physical Review A",
+  "short": "Phys. Rev. A",
+  "volume": "78",
+  "issue": "4",
+  "page": null,
+  "article": "042112",
+  "year": 2008,
+  "authors": [
+   "Giraud, Olivier",
+   "Braun, Petr",
+   "Braun, Daniel"
+  ],
+  "n_authors": 3
+ },
+ "bohnet2016": {
+  "doi": "10.1103/physreva.94.042343",
+  "title": "Partial transpose criteria for symmetric states",
+  "journal": "Physical Review A",
+  "short": "Phys. Rev. A",
+  "volume": "94",
+  "issue": "4",
+  "page": null,
+  "article": "042343",
+  "year": 2016,
+  "authors": [
+   "Bohnet-Waldraff, F.",
+   "Braun, D.",
+   "Giraud, O."
+  ],
+  "n_authors": 3
+ },
+ "jacob1959": {
+  "doi": "10.1016/0003-4916(59)90051-x",
+  "title": "On the general theory of collisions for particles with spin",
+  "journal": "Annals of Physics",
+  "short": "Annals of Physics",
+  "volume": "7",
+  "issue": "4",
+  "page": "404-428",
+  "article": null,
+  "year": 1959,
+  "authors": [
+   "Jacob, M.",
+   "Wick, G.C."
+  ],
+  "n_authors": 2
+ },
+ "wiseman2007": {
+  "doi": "10.1103/physrevlett.98.140402",
+  "title": "Steering, Entanglement, Nonlocality, and the Einstein-Podolsky-Rosen Paradox",
+  "journal": "Physical Review Letters",
+  "short": "Phys. Rev. Lett.",
+  "volume": "98",
+  "issue": "14",
+  "page": null,
+  "article": "140402",
+  "year": 2007,
+  "authors": [
+   "Wiseman, H. M.",
+   "Jones, S. J.",
+   "Doherty, A. C."
+  ],
+  "n_authors": 3
+ },
+ "brunner2014": {
+  "doi": "10.1103/revmodphys.86.419",
+  "title": "Bell nonlocality",
+  "journal": "Reviews of Modern Physics",
+  "short": "Rev. Mod. Phys.",
+  "volume": "86",
+  "issue": "2",
+  "page": "419-478",
+  "article": null,
+  "year": 2014,
+  "authors": [
+   "Brunner, Nicolas",
+   "Cavalcanti, Daniel",
+   "Pironio, Stefano",
+   "Scarani, Valerio",
+   "Wehner, Stephanie"
+  ],
+  "n_authors": 5
+ },
+ "sympy2017": {
+  "doi": "10.7717/peerj-cs.103",
+  "title": "SymPy: symbolic computing in Python",
+  "journal": "PeerJ Computer Science",
+  "short": "",
+  "volume": "3",
+  "issue": null,
+  "page": "e103",
+  "article": "e103",
+  "year": 2017,
+  "authors": [
+   "Meurer, Aaron",
+   "Smith, Christopher P.",
+   "Paprocki, Mateusz",
+   "\u010cert\u00edk, Ond\u0159ej",
+   "Kirpichev, Sergey B.",
+   "Rocklin, Matthew",
+   "Kumar, AMiT",
+   "Ivanov, Sergiu"
+  ],
+  "n_authors": 27
+ },
+ "z3": {
+  "doi": "10.1007/978-3-540-78800-3_24",
+  "title": "Z3: An Efficient SMT Solver",
+  "journal": "Lecture Notes in Computer Science",
+  "short": "",
+  "volume": null,
+  "issue": null,
+  "page": "337-340",
+  "article": null,
+  "year": 2008,
+  "authors": [
+   "de Moura, Leonardo",
+   "Bj\u00f8rner, Nikolaj"
+  ],
+  "n_authors": 2
+ },
+ "cvxpy": {
+  "doi": "10.1109/lcsys.2022.3173209",
+  "title": "Embedded Code Generation With CVXPY",
+  "journal": "IEEE Control Systems Letters",
+  "short": "IEEE Control Syst. Lett.",
+  "volume": "6",
+  "issue": null,
+  "page": "2653-2658",
+  "article": null,
+  "year": 2022,
+  "authors": [
+   "Schaller, Maximilian",
+   "Banjac, Goran",
+   "Diamond, Steven",
+   "Agrawal, Akshay",
+   "Stellato, Bartolomeo",
+   "Boyd, Stephen"
+  ],
+  "n_authors": 6
+ },
+ "scipy": {
+  "doi": "10.1038/s41592-019-0686-2",
+  "title": "SciPy 1.0: fundamental algorithms for scientific computing in Python",
+  "journal": "Nature Methods",
+  "short": "Nat Methods",
+  "volume": "17",
+  "issue": "3",
+  "page": "261-272",
+  "article": null,
+  "year": 2020,
+  "authors": [
+   "Virtanen, Pauli",
+   "Gommers, Ralf",
+   "Oliphant, Travis E.",
+   "Haberland, Matt",
+   "Reddy, Tyler",
+   "Cournapeau, David",
+   "Burovski, Evgeni",
+   "Peterson, Pearu"
+  ],
+  "n_authors": 112
+ },
+ "highs": {
+  "doi": "10.1007/s12532-017-0130-5",
+  "title": "Parallelizing the dual revised simplex method",
+  "journal": "Mathematical Programming Computation",
+  "short": "Math. Prog. Comp.",
+  "volume": "10",
+  "issue": "1",
+  "page": "119-142",
+  "article": null,
+  "year": 2017,
+  "authors": [
+   "Huangfu, Q.",
+   "Hall, J. A. J."
+  ],
+  "n_authors": 2
+ },
+ "kunjwal2019": {
+  "doi": "10.1103/physreva.100.042116",
+  "title": "Anomalous weak values and contextuality: Robustness, tightness, and imaginary parts",
+  "journal": "Physical Review A",
+  "short": "Phys. Rev. A",
+  "volume": "100",
+  "issue": "4",
+  "page": null,
+  "article": "042116",
+  "year": 2019,
+  "authors": [
+   "Kunjwal, Ravi",
+   "Lostaglio, Matteo",
+   "Pusey, Matthew F."
+  ],
+  "n_authors": 3
+ },
+ "pusey2018": {
+  "doi": "10.1103/physreva.98.022112",
+  "title": "Robust preparation noncontextuality inequalities in the simplest scenario",
+  "journal": "Physical Review A",
+  "short": "Phys. Rev. A",
+  "volume": "98",
+  "issue": "2",
+  "page": null,
+  "article": "022112",
+  "year": 2018,
+  "authors": [
+   "Pusey, Matthew F."
+  ],
+  "n_authors": 1
+ }
+}
