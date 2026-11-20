@@ -40,11 +40,16 @@ Tested with Python 3.13, SymPy 1.14.0, Z3 5.4.1, NumPy 2.5.3, SciPy 1.18.1, CVXP
 
 ## Pages
 
+The repository is served by GitHub Pages at <https://tahmeedhossain.github.io/GEN_Paper/>, with this file as its front page.
+
 | Page | Content |
 |---|---|
-| `page/index.html` | explorer of the edge kernel: method, one view per paper (claims, layered graph, routes with certificate output, findings, delta, lint), negative controls. Loads `page/results.json`; `page/gen_edge_kernel_standalone.html` opens from disk |
-| `page_replay/index.html` | replay: the update rule tested on the four papers, one view per paper with a unit-by-unit navigator, method. Loads `page_replay/replay.json`; `page_replay/gen_paper_replay_standalone.html` opens from disk |
-| `decay_contextuality/page/index.html` | the page of the generated paper as published on 17 November 2026, with a generated-work notice |
+| [Edge-kernel explorer](https://tahmeedhossain.github.io/GEN_Paper/page/) | method, one view per paper (claims, layered graph, routes with certificate output, findings, delta, lint), negative controls. File `page/index.html`, which loads `page/results.json`; `page/gen_edge_kernel_standalone.html` opens from disk |
+| [Replay in reading order](https://tahmeedhossain.github.io/GEN_Paper/page_replay/) | the update rule tested on the four papers, one view per paper with a unit-by-unit navigator, method. File `page_replay/index.html`, which loads `page_replay/replay.json`; `page_replay/gen_paper_replay_standalone.html` opens from disk |
+| [Generated paper, PDF](https://tahmeedhossain.github.io/GEN_Paper/decay_contextuality/paper/main.pdf) | *Particle decays as fixed measurements* (generated work, unpublished, not peer reviewed) |
+| [Page of the generated paper](https://tahmeedhossain.github.io/GEN_Paper/decay_contextuality/page/) | the page as published on 17 November 2026, with a generated-work notice; [folder README](https://tahmeedhossain.github.io/GEN_Paper/decay_contextuality/) |
+| [SPEC](SPEC.md), [REPLAY](REPLAY.md) | method of the edge kernel and of the replay |
+| [Check report](out/report.md), [replay report](out/replay_report.md) | the results as tables |
 
 ## Files
 
